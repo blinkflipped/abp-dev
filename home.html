@@ -1,0 +1,47 @@
+/* Variables:
+* bookTitle = Book title (e.g. "Nombre del libro")
+* bookDescription = Book description (e.g "Descripción del libro")
+* auxiliaryActivityTitle = Auxiliary activity title (e.g "Pasos de un proyecto")
+* subjectTitle = Subject title (e.g. "Título del tema")
+* subjectDescription = Subject description (e.g. "Descripción del tema")
+* subjectNumber = Subject number sarting with 00 (e.g. "05")
+*/
+
+<section class="abp-section">
+  <header class="abp-section-header">
+    <div class="abp-container">
+      <h1 class="abp-title-1">'+bookTitle+'</h1>
+      <div class="abp-intro">
+        <p>'+bookDescription+'</p>
+      </div>
+    </div>
+    <nav class="abp-navigation abp-navigation_secondary">
+      <ul>
+        /* For each to get Auxiliary activities with tag "pestaña" */
+        <li>
+          <a href="#"><span>'+auxiliaryActivityTitle+'</span></a>
+        </li>
+        /*End forEach*/
+      </ul>
+    </nav>
+  </header>
+  <div class="abp-section-content">
+    <div class="abp-container">
+      <div class="abp-subjects-slider abp-js--slider">
+        /* ForEach to get All the subjects */
+        <article class="abp-subjects-slider-item">
+          <a href="#" class="abp-subjects-slider-item-inner">
+            <div class="abp-subjects-slider-item-number">
+              <div class="abp-subjects-slider-item-number-inner">'+subjectNumber+'</div>
+            </div>
+            <header class="abp-subjects-slider-item-header">'+subjectTitle+'</header>
+            <div class="abp-subjects-slider-item-content">
+              <div class="abp-subjects-slider-item-content-description">'+subjectDescription+'</div>
+            </div>
+          </a>
+        </article>
+        /*End forEach*/
+      </div>
+    </div>
+  </div>
+</section>
