@@ -1,47 +1,75 @@
-/* Variables:
+<!DOCTYPE html>
+<html class="htmlReady">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="theme-color" content="#332F2B">
+    <title>ABP Home</title>
+    <link href="style.css" rel="stylesheet">
+
+  </head>
+  <body class="view-mode">
+
+<!-- Variables:
 * bookTitle = Book title (e.g. "Nombre del libro")
 * bookDescription = Book description (e.g "Descripción del libro")
 * auxiliaryActivityTitle = Auxiliary activity title (e.g "Pasos de un proyecto")
 * subjectTitle = Subject title (e.g. "Título del tema")
 * subjectDescription = Subject description (e.g. "Descripción del tema")
 * subjectNumber = Subject number sarting with 00 (e.g. "05")
-*/
+* subjectImage = Subject image URL
+-->
 
 <section class="abp-section abp-section_home">
   <header class="abp-section-header">
     <div class="abp-container">
-      <h1 class="abp-title-1">'+bookTitle+'</h1>
-      <div class="abp-intro">
-        <p>'+bookDescription+'</p>
+      <div class="abp-section-header-inner">
+        <h1 class="abp-title-1">'+bookTitle+'</h1>
+        <div class="abp-intro">
+          <p>'+bookDescription+'</p>
+        </div>
       </div>
     </div>
     <nav class="abp-navigation abp-navigation_secondary">
       <ul>
-        /* For each to get Auxiliary activities with tag "pestaña" */
+        <!-- For each to get Auxiliary activities with tag "pestaña" -->
         <li>
           <a href="#"><span>'+auxiliaryActivityTitle+'</span></a>
         </li>
-        /*End forEach*/
+        <!--  End forEach-->
       </ul>
     </nav>
   </header>
   <div class="abp-section-content">
     <div class="abp-container">
       <div class="abp-subjects-slider abp-js--slider">
-        /* ForEach to get All the subjects */
-        <article class="abp-subjects-slider-item">
-          <a href="#" class="abp-subjects-slider-item-inner">
-            <div class="abp-subjects-slider-item-number abp-subject-number">
-              <div class="abp-subject-number-inner">'+subjectNumber+'</div>
-            </div>
-            <header class="abp-subjects-slider-item-header">'+subjectTitle+'</header>
-            <div class="abp-subjects-slider-item-content">
-              <div class="abp-subjects-slider-item-content-description">'+subjectDescription+'</div>
-            </div>
-          </a>
-        </article>
-        /*End forEach*/
+        <!--  ForEach to get All the subjects -->
+        <div class="abp-subjects-slider-item">
+          <article class="abp-subject">
+            <a href="#" class="abp-subject-inner">
+              <div class="abp-subject-number abp-subject-number">
+                <div class="abp-subject-number-inner">
+                  <span>'+subjectNumber+'</span>
+                </div>
+              </div>
+              <header class="abp-subject-header">
+                <h2 class="abp-title-4">'+subjectTitle+'</h2>
+              </header>
+              <div class="abp-subject-content">
+                <div class="abp-subject-content-description">'+subjectDescription+'</div>
+                <div class="abp-subject-content-background">
+                  <img src="'+subjectImage+'">
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+        <!-- End forEach-->
       </div>
     </div>
   </div>
 </section>
+</body>
+</html>
