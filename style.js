@@ -1,11 +1,11 @@
 (function (blink) {
   'use strict';
 
-  var AbpStyleDev = function() {
+  var AbpDevStyle = function() {
     blink.theme.styles.basic.apply(this, arguments);
   }
 
-  AbpStyleDev.prototype = {
+  AbpDevStyle.prototype = {
     parent: blink.theme.styles.basic.prototype,
     bodyClassName: 'content_type_clase_abp_dev',
     ckEditorStyles: {
