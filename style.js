@@ -15,7 +15,7 @@
       ]
     },
     init: function() {
-      this.parent.init.call(this.parent, this);
+      this.parent.init.call(this);
 
       console.log("init");
 
