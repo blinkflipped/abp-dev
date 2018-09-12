@@ -2,11 +2,11 @@
   'use strict';
 
   var AbpDevStyle = function() {
-    blink.theme.styles.basic.apply(this, arguments);
+    blink.theme.styles.classic.apply(this, arguments);
   }
 
   AbpDevStyle.prototype = {
-    parent: blink.theme.styles.basic.prototype,
+    parent: blink.theme.styles.classic.prototype,
     bodyClassName: 'content_type_clase_abp_dev',
     ckEditorStyles: {
       name: 'abp-dev',
@@ -90,7 +90,7 @@
   };
 
 
-  AbpDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), AbpDevStyle.prototype);
+  AbpDevStyle.prototype = _.extend({}, new blink.theme.styles.classic(), AbpDevStyle.prototype);
 
   blink.theme.styles['abp-dev'] = AbpDevStyle;
 
