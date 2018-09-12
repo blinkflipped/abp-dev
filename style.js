@@ -92,7 +92,7 @@
 
   AbpDevStyle.prototype = _.extend({}, new blink.theme.styles.classic(), AbpDevStyle.prototype);
 
-  blink.theme.styles['abp-dev'] = AbpDevStyle;
+  blink.theme.styles['abp_dev'] = AbpDevStyle;
 
   blink.events.on('digitalbook:bpdfloaded', function() {
     // Ejemplo carga de datos del curso desde un libro digital.
