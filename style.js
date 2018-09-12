@@ -1,7 +1,7 @@
 (function (blink) {
   'use strict';
 
-  var AbpDevStyle = function() {
+  var AbpStyleDev = function() {
     blink.theme.styles.basic.apply(this, arguments);
   }
 
