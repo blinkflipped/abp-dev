@@ -1,11 +1,12 @@
 (function (blink) {
   'use strict';
 
-  var AbpStyleDev = function() {
+  var AbpDevStyle = function() {
     blink.theme.styles.basic.apply(this, arguments);
   }
 
   AbpStyleDev.prototype = {
+    parent: blink.theme.styles.basic.prototype,
     bodyClassName: 'content_type_clase_abp_dev',
     ckEditorStyles: {
       name: 'abp-dev',
@@ -13,7 +14,9 @@
         { name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
       ]
     },
-    init: function() {
+    init: function(scope) {
+      var that = scope || this;
+      this.parent.init.call(that);
 
       console.log("init");
 
@@ -87,14 +90,14 @@
   };
 
 
-  AbpStyleDev.prototype = _.extend({}, new blink.theme.styles.basic(), AbpStyleDev.prototype);
+  AbpDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), AbpDevStyle.prototype);
 
-  blink.theme.styles['abp-dev'] = AbpStyleDev;
+  blink.theme.styles['abp-dev'] = AbpDevStyle;
 
   blink.events.on('digitalbook:bpdfloaded', function() {
     // Ejemplo carga de datos del curso desde un libro digital.
     blink.getCourse(idcurso).done(function(data) {
-      var style = new AbpStyleDev;
+      var style = new AbpDevStyle;
       style.onCourseDataLoaded(data);
     });
   });
