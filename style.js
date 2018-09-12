@@ -14,9 +14,8 @@
         { name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
       ]
     },
-    init: function(scope) {
-      var that = scope || this;
-      this.parent.init.call(that);
+    init: function() {
+      this.parent.init.call(this.parent, this);
 
       console.log("init");
 
