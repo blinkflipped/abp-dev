@@ -13,7 +13,6 @@
         { name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
       ]
     },
-
     init: function() {
 
       console.log("init");
@@ -91,6 +90,15 @@
   AbpStyleDev.prototype = _.extend({}, new blink.theme.styles.basic(), AbpStyleDev.prototype);
 
   blink.theme.styles['abp-dev'] = AbpStyleDev;
+
+  blink.events.on('digitalbook:bpdfloaded', function() {
+    // Ejemplo carga de datos del curso desde un libro digital.
+    blink.getCourse(idcurso).done(function(data) {
+      var style = new AbpStyleDev;
+      style.onCourseDataLoaded(data);
+    });
+  });
+
 
 })( blink );
 
