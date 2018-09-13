@@ -171,8 +171,8 @@ body.view-mode {
     background: -o-linear-gradient(-90deg, #417280 0%, #68b8cb 100%);
     background: -ms-linear-gradient(-90deg, #417280 0%, #68b8cb 100%);
     background: linear-gradient(180deg, #417280 0%, #68b8cb 100%);
-    width: 50px;
-    height: 50px;
+    width: 44px;
+    height: 44px;
     border-radius: 100px;
     border-radius: 100%;
     position: absolute;
@@ -209,7 +209,8 @@ body.view-mode {
   width: 217px;
   height: 294px;
   background: #223c3f;
-  position: relative; }
+  position: relative;
+  box-shadow: 5px 5px 20px 0 rgba(24, 24, 24, 0.15); }
   .abp-unit-inner {
     display: flex;
     flex-direction: column;
@@ -272,6 +273,22 @@ body.view-mode {
     transform: translate(0, 50%);
     left: 12px;
     z-index: 10; }
+
+.abp-units-slider {
+  position: relative; }
+  .abp-units-slider::before {
+    content: '';
+    display: block;
+    background: #223c3f;
+    height: 7px;
+    width: calc(100% - 24px);
+    position: absolute;
+    z-index: 10;
+    left: 12px;
+    right: 12px;
+    bottom: -7px; }
+  .abp-units-slider-item {
+    margin-right: 8px; }
 
 .abp-container {
   max-width: 980px;

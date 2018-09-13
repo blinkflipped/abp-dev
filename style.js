@@ -367,7 +367,8 @@ abpApp.loadHomepage = function(data,updateHash) {
 
       var unitTitle = unit.title,
           unitDescription = unit.description,
-          unitNumber = unit.number - 1,
+          unitNumberBase = unit.number - 1,
+          unitNumber = ('0' + unitNumberBase).slice(-2),
           unitImage = unit.image;
           // TODO Add link
       var unitListItem = document.createElement('div');
