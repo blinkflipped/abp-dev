@@ -80,7 +80,7 @@
 
 // Number
 
-.abp-subject-number {
+.abp-unit-number {
 	width: 54px;
 	height: 54px;
 	border-radius: 100px;
@@ -123,17 +123,17 @@
 	}
 }
 
-// Subject items
+// unit items
 
-.abp-subject {
-	width: $subject_item_width;
-	height: $subject_item_height;
+.abp-unit {
+	width: $unit_item_width;
+	height: $unit_item_height;
 	background: $background_color;
 	position: relative;
 	&-inner {
 		display: flex;
 		flex-direction: column;
-		height: $subject_item_height;
+		height: $unit_item_height;
 	}
 	&-header {
 		@include gradient();
@@ -175,7 +175,7 @@
 			@include img-fit();
 		}
 	}
-	.abp-subject-number {
+	.abp-unit-number {
 		position: absolute;
 		bottom: 0;
 		transform: translate(0, 50%);

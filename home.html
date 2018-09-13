@@ -16,10 +16,10 @@
 * bookTitle = Book title (e.g. "Nombre del libro")
 * bookDescription = Book description (e.g "Descripción del libro")
 * auxiliaryActivityTitle = Auxiliary activity title (e.g "Pasos de un proyecto")
-* subjectTitle = Subject title (e.g. "Título del tema")
-* subjectDescription = Subject description (e.g. "Descripción del tema")
-* subjectNumber = Subject number sarting with 00 (e.g. "05")
-* subjectImage = Subject image URL
+* unitTitle = unit title (e.g. "Título del tema")
+* unitDescription = unit description (e.g. "Descripción del tema")
+* unitNumber = unit number sarting with 00 (e.g. "05")
+* unitImage = unit image URL
 -->
 
 <section class="abp-section abp-section_home">
@@ -44,23 +44,23 @@
   </header>
   <div class="abp-section-content">
     <div class="abp-container">
-      <div class="abp-subjects-slider abp-js--slider">
-        <!--  ForEach to get All the subjects -->
-        <div class="abp-subjects-slider-item">
-          <article class="abp-subject">
-            <a href="#" class="abp-subject-inner">
-              <div class="abp-subject-number abp-subject-number">
-                <div class="abp-subject-number-inner">
-                  <span>'+subjectNumber+'</span>
+      <div class="abp-units-slider abp-js--slider">
+        <!--  ForEach to get All the units -->
+        <div class="abp-units-slider-item">
+          <article class="abp-unit">
+            <a href="#" class="abp-unit-inner">
+              <div class="abp-unit-number abp-unit-number">
+                <div class="abp-unit-number-inner">
+                  <span>'+unitNumber+'</span>
                 </div>
               </div>
-              <header class="abp-subject-header">
-                <h2 class="abp-title-4">'+subjectTitle+'</h2>
+              <header class="abp-unit-header">
+                <h2 class="abp-title-4">'+unitTitle+'</h2>
               </header>
-              <div class="abp-subject-content">
-                <div class="abp-subject-content-description">'+subjectDescription+'</div>
-                <div class="abp-subject-content-background">
-                  <img src="'+subjectImage+'">
+              <div class="abp-unit-content">
+                <div class="abp-unit-content-description">'+unitDescription+'</div>
+                <div class="abp-unit-content-background">
+                  <img src="'+unitImage+'">
                 </div>
               </div>
             </a>

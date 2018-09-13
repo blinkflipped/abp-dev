@@ -1,8 +1,8 @@
 /* Variables:
-* abpApp.text.gobac = 'Volver'
-* subjectTitle = Subject title (e.g. "Título del tema")
-* subjectDescription = Subject description (e.g. "Descripción del tema")
-* subjectNumber = Subject number sarting with 00 (e.g. "05")
+* abpApp.text.goback = 'Volver'
+* unitTitle = unit title (e.g. "Título del tema")
+* unitDescription = unit description (e.g. "Descripción del tema")
+* unitNumber = unit number sarting with 00 (e.g. "05")
 * abpApp.text.studentarea = 'Sesión del alumno'
 * abpApp.text.teacherarea = 'Área del profesor'
 * resourceImage = Resource Image URL (e.g. '/img/image.png')
@@ -19,17 +19,17 @@
     </a>
   </div>
 </div>
-<section class="abp-section abp-section_subject">
+<section class="abp-section abp-section_unit">
   <div class="abp-container">
-    <div class="abp-section_subject-inner">
+    <div class="abp-section_unit-inner">
       <header class="abp-section-header">
         <div class="abp-section-header-top">
-          <h1 class="abp-title-2">'+subjectTitle+'</h1>
+          <h1 class="abp-title-2">'+unitTitle+'</h1>
         </div>
         <div class="abp-section-header-bottom">
-          <h2 class="abp-title-3">'+subjectDescription+'</h2>
-          <div class="abp-section_subject-number abp-subject-number">
-            <div class="abp-subject-number-inner">'+subjectNumber+'</div>
+          <h2 class="abp-title-3">'+unitDescription+'</h2>
+          <div class="abp-section_unit-number abp-unit-number">
+            <div class="abp-unit-number-inner">'+unitNumber+'</div>
           </div>
         </div>
       </header>
@@ -48,7 +48,7 @@
             <div class="abp-tabs-content" id="studentarea">
               <div class="abp-resources-list-wrapper">
                 <ul class="abp-resources-list">
-                  /* For each to get Activities from Subject visible to Students */
+                  /* For each to get Activities from unit visible to Students */
                   <li class="abp-resources-list-item">
                     <a href="#" class="abp-resources-list-item-inner">
                       <div class="abp-resources-list-item-image">
@@ -67,7 +67,7 @@
             <div class="abp-tabs-content" id="teacherarea">
               <div class="abp-resources-list-wrapper">
                 <ul class="abp-resources-list abp-resources-list_2">
-                  /* For each to get Activities from Subject visible only for Teachers */
+                  /* For each to get Activities from unit visible only for Teachers */
                   <li class="abp-resources-list-item">
                     <a href="#" class="abp-resources-list-item-inner">
                       <div class="abp-resources-list-item-image">
