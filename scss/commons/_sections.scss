@@ -1,5 +1,8 @@
 .abp-section {
-
+  background: $background_color;
+  color: $negative_color;
+  position: relative;
+  z-index: 1000;
   * {
     box-sizing: border-box;
   }
@@ -56,8 +59,11 @@
       }
     }
     .abp-section-content {
-      padding: $space_3 0 $space_3*2;
-      background: fade-out($negative_color, .5)
+      padding: $space_3 0 $space_3;
+      background: fade-out($negative_color, .5);
+      .abp-unit {
+        margin-bottom: $space_3;
+      }
     }
   }
 }

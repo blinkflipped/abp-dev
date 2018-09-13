@@ -75,6 +75,7 @@
 
 body.view-mode {
   background: #223c3f;
+  overflow: auto;
   padding: 0;
   margin: 0; }
   body.view-mode::before {
@@ -277,6 +278,10 @@ body.view-mode {
   margin: 0 auto; }
 
 .abp-section {
+  background: #223c3f;
+  color: #ffffff;
+  position: relative;
+  z-index: 1000;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px; }
   .abp-section * {
@@ -316,5 +321,7 @@ body.view-mode {
       bottom: 0;
       right: 0; }
   .abp-section_home .abp-section-content {
-    padding: 50px 0 100px;
+    padding: 50px 0 50px;
     background: rgba(255, 255, 255, 0.5); }
+    .abp-section_home .abp-section-content .abp-unit {
+      margin-bottom: 50px; }

@@ -155,7 +155,7 @@ abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
 abpApp.config.firstTime = true;
-abpApp.config.carouselOpt = {arrows: true, dots: true, infinite: false};
+abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, variableWidth: true};
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
