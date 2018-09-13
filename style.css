@@ -281,12 +281,19 @@ body.view-mode {
     display: block;
     background: #223c3f;
     height: 7px;
-    width: calc(100% - 24px);
+    width: calc(100% - 48px);
     position: absolute;
-    z-index: 10;
-    left: 12px;
-    right: 12px;
-    bottom: -7px; }
+    left: 24px;
+    right: 24px;
+    bottom: 43px; }
+  .abp-units-slider .slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translante(0, -50%); }
+    .abp-units-slider .slick-arrow.slick-prev {
+      left: 0; }
+    .abp-units-slider .slick-arrow.slick-next {
+      right: 0; }
   .abp-units-slider-item {
     margin-right: 8px; }
 

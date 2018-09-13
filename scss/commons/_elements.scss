@@ -194,12 +194,22 @@
 		display: block;
 		background: $color_1;
 		height: 7px;
-		width: calc(100% - #{$unit_item_number_space*2});
+		width: calc(100% - #{$unit_item_number_space*4});
 		position: absolute;
-		z-index: 10;
-		left: $unit_item_number_space;
-		right: $unit_item_number_space;
-		bottom: -7px;
+		left: $unit_item_number_space*2;
+		right: $unit_item_number_space*2;
+		bottom: #{$space_3 - 7px};
+	}
+	.slick-arrow {
+		position: absolute;
+		top: 50%;
+		transform: translante(0,-50%);
+		&.slick-prev {
+			left: 0;
+		}
+		&.slick-next {
+			right: 0;
+		}
 	}
 	&-item {
 		margin-right: 8px;
