@@ -355,7 +355,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         comp_slider = '<div class="abp-units-slider abp-js--slider"></div>';
     var sectionHomeHeaderHTML = '<header class="abp-section-header"><div class="abp-container"><div class="abp-section-header-inner"><h1 class="abp-title-1">'+bookTitle+'</h1><div class="abp-intro"><p>'+bookDescription+'</p></div></div></div>'+comp_navigationSecondary+'</header>',
         sectionHomeContentHTML = '<div class="abp-section-content"><div class="abp-container">'+comp_slider+'</div></div>',
-        sectionHomeHTML = '<section class="abp-section abp-section_home"></section>';
+        sectionHomeHTML = '<section class="abp-section abp-section_home">'+sectionHomeHeaderHTML+sectionHomeContentHTML+'</section>';
 
     $('body').prepend(sectionHomeHTML);
 
