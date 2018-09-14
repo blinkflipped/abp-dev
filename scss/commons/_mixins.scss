@@ -88,6 +88,14 @@
 	background : -ms-linear-gradient(0deg, $color_2 0%, $color_3 99.84%);
 	background : linear-gradient(90deg, $color_2 0%, $color_3 99.84%);
 }
+@mixin gradient-a() {
+	background : $color_3;
+	background : -moz-linear-gradient(0% 50% 0deg,$color_2 0%,$color_2 50%, $color_3 50%, $color_3 99.84%);
+	background : -webkit-linear-gradient(0deg, $color_2 0%, $color_2 50%, $color_3 50%, $color_3 99.84%);
+	background : -o-linear-gradient(0deg, $color_2 0%, $color_2 50%, $color_3 50%, $color_3 99.84%);
+	background : -ms-linear-gradient(0deg, $color_2 0%, $color_2 50%, $color_3 50%, $color_3 99.84%);
+	background : linear-gradient(0deg, $color_2 0%, $color_2 50%, $color_3 50%, $color_3 99.84%);
+}
 
 @mixin gradient-2() {
 	background : transparent;
@@ -98,6 +106,16 @@
 	background : -ms-linear-gradient(0deg, fade-out($negative_color, 1) 0%, fade-out($negative_color, .86) 14.13%, fade-out($negative_color, .03) 100%, $negative_color 100%);
 	background : linear-gradient(90deg, fade-out($negative_color, 1) 0%, fade-out($negative_color, .86) 14.13%, fade-out($negative_color, .03) 100%, $negative_color 100%);
 }
+
+@mixin gradient-3() {
+	background : -moz-linear-gradient(50% 100% 90deg,rgba(0, 0, 0, 1) 0%,rgba(0, 0, 0, 0) 100%);
+	background : -webkit-linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+	background : -webkit-gradient(linear,50% 100% ,50% 0% ,color-stop(0,rgba(0, 0, 0, 1) ),color-stop(1,rgba(0, 0, 0, 0) ));
+	background : -o-linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+	background : -ms-linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+	background : linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
 @mixin gradient-circular() {
 	background: $color_4;
 	background : -moz-linear-gradient(50% 99.24% 90deg,$color_4 0%,$color_5 100%);

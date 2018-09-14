@@ -269,7 +269,7 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
       var currentEpisode = abpunit,
           activities = window.actividades;
 
-      //hashDistributorTimeout = setTimeout(function() {abpApp.loadChapters(data,currentEpisode,activities,updateHash)}, timeToWait);
+      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentEpisode,activities,updateHash)}, timeToWait);
 
     } else {
 
@@ -380,7 +380,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         var subunitIsAux = subunit.tag === abpApp.config.auxTab;
         if (subunitIsAux) {
           var subunitTitle = subunit.title,
-              subunitIsOnlyVisibleTeacher = chapter.onlyVisibleTeachers;
+              subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
               // TODO ADD LINK
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
@@ -440,13 +440,115 @@ abpApp.loadHomepage = function(data,updateHash) {
       if (updateHash) window.location.hash = hash;
     }
 
-
   }
 
   // Object Fit support
   abpApp.objectFitSupport();
 
 }
+
+
+// Load units
+
+
+oxfordFlippedApp.loadUnit = function(data,currentUnit,activities,updateHash) {
+
+	oxfordFlippedApp.console("Load Unit "+currentUnit);
+
+	var subunits = data.units[currentUnit].subunits,
+			unitImage =  data.units[currentUnit].image,
+			subunitsList = document.createDocumentFragment();
+/*
+	$.each(subunits, function(i, subunit){
+
+		var subunitID = subunit.id,
+				subunitTitle = subunit.title,
+				subunitTag = subunit.tag,
+				subunitDescription = subunit.description,
+				subunitImage = subunit.image,
+				subunitImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
+				subunitIsOnlyVisibleTeacher = chapter.onlyVisibleTeachers,
+				subunitIsChallenge = (chapterTitle === oxfordFlippedApp.config.nameChallenge),
+				subunitIsMarketplace = (chapterTag === oxfordFlippedApp.config.tagMarketplace);
+		if (!chapterIsMarketplace && !chapterIsOnlyVisibleTeacher) {
+			// Regular Chapters
+			if (!chapterIsChallenge) {
+
+				// Activities not started
+				var isChapterNew = (typeof activities[chapterID] === 'undefined' || typeof activities[chapterID].custom_activity_status === 'undefined' || ( typeof activities[chapterID].custom_activity_status !== 'undefined' && activities[chapterID].custom_activity_status === oxfordFlippedApp.config.stateNew));
+				if (isChapterNew) {
+					chaptersNotStarted = true;
+				} else {
+					// Activities not completed
+					if (typeof actividades[chapterID].custom_activity_status === 'undefined' || actividades[chapterID].custom_activity_status !== oxfordFlippedApp.config.stateCompleted) {
+						lessonsNotCompleted = true;
+					}
+				}
+
+				//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
+				var chapterStateTextArr = [oxfordFlippedApp.text.chapterStatus2, oxfordFlippedApp.text.chapterStatus0, oxfordFlippedApp.text.chapterStatus1],
+						chapterStateID = oxfordFlippedApp.getState(chapterID),
+						chapterStateText = chapterStateTextArr[chapterStateID];
+
+				//Lock Chapters
+				var chapterLockStatus = chapter.lock,
+						isChapterLock = (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2),
+						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
+
+				var chapterNumber = i + 1,
+						chapterActionsStudentsClass = (chapterStateID === oxfordFlippedApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
+						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
+						chapterActions = (oxfordFlippedApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
+						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_access_alert,
+						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && (chapterLockStatus === oxfordFlippedApp.config.statusLock1 || chapterLockStatus === oxfordFlippedApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
+						chapterinnerHTML = (oxfordFlippedApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div><div class="oxfl-chapter-image-wrapper-img"> '+chapterImageCode+'</div> </div> </a> </article>';
+
+			} else { // Challenge Chapter
+
+				var isChallengeLock = ((chaptersNotStarted || lessonsNotCompleted) && oxfordFlippedApp.config.isStudent) ? true : false,
+						challengeStateID = oxfordFlippedApp.getState(chapterID),
+						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
+				var chapterActions = (oxfordFlippedApp.config.isStudent && challengeStateID !== oxfordFlippedApp.config.stateNew) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
+						chapterPopoverText = oxfordFlippedApp.text.oxfordFlipped_no_complete_alert,
+						chapterUrlHTML = (oxfordFlippedApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
+						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"><a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div>  <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</h2></a> </article>';
+			}
+			var chapterListItem = document.createElement('div');
+
+			chapterListItem.className = 'oxfl-chapter-item';
+			chapterListItem.innerHTML = chapterinnerHTML;
+			chaptersList.appendChild(chapterListItem);
+		}
+
+	});
+
+	var $chaptersWrapper = $('#oxfl-chapters');
+	$chaptersWrapper.empty();
+	$chaptersWrapper[0].appendChild(chaptersList);
+
+
+
+	var currentIndex = 2;
+	var currentPage = oxfordFlippedApp.config.tree[currentIndex].id,
+			bodyClass = oxfordFlippedApp.config.tree[currentIndex].class,
+			hash = oxfordFlippedApp.config.tree[currentIndex].hash,
+			hashWithID = hash+currentEpisode;
+
+	oxfordFlippedApp.removeUnusedClass(bodyClass);
+
+	$('body').removeClass('oxfl-body-episodes');
+
+	// Object Fit support
+	oxfordFlippedApp.objectFitSupport();
+
+	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+		$('body').addClass(bodyClass);
+		if (updateHash) window.location.hash = hashWithID;
+	});
+
+*/
+}
+
 
 
 //----------------------------------//
@@ -458,9 +560,14 @@ abpApp.loadHomepage = function(data,updateHash) {
 
 $(document).ready(function() {
 
-  $('body').on('click', '.abp-js-load-unit', function() {
+  console.log("Document ready");
+
+  $('body').on('click', '.abp-js-load-unit', function(e) {
+    e.preventDefault();
+    console.log("Click");
     var currentUnit = $(this).data('unit');
     var newHash = abpApp.config.tree[1].hash + currentEpisode;
+    console.log(currentUnit,newHash);
     window.location.hash = newHash;
   });
 

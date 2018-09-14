@@ -1,5 +1,43 @@
 // Elements
 
+// Buttons and links
+
+@mixin button-base() {
+	font-family: $font_family_1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: inline-block;
+  border-radius: 0;
+  position: relative;
+  background: transparent;
+	text-decoration: none;
+  transition-property: color, background-color, border-color, box-shadow, opacity, height;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+}
+
+.link {
+	@include button-base();
+	font-size: 15px;
+	line-height: (18em/15);
+	font-weight: 600;
+	text-transform : uppercase;
+	color: $negative_color;
+	&.link_back {
+		&::before {
+			@include icon();
+			content: $abp-icon-chevron-left;
+		}
+	}
+}
+.abp-gohome {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
 // Titles
 
 .abp-title {
@@ -13,12 +51,43 @@
 			margin-bottom: 0;
 		}
 	}
+	&-2 {
+		font-size: 55px;
+		line-height: (52em/55);
+		font-weight: 300;
+		margin: 0 0 10px 0 ;
+		padding: 0;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	&-3 {
+		font-size: 35px;
+		line-height: (42em/35);
+		font-weight: 600;
+		margin: 0 0 10px 0 ;
+		padding: 0;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
 	&-4 {
 		font-size: 30px;
 		line-height: 1em;
 		font-weight: 300;
 		text-transform: uppercase;
 		margin: 0 0 10px 0;
+		padding: 0;
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	&-5 {
+		font-size: 20px;
+		line-height: (24em/20);
+		font-weight: 300;
+		margin: 0 0 4px 0;
 		padding: 0;
 		&:last-child {
 			margin-bottom: 0;
@@ -113,12 +182,21 @@
 		&::before {
 			content: '';
 			opacity : .25;
-			width: 100%;
-			height: 100%;
+			width: 90%;
+			height: 90%;
 			position: absolute;
 			top: 0;
 			left: 0;
 			@include gradient-circular-3();
+		}
+	}
+
+	&_large {
+		width: 118px;
+		height: 118px;
+		.abp-unit-number-inner {
+			width: 105px;
+			height: 105px;
 		}
 	}
 }
@@ -300,5 +378,226 @@
 	}
 	&-item {
 		margin-right: 8px;
+	}
+}
+
+
+// Tabs
+
+.abp-tabs {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	font-size: 27px;
+	line-height: (32em/27);
+	text-transform: uppercase;
+	font-weight: 600;
+	.abp-tab {
+		width: 50%;
+		background: fade-out($negative_color, .5);
+		a, span {
+			display: block;
+			padding: 40px;
+			white-space: nowrap;
+			max-width: 100%;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+		&_current {
+			background: transparent;
+			&, a, span {
+				color: $negative_color;
+			}
+		}
+	}
+
+	&-wrapper {
+		background: $color_1;
+	}
+	&-content {
+		display: none;
+		& > * {
+			padding: 40px;
+		}
+		&_current {
+			display: block;
+		}
+	}
+}
+
+
+
+// Subunits
+
+.abp-resources-list {
+	margin: 0;
+	padding: 0;
+	&-icon {
+		display: block;
+		width: 45px;
+		height: 45px;
+		background: url(img/resources-icons.png) 0 0 no-repeat;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		background-position: -67px 0;
+		background-position: -133px 0;
+		background-position: 0 -45px;
+		background-position: -67px -45px;
+	}
+	&-item {
+		margin: 0 0 $space_1 0;
+		&-inner {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			&:hover {
+				.abp-resources-list {
+					&-item {
+						&-text {
+							background: $color_3_b;
+						}
+					}
+				}
+			}
+		}
+		&-image {
+			position: relative;
+			width: 88px;
+			height: 88px;
+			border-radius: 100px;
+			&-inner {
+				position: relative;
+				z-index: 10;
+				width: 88px;
+				height: 88px;
+				border-radius: 100px;
+				overflow: hidden;
+				@include img-fit();
+				&::before,
+				&::after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: -50%;
+					transform: rotate(-45deg);
+					background: fade-out($negative_color, .8);
+					width: 200%;
+				}
+				&::before {
+					height: 12px;
+					left: -75%;
+				}
+				&::after {
+					height: 6px;
+				}
+			}
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border-radius: 100px;
+				z-index: 2;
+				@include gradient();
+			}
+			&::after {
+				content: '';
+				width: 108%;
+				height: 100%;
+				position: absolute;
+				z-index: 1;
+				top: 0;
+				left: 0;
+				border-radius: 100px;
+				@include  gradient-3();
+				opacity: .2;
+			}
+
+		}
+		&-text {
+			flex-grow: 2;
+			background: $color_7;
+			transition: background-color .2s ease-in;
+			margin-left: -44px;
+			margin-right: 20px;
+			padding: 10px;
+			padding-left: 44px + $space_1;
+			position: relative;
+			font-size: 12px;
+			line-height: (14em/12);
+			font-weight: 600;
+			&::before {
+				content: '';
+				display: block;
+				width: 20px;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				right: -20px;
+				border-radius: 0 10px 10px 0;
+				@include gradient;
+				box-shadow: inset 17px 0px 20px -20px fade-out($color_1, .3);
+			}
+		}
+	}
+
+	&_2 {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -20px;
+		margin-right: -20px;
+		.abp-resources-list-item {
+			width: 50%;
+			padding-left: 20px;
+			padding-right: 20px;
+			&-image {
+				width: 72px;
+				height: 72px;
+				&::before {
+					background: transparent;
+					border: 6px solid $color_1;
+					margin-left: -6px;
+					margin-top: -6px;
+					width: 72px;
+					height: 72px;
+				}
+				&::after {
+					@include gradient-a();
+					width: 112px;
+					height: 112px;
+					top: -20px;
+					left: -20px;
+					opacity: 1;
+					z-index: 1;
+				}
+				&-inner {
+					@include gradient-a();
+					z-index: 10;
+					width: 72px;
+					height: 72px;
+					&::before,
+					&::after {
+						content: none;
+					}
+				}
+			}
+			&-text {
+				z-index: 2;
+				min-height: 112px;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				justify-content: center;
+				&::before {
+					border-radius: 0;
+				}
+			}
+		}
 	}
 }

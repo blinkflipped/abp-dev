@@ -6,12 +6,14 @@
 $color_1: #223c3f;
 $color_2: #e2764e;
 $color_3: #d43923;
+$color_3_b: #e6b7b0;
 
 $color_4: #417280;
 $color_5: #68b8cb;
 
-
 $color_6: #f4e9ce; //Custom
+
+$color_7: #ededed;
 
 $negative_color: #ffffff;
 
@@ -31,3 +33,5 @@ $space_3: 50px;
 
 
 $layout_max: 980px + $space_1*2;
+$layout_max_2: 1200px + $space_1*2;
+$layout_max_3: $layout_max_2 + 200px;

@@ -2,4 +2,10 @@
   max-width: $layout_max;
   margin: 0 auto;
   padding: 0 $space_1;
+  &_2 {
+    max-width: $layout_max_2;
+  }
+  &_3 {
+    max-width: $layout_max_3;
+  }
 }
