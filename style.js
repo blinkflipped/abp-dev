@@ -367,12 +367,13 @@ abpApp.loadHomepage = function(data,updateHash) {
 
       var unitTitle = unit.title,
           unitDescription = unit.description,
-          unitNumberBase = unit.number - 1,
-          unitNumber = ('0' + unitNumberBase).slice(-2),
+          unitNumberBase = unit.number,
+          unitNumberTemplate = unitNumberBase - 1,
+          unitNumber = ('0' + unitNumberTemplate).slice(-2),
           unitImage = unit.image;
       var unitListItem = document.createElement('div');
       unitListItem.className = 'abp-units-slider-item';
-      unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-subunits abp-unit-inner" data-episode="'+unitNumber+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
+      unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-subunits abp-unit-inner" data-episode="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
       unitList.appendChild(unitListItem);
 
       $.each(unit, function(i, subunit){
@@ -409,6 +410,8 @@ abpApp.loadHomepage = function(data,updateHash) {
     var $tabs = $('.abp-section_home .abp-navigation_secondary > ul');
     $tabs.empty();
     $tabs[0].appendChild(tabList);
+
+    var userBodyClass = (abpApp.config.isStudent) ? 'abp-body-user-student' : 'abp-body-user-not-student';
 
     $('body').imagesLoaded({background: 'div, a, span, button'}, function(){
       $('html').addClass('htmlReady');
