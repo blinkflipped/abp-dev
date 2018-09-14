@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i");
 .slick-slider {
   position: relative;
@@ -72,6 +73,31 @@
 
 .slick-arrow.slick-hidden {
   display: none; }
+
+@font-face {
+  font-family: "abpicons";
+  src: url("icons/abpicons/fonts/abpicons.eot?33ongu");
+  src: url("icons/abpicons/fonts/abpicons.eot?33ongu#iefix") format("embedded-opentype"), url("icons/abpicons/fonts/abpicons.woff2?33ongu") format("woff2"), url("icons/abpicons/fonts/abpicons.ttf?33ongu") format("truetype"), url("icons/abpicons/fonts/abpicons.woff?33ongu") format("woff"), url("icons/abpicons/fonts/abpicons.svg?33ongu#abpicons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+[class^="abp-icon-"], [class*=" abp-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "abpicons" !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.abp-icon-chevron-right:before {
+  content: ""; }
+
+.abp-icon-chevron-left:before {
+  content: ""; }
 
 body.view-mode {
   background: #223c3f;
@@ -287,13 +313,51 @@ body.view-mode {
     right: 24px;
     bottom: 43px; }
   .abp-units-slider .slick-arrow {
+    border: 0;
+    background: none;
+    outline: none;
+    display: inline-block;
     position: absolute;
     top: 50%;
-    transform: translante(0, -50%); }
+    transform: translante(0, -50%);
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 45px;
+    height: 45px; }
+    .abp-units-slider .slick-arrow::before, .abp-units-slider .slick-arrow::after {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: "abpicons" !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 45px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      text-indent: 0; }
+    .abp-units-slider .slick-arrow::after {
+      opacity: 0;
+      font-size: 22px;
+      transition: opacity .3s ease-in; }
     .abp-units-slider .slick-arrow.slick-prev {
-      left: 0; }
+      left: 45px; }
+      .abp-units-slider .slick-arrow.slick-prev::before, .abp-units-slider .slick-arrow.slick-prev::after {
+        content: ""; }
     .abp-units-slider .slick-arrow.slick-next {
-      right: 0; }
+      right: 45px; }
+      .abp-units-slider .slick-arrow.slick-next::before, .abp-units-slider .slick-arrow.slick-next::after {
+        content: ""; }
+    .abp-units-slider .slick-arrow:hover::after {
+      opacity: 1; }
+    .abp-units-slider .slick-arrow.slick-disabled {
+      opacity: 0; }
   .abp-units-slider-item {
     margin-right: 8px; }
 

@@ -201,14 +201,53 @@
 		bottom: #{$space_3 - 7px};
 	}
 	.slick-arrow {
+		border: 0;
+		background: none;
+		outline: none;
+		display: inline-block;
 		position: absolute;
 		top: 50%;
 		transform: translante(0,-50%);
-		&.slick-prev {
+		text-indent: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		width: 45px;
+		height: 45px;
+		&::before,
+		&::after {
+			@include icon();
+			font-size: 45px;
+			position: absolute;
+			top: 0;
 			left: 0;
+			text-indent: 0;
+		}
+		&::after {
+			opacity: 0;
+			font-size: 22px;
+			transition: opacity .3s ease-in;
+		}
+		&.slick-prev {
+			left: 45px;
+			&::before,
+			&::after {
+				content: $abp-icon-chevron-left;
+			}
 		}
 		&.slick-next {
-			right: 0;
+			right: 45px;
+			&::before,
+			&::after {
+				content: $abp-icon-chevron-right;
+			}
+		}
+		&:hover {
+			&::after {
+				opacity: 1;
+			}
+		}
+		&.slick-disabled {
+			opacity: 0;
 		}
 	}
 	&-item {

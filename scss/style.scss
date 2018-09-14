@@ -1,6 +1,12 @@
 
 @import "vendor/_slick";
 
+
+// Icons
+@import "icons/abpicons/variables.scss";
+$icomoon-font-path: "icons/abpicons/fonts";
+@import "icons/abpicons/style.scss";
+
 @import "commons/_mixins";
 @import "commons/_config";
 @import "commons/_fonts";
