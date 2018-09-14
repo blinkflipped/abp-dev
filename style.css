@@ -76,8 +76,8 @@
 
 @font-face {
   font-family: "abpicons";
-  src: url("icons/abpicons/fonts/abpicons.eot?33ongu");
-  src: url("icons/abpicons/fonts/abpicons.eot?33ongu#iefix") format("embedded-opentype"), url("icons/abpicons/fonts/abpicons.woff2?33ongu") format("woff2"), url("icons/abpicons/fonts/abpicons.ttf?33ongu") format("truetype"), url("icons/abpicons/fonts/abpicons.woff?33ongu") format("woff"), url("icons/abpicons/fonts/abpicons.svg?33ongu#abpicons") format("svg");
+  src: url("scss/icons/abpicons/fonts/abpicons.eot?33ongu");
+  src: url("scss/icons/abpicons/fonts/abpicons.eot?33ongu#iefix") format("embedded-opentype"), url("scss/icons/abpicons/fonts/abpicons.woff2?33ongu") format("woff2"), url("scss/icons/abpicons/fonts/abpicons.ttf?33ongu") format("truetype"), url("scss/icons/abpicons/fonts/abpicons.woff?33ongu") format("woff"), url("scss/icons/abpicons/fonts/abpicons.svg?33ongu#abpicons") format("svg");
   font-weight: normal;
   font-style: normal; }
 [class^="abp-icon-"], [class*=" abp-icon-"] {
@@ -410,6 +410,24 @@ body.view-mode {
       right: 0; }
   .abp-section_home .abp-section-content {
     padding: 50px 0 50px;
-    background: rgba(255, 255, 255, 0.5); }
+    background: rgba(255, 255, 255, 0.5);
+    position: relative; }
+    .abp-section_home .abp-section-content::before, .abp-section_home .abp-section-content::after {
+      content: '';
+      background: transparent;
+      background: -moz-linear-gradient(631.58% 50.44% 0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 14.13%, rgba(255, 255, 255, 0.97) 100%, #ffffff 100%);
+      background: -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 14.13%, rgba(255, 255, 255, 0.97) 100%, #ffffff 100%);
+      background: -webkit-gradient(linear, 631.58% 50.44%, 731.58% 50.44%, color-stop(0, rgba(255, 255, 255, 0)), color-stop(0.1413, rgba(255, 255, 255, 0.14)), color-stop(1, rgba(255, 255, 255, 0.97)), color-stop(1, #ffffff));
+      background: -o-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 14.13%, rgba(255, 255, 255, 0.97) 100%, #ffffff 100%);
+      background: -ms-linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 14.13%, rgba(255, 255, 255, 0.97) 100%, #ffffff 100%);
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.14) 14.13%, rgba(255, 255, 255, 0.97) 100%, #ffffff 100%);
+      position: absolute;
+      bottom: 0;
+      height: 100%;
+      width: calc((100vw -  980px)/2); }
+    .abp-section_home .abp-section-content::before {
+      left: 0; }
+    .abp-section_home .abp-section-content::after {
+      right: 0; }
     .abp-section_home .abp-section-content .abp-unit {
       margin-bottom: 50px; }

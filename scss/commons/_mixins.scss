@@ -88,6 +88,16 @@
 	background : -ms-linear-gradient(0deg, $color_2 0%, $color_3 99.84%);
 	background : linear-gradient(90deg, $color_2 0%, $color_3 99.84%);
 }
+
+@mixin gradient-2() {
+	background : transparent;
+	background : -moz-linear-gradient(631.58% 50.44% 0deg,fade-out($negative_color, 1) 0%,fade-out($negative_color, .86) 14.13%,fade-out($negative_color, .03) 100%,$negative_color 100%);
+	background : -webkit-linear-gradient(0deg, fade-out($negative_color, 1) 0%, fade-out($negative_color, .86) 14.13%, fade-out($negative_color, .03) 100%, $negative_color 100%);
+	background : -webkit-gradient(linear,631.58% 50.44% ,731.58% 50.44% ,color-stop(0,fade-out($negative_color, 1) ),color-stop(0.1413,fade-out($negative_color, .86) ),color-stop(1,fade-out($negative_color, .03) ),color-stop(1,$negative_color ));
+	background : -o-linear-gradient(0deg, fade-out($negative_color, 1) 0%, fade-out($negative_color, .86) 14.13%, fade-out($negative_color, .03) 100%, $negative_color 100%);
+	background : -ms-linear-gradient(0deg, fade-out($negative_color, 1) 0%, fade-out($negative_color, .86) 14.13%, fade-out($negative_color, .03) 100%, $negative_color 100%);
+	background : linear-gradient(90deg, fade-out($negative_color, 1) 0%, fade-out($negative_color, .86) 14.13%, fade-out($negative_color, .03) 100%, $negative_color 100%);
+}
 @mixin gradient-circular() {
 	background: $color_4;
 	background : -moz-linear-gradient(50% 99.24% 90deg,$color_4 0%,$color_5 100%);
