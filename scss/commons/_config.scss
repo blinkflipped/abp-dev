@@ -1,6 +1,6 @@
 // Config stylesheet
 
-$layout_max: 980px;
+
 
 
 $color_1: #223c3f;
@@ -28,3 +28,6 @@ $unit_item_number_space: 12px;
 $space_1: 20px;
 $space_2: 30px;
 $space_3: 50px;
+
+
+$layout_max: 980px + $space_1*2;
