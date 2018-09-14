@@ -70,10 +70,11 @@
         position: absolute;
         bottom: 0;
         height: 100%;
-        width: calc((100vw -  #{$layout_max})/2);
+        width: calc((100vw -  #{$layout_max} + 50)/2);
       }
       &::before {
         left: 0;
+        transform: scale(-1);
       }
       &::after {
         right: 0;

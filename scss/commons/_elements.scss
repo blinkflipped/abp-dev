@@ -187,6 +187,20 @@
 
 // SLider items
 
+@keyframes bounceAlpha {
+	0% {opacity: 1; transform: translateX(0px) scale(1);}
+	25%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+	26%{opacity: 0; transform:translateX(10px) scale(0.9);}
+	55% {opacity: 1; transform: translateX(0px) scale(1);}
+}
+
+@keyframes bounceBeta {
+	0% {opacity: 1; transform: translateX(0px) scale(1);}
+	25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+	26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+	55% {opacity: 1; transform: translateX(0px) scale(1);}
+}
+
 .abp-units-slider {
 	position: relative;
 	&::before {
@@ -204,10 +218,13 @@
 		border: 0;
 		background: none;
 		outline: none;
-		display: inline-block;
+		display: block;
+		padding: 0;
+		margin: 0;
 		position: absolute;
+		z-index: 100;
 		top: 50%;
-		transform: translante(0,-50%);
+		transform: translate(0,-50%);
 		text-indent: 100%;
 		overflow: hidden;
 		white-space: nowrap;
@@ -224,21 +241,52 @@
 		}
 		&::after {
 			opacity: 0;
-			font-size: 22px;
+			font-size: 17px;
+			top: 14px;
+			left: 3px;
 			transition: opacity .3s ease-in;
 		}
+
 		&.slick-prev {
-			left: 45px;
+			left: -65px;
 			&::before,
 			&::after {
 				content: $abp-icon-chevron-left;
 			}
+			&::after {
+				right: 3px;
+				left: auto;
+			}
+			&:hover {
+				&::before,
+				&::after {
+					animation-name: bounceAlpha;
+					animation-duration:1.4s;
+					animation-iteration-count:infinite;
+					animation-timing-function:linear;
+				}
+				&::after {
+					animation-delay:0.2s;
+				}
+			}
 		}
 		&.slick-next {
-			right: 45px;
+			right: -65px;
 			&::before,
 			&::after {
 				content: $abp-icon-chevron-right;
+			}
+			&:hover {
+				&::before,
+				&::after {
+					animation-name: bounceBeta;
+					animation-duration:1.4s;
+					animation-iteration-count:infinite;
+					animation-timing-function:linear;
+				}
+				&::after {
+					animation-delay:0.2s;
+				}
 			}
 		}
 		&:hover {
