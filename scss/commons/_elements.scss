@@ -34,7 +34,7 @@
 	}
 }
 .abp-gohome {
-	padding-top: 20px;
+	padding-top: 0;
 	padding-bottom: 10px;
 }
 
@@ -449,10 +449,25 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%,-50%);
-		background-position: -67px 0;
-		background-position: -133px 0;
-		background-position: 0 -45px;
-		background-position: -67px -45px;
+		&_musica {
+			background-position: -67px -45px;
+		}
+		&_video {
+			background-position: -133px 0;
+		}
+		&_img {
+			background-position: 0 0;
+		}
+		&_url {
+			background-position: 0 -45px;
+		}
+		&_archivo {
+			background-position: -67px 0;
+		}
+		&_libro,
+		&_actividad {
+			background-position: -133px -45px;
+		}
 	}
 	&-item {
 		margin: 0 0 $space_1 0;

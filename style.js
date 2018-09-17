@@ -159,7 +159,7 @@ abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesT
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
-abpApp.config.buttonGoBack = '.abp-js-goback';
+abpApp.config.buttonGoHome = '.abp-js-gohome';
 abpApp.config.auxTab = 'pestaña';
 
 
@@ -289,7 +289,7 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
       var updateHash = true;
     } else {
       var updateHash = false;
-      $(abpApp.config.buttonGoBack).addClass('disabled');
+      $(abpApp.config.buttonGoHome).addClass('disabled');
     }
     hashDistributorTimeout = setTimeout(function() {abpApp.loadHomepage(data,updateHash)}, timeToWait);
 
@@ -316,7 +316,7 @@ abpApp.onChangeHash = function() {
       data = abpApp.bookData,
       updateHash = false;
 
-  $(abpApp.config.buttonGoBack).removeClass('disabled');
+  $(abpApp.config.buttonGoHome).removeClass('disabled');
 
   abpApp.hashDistributor(currentHash, data, updateHash);
 
@@ -325,6 +325,11 @@ abpApp.onChangeHash = function() {
 window.addEventListener("hashchange", abpApp.onChangeHash, false);
 
 
+// Go Homepage
+
+abpApp.gohome = function() {
+  window.location.hash = abpApp.config.tree[0].hash;
+}
 
 //----------------------------------//
 //                                  //
@@ -374,7 +379,7 @@ abpApp.loadHomepage = function(data,updateHash) {
 
     var sectionUnitHeader = '<header class="abp-section-header"><div class="abp-section-header-top"> <h1 class="abp-title-2" id="abp-unit-title"></h1></div><div class="abp-section-header-bottom"> <div class="abp-section-header-bottom-description"> <h2 class="abp-title-3" id="abp-unit-description"></h2> </div> <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large"><div class="abp-unit-number-inner"><span id="abp-unit-number"></span></div> </div> <div class="abp-section-header-bottom-background" id="abp-unit-image"></div></div></header>',
         sectionUnitContent = '<div class="abp-section-content"><div class="abp-tabs-wrapper"><ul class="abp-tabs">'+comp_tabs+'</ul><div class="abp-tabs-content-wrapper">'+comp_tabs_wrapper+'</div> </div> </div>',
-        sectionUnitHTML = '<div class="abp-page abp-page_unit"><div class="abp-gohome"><div class="abp-container abp-container_3"> <a href="#" class="link link_back"><span>'+abpApp.text.goback+'</span></a></div></div><section class="abp-section abp-section_unit"><div class="abp-container abp-container_2"><div class="abp-section_unit-inner">'+sectionUnitHeader+sectionUnitContent+'</div></div></section></div>'
+        sectionUnitHTML = '<div class="abp-page abp-page_unit"><div class="abp-gohome"><div class="abp-container abp-container_3"> <a href="#" class="abp-js-gohome link link_back"><span>'+abpApp.text.goback+'</span></a></div></div><section class="abp-section abp-section_unit"><div class="abp-container abp-container_2"><div class="abp-section_unit-inner">'+sectionUnitHeader+sectionUnitContent+'</div></div></section></div>'
 
     var totalSectionsHTML = sectionHomeHTML+sectionUnitHTML;
 
@@ -614,6 +619,16 @@ $(document).ready(function() {
 
     $(this).closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
     $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
+
+  });
+
+
+  // Go Home
+  $('body').on('click', '.abp-js-gohome', function(e) {
+
+    e.preventDefault();
+
+    abpApp.gohome();
 
   });
 

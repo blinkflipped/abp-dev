@@ -152,7 +152,7 @@ body.view-mode {
     content: ""; }
 
 .abp-gohome {
-  padding-top: 20px;
+  padding-top: 0;
   padding-bottom: 10px; }
 
 .abp-title-1 {
@@ -526,11 +526,19 @@ body.view-mode {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background-position: -67px 0;
-    background-position: -133px 0;
-    background-position: 0 -45px;
-    background-position: -67px -45px; }
+    transform: translate(-50%, -50%); }
+    .abp-resources-list-icon_musica {
+      background-position: -67px -45px; }
+    .abp-resources-list-icon_video {
+      background-position: -133px 0; }
+    .abp-resources-list-icon_img {
+      background-position: 0 0; }
+    .abp-resources-list-icon_url {
+      background-position: 0 -45px; }
+    .abp-resources-list-icon_archivo {
+      background-position: -67px 0; }
+    .abp-resources-list-icon_libro, .abp-resources-list-icon_actividad {
+      background-position: -133px -45px; }
   .abp-resources-list-item {
     margin: 0 0 20px 0; }
     .abp-resources-list-item-inner {
@@ -780,8 +788,8 @@ body.view-mode {
     justify-content: space-between;
     align-content: flex-start; }
     .abp-section_unit-inner .abp-section-header {
-      height: calc(100vh - 100px);
-      min-height: 300px;
+      height: calc(100vh - 144px);
+      min-height: 600px;
       width: 370px;
       position: relative;
       z-index: 10;
@@ -802,7 +810,8 @@ body.view-mode {
         padding: 40px;
         position: relative;
         margin: 0;
-        width: 100%; }
+        width: 100%;
+        min-height: 234px; }
         .abp-section_unit-inner .abp-section-header-top::before {
           content: '';
           display: block;
@@ -852,12 +861,12 @@ body.view-mode {
       position: relative;
       z-index: 5;
       width: calc(100% - 370px);
-      height: calc(100vh - 100px);
-      min-height: 300px;
+      height: calc(100vh - 144px);
+      min-height: 600px;
       overflow: hidden; }
       .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper {
-        height: calc(100vh - 232px);
-        min-height: 300px;
+        height: calc(100vh - 256px);
+        min-height: 488px;
         overflow: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch; }

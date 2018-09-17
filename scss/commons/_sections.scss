@@ -1,3 +1,7 @@
+
+$page_unit_min_elements : $blink_header_height + 30px + 50px;
+$page_unit_tab_height : 112px;
+
 .abp-section {
   * {
     box-sizing: border-box;
@@ -87,8 +91,8 @@
       justify-content: space-between;
       align-content: flex-start;
       .abp-section-header {
-        height: calc(100vh - 100px);//TODO PUT CORRECT DIFF
-        min-height: 300px;//TODO PUT CORRECT
+        height: calc(100vh - #{$page_unit_min_elements});
+        min-height: 600px;//TODO PUT CORRECT
         width: 370px;
         position: relative;
         z-index: 10;
@@ -104,6 +108,7 @@
           position: relative;
           margin: 0;
           width: 100%;
+          min-height: 234px;
           &::before {
             content: '';
             display: block;
@@ -149,12 +154,12 @@
         position: relative;
         z-index: 5;
         width: calc(100% - 370px);
-        height: calc(100vh - 100px);//TODO PUT CORRECT DIFF
-        min-height: 300px;//TODO PUT CORRECT
+        height: calc(100vh - #{$page_unit_min_elements});
+        min-height: 600px;
         overflow: hidden;
         .abp-resources-list-wrapper {
-          height: calc(100vh - 232px); //TODO PUT CORRECT DIFF
-          min-height: 300px;//TODO PUT CORRECT
+          height: calc(100vh - #{$page_unit_min_elements + $page_unit_tab_height});
+          min-height: 600px - $page_unit_tab_height;
           overflow: hidden;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
