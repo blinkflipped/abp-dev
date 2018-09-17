@@ -490,7 +490,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
         subunitImage = subunit.image,
         subunitImageCode = (subunitImage !== '') ? '<img src="'+subunitImage+'" alt="'+subunitTitle+'">' : '',
         subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
-    if (!chapterIsOnlyVisibleTeacher) {
+    if (!subunitIsOnlyVisibleTeacher) {
       // Students subunits: Visibles for both (student and teacher)
 
       //Lock Subunits
@@ -501,7 +501,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       //TODO REMOVE var subunitNumber = i + 1,
       //TODO USE AS BASE chapterUrlHTML = (abpApp.config.isStudent && (isSubunitLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 
-      var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-chapter-id="'+subunitID+'"',
+      var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
           subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a></article>';
 
       var subunitsListItem = document.createElement('li');
@@ -510,8 +510,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       subunitsListItem.innerHTML = subunitInnerHTML;
       subunitsList.appendChild(subunitsListItem);
 
-    } else if (chapterIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
-      var subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner abp-js-load-subunit" data-chapter-id="'+subunitID+'"',
+    } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
+      var subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
           subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
 
       var subunitsTeachersListItem = document.createElement('li');
