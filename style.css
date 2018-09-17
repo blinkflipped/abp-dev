@@ -298,6 +298,9 @@ body.view-mode {
     .abp-unit-number_large .abp-unit-number-inner {
       width: 105px;
       height: 105px; }
+      .abp-unit-number_large .abp-unit-number-inner span {
+        font-size: 54px;
+        line-height: 1.1851851852em; }
 
 .abp-unit {
   width: 217px;
@@ -825,7 +828,8 @@ body.view-mode {
         .abp-section_unit-inner .abp-section-header-bottom-number {
           position: absolute;
           bottom: 20px;
-          right: 20px; }
+          right: 20px;
+          z-index: 20; }
         .abp-section_unit-inner .abp-section-header-bottom-background {
           position: absolute;
           top: 0;

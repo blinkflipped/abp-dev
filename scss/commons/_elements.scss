@@ -197,6 +197,10 @@
 		.abp-unit-number-inner {
 			width: 105px;
 			height: 105px;
+			span {
+				font-size: 54px;
+				line-height: (64em/54);
+			}
 		}
 	}
 }
