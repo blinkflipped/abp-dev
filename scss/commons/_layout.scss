@@ -9,3 +9,19 @@
     max-width: $layout_max_3;
   }
 }
+
+
+.page {
+  display: none;
+
+  .abp-body-home & {
+    &_home {
+      display: block;
+    }
+  }
+  .abp-body-unit & {
+    &_unit {
+      display: block;
+    }
+  }
+}

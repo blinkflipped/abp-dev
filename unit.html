@@ -27,91 +27,93 @@
 *
 -->
 
-<div class="abp-gohome">
-  <div class="abp-container abp-container_3">
-    <a href="#" class="link link_back">
-      <span>'+abpApp.text.goback+'</span>
-    </a>
+<div class="page page_unit">
+  <div class="abp-gohome">
+    <div class="abp-container abp-container_3">
+      <a href="#" class="link link_back">
+        <span>'+abpApp.text.goback+'</span>
+      </a>
+    </div>
   </div>
-</div>
-<section class="abp-section abp-section_unit">
-  <div class="abp-container abp-container_2">
-    <div class="abp-section_unit-inner">
-      <header class="abp-section-header">
-        <div class="abp-section-header-top">
-          <h1 class="abp-title-2">'+unitTitle+'</h1>
-        </div>
-        <div class="abp-section-header-bottom">
-          <div class="abp-section-header-bottom-description">
-            <h2 class="abp-title-3">'+unitDescription+'</h2>
+  <section class="abp-section abp-section_unit">
+    <div class="abp-container abp-container_2">
+      <div class="abp-section_unit-inner">
+        <header class="abp-section-header">
+          <div class="abp-section-header-top">
+            <h1 class="abp-title-2" id="abp-unit-title"></h1>
           </div>
-          <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large">
-            <div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div>
-          </div>
-          <div class="abp-section-header-bottom-background">
-            <img src="'+unitImage+'">
-          </div>
-        </div>
-      </header>
-
-      <div class="abp-section-content">
-        <div class="abp-tabs-wrapper">
-          <ul class="abp-tabs">
-            <li class="abp-tab">
-              <a href="#studentarea">'+abpApp.text.studentarea+'</a>
-            </li>
-            <li class="abp-tab abp-tab_current">
-              <a href="#teacherarea">'+abpApp.text.teacherarea+'</a>
-            </li>
-          </ul>
-          <div class="abp-tabs-content-wrapper">
-            <div class="abp-tabs-content" id="studentarea">
-              <div class="abp-resources-list-wrapper">
-                <ul class="abp-resources-list">
-                  <!-- For each to get Activities from unit visible to Students -->
-                  <li class="abp-resources-list-item">
-                    <a href="#" class="abp-resources-list-item-inner">
-                      <div class="abp-resources-list-item-image">
-                        <div class="abp-resources-list-item-image-inner">
-                          <img src="'+resourceImage+'" alt="'+resourceTitle+'">
-                        </div>
-                      </div>
-                      <div class="abp-resources-list-item-text">
-                        <h3 class="abp-title-5">'+resourceTitle+'</h3>
-                        <p>'+resourceDescription+'</p>
-                      </div>
-                    </a>
-                  </li>
-                  <!--End forEach-->
-                </ul>
-              </div>
+          <div class="abp-section-header-bottom">
+            <div class="abp-section-header-bottom-description">
+              <h2 class="abp-title-3" id="abp-unit-description"></h2>
             </div>
-            <div class="abp-tabs-content abp-tabs-content_current" id="teacherarea">
-              <div class="abp-resources-list-wrapper">
-                <ul class="abp-resources-list abp-resources-list_2">
-                  <!-- For each to get Activities from unit visible only for Teachers -->
-                  <li class="abp-resources-list-item">
-                    <a href="#" class="abp-resources-list-item-inner">
-                      <div class="abp-resources-list-item-image">
-                        <div class="abp-resources-list-item-image-inner">
-                          <span class="abp-resources-list-icon abp-resources-list-icon_'+resourceType+'" aria-hidden="true"></span>
+            <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large">
+              <div class="abp-unit-number-inner"><span id="abp-unit-number"></span></div>
+            </div>
+            <div class="abp-section-header-bottom-background" id="abp-unit-image">
+              <!--<img src="'+unitImage+'">-->
+            </div>
+          </div>
+        </header>
+
+        <div class="abp-section-content">
+          <div class="abp-tabs-wrapper">
+            <ul class="abp-tabs">
+              <li class="abp-tab">
+                <a href="#studentarea">'+abpApp.text.studentarea+'</a>
+              </li>
+              <li class="abp-tab abp-tab_current">
+                <a href="#teacherarea">'+abpApp.text.teacherarea+'</a>
+              </li>
+            </ul>
+            <div class="abp-tabs-content-wrapper">
+              <div class="abp-tabs-content" id="studentarea">
+                <div class="abp-resources-list-wrapper">
+                  <ul class="abp-resources-list">
+                    <!-- For each to get Activities from unit visible to Students -->
+                    <li class="abp-resources-list-item">
+                      <a href="#" class="abp-resources-list-item-inner">
+                        <div class="abp-resources-list-item-image">
+                          <div class="abp-resources-list-item-image-inner">
+                            <img src="'+resourceImage+'" alt="'+resourceTitle+'">
+                          </div>
                         </div>
-                      </div>
-                      <div class="abp-resources-list-item-text">
-                        <h3 class="abp-title-5">'+resourceTitle+'</h3>
-                        <p>'+resourceDescription+'</p>
-                      </div>
-                    </a>
-                  </li>
-                  <!--End forEach-->
-                </ul>
+                        <div class="abp-resources-list-item-text">
+                          <h3 class="abp-title-5">'+resourceTitle+'</h3>
+                          <p>'+resourceDescription+'</p>
+                        </div>
+                      </a>
+                    </li>
+                    <!--End forEach-->
+                  </ul>
+                </div>
+              </div>
+              <div class="abp-tabs-content abp-tabs-content_current" id="teacherarea">
+                <div class="abp-resources-list-wrapper">
+                  <ul class="abp-resources-list abp-resources-list_2">
+                    <!-- For each to get Activities from unit visible only for Teachers -->
+                    <li class="abp-resources-list-item">
+                      <a href="#" class="abp-resources-list-item-inner">
+                        <div class="abp-resources-list-item-image">
+                          <div class="abp-resources-list-item-image-inner">
+                            <span class="abp-resources-list-icon abp-resources-list-icon_'+resourceType+'" aria-hidden="true"></span>
+                          </div>
+                        </div>
+                        <div class="abp-resources-list-item-text">
+                          <h3 class="abp-title-5">'+resourceTitle+'</h3>
+                          <p>'+resourceDescription+'</p>
+                        </div>
+                      </a>
+                    </li>
+                    <!--End forEach-->
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 </body>
 </html>

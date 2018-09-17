@@ -92,7 +92,7 @@
       align-content: flex-start;
       .abp-section-header {
         height: calc(100vh - 100px);//TODO PUT CORRECT DIFF
-        overflow: hidden;
+        min-height: 300px;//TODO PUT CORRECT
         width: 370px;
         position: relative;
         z-index: 10;
@@ -149,11 +149,15 @@
         }
       }
       .abp-section-content {
+        position: relative;
+        z-index: 5;
         width: calc(100% - 370px);
         height: calc(100vh - 100px);//TODO PUT CORRECT DIFF
+        min-height: 300px;//TODO PUT CORRECT
         overflow: hidden;
         .abp-resources-list-wrapper {
           height: calc(100vh - 232px); //TODO PUT CORRECT DIFF
+          min-height: 300px;//TODO PUT CORRECT
           overflow: hidden;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;

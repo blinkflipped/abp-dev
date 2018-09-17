@@ -22,54 +22,56 @@
 * unitImage = unit image URL
 -->
 
-<section class="abp-section abp-section_home">
-  <header class="abp-section-header">
-    <div class="abp-container">
-      <div class="abp-section-header-inner">
-        <h1 class="abp-title-1">'+bookTitle+'</h1>
-        <div class="abp-intro">
-          <p>'+bookDescription+'</p>
+<div class="page page_home">
+  <section class="abp-section abp-section_home">
+    <header class="abp-section-header">
+      <div class="abp-container">
+        <div class="abp-section-header-inner">
+          <h1 class="abp-title-1">'+bookTitle+'</h1>
+          <div class="abp-intro">
+            <p>'+bookDescription+'</p>
+          </div>
+        </div>
+      </div>
+      <nav class="abp-navigation abp-navigation_secondary">
+        <ul>
+          <!-- For each to get Auxiliary activities with tag "pestaña" -->
+          <li>
+            <a href="#"><span>'+auxiliaryActivityTitle+'</span></a>
+          </li>
+          <!--  End forEach-->
+        </ul>
+      </nav>
+    </header>
+    <div class="abp-section-content">
+      <div class="abp-container">
+        <div class="abp-units-slider abp-js--slider">
+          <!--  ForEach to get All the units -->
+          <div class="abp-units-slider-item">
+            <article class="abp-unit">
+              <a href="#" class="abp-unit-inner">
+                <div class="abp-unit-number abp-unit-number">
+                  <div class="abp-unit-number-inner">
+                    <span>'+unitNumber+'</span>
+                  </div>
+                </div>
+                <header class="abp-unit-header">
+                  <h2 class="abp-title-4">'+unitTitle+'</h2>
+                </header>
+                <div class="abp-unit-content">
+                  <div class="abp-unit-content-description">'+unitDescription+'</div>
+                  <div class="abp-unit-content-background">
+                    <img src="'+unitImage+'">
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+          <!-- End forEach-->
         </div>
       </div>
     </div>
-    <nav class="abp-navigation abp-navigation_secondary">
-      <ul>
-        <!-- For each to get Auxiliary activities with tag "pestaña" -->
-        <li>
-          <a href="#"><span>'+auxiliaryActivityTitle+'</span></a>
-        </li>
-        <!--  End forEach-->
-      </ul>
-    </nav>
-  </header>
-  <div class="abp-section-content">
-    <div class="abp-container">
-      <div class="abp-units-slider abp-js--slider">
-        <!--  ForEach to get All the units -->
-        <div class="abp-units-slider-item">
-          <article class="abp-unit">
-            <a href="#" class="abp-unit-inner">
-              <div class="abp-unit-number abp-unit-number">
-                <div class="abp-unit-number-inner">
-                  <span>'+unitNumber+'</span>
-                </div>
-              </div>
-              <header class="abp-unit-header">
-                <h2 class="abp-title-4">'+unitTitle+'</h2>
-              </header>
-              <div class="abp-unit-content">
-                <div class="abp-unit-content-description">'+unitDescription+'</div>
-                <div class="abp-unit-content-background">
-                  <img src="'+unitImage+'">
-                </div>
-              </div>
-            </a>
-          </article>
-        </div>
-        <!-- End forEach-->
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 </body>
 </html>
