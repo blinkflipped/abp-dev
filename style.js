@@ -405,7 +405,7 @@ abpApp.loadHomepage = function(data,updateHash) {
               // TODO ADD LINK
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
-            tabListItem.className = 'abp-resources-list-item';
+
             tabListItem.innerHTML = '<a href="#"><span>'+subunitTitle+'</span></a>';
             tabList.appendChild(tabListItem);
           }
@@ -526,8 +526,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a></article>';
 
       var subunitsListItem = document.createElement('li');
+      subunitsListItem.className = 'abp-resources-list-item';
 
-      //subunitsListItem.className = 'abp-resources-list-item';
       subunitsListItem.innerHTML = subunitInnerHTML;
       subunitsList.appendChild(subunitsListItem);
 
@@ -538,8 +538,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
 
       var subunitsTeachersListItem = document.createElement('li');
+      subunitsTeachersListItem.className = 'abp-resources-list-item';
 
-      //subunitsTeachersListItem.className = 'abp-resources-list-item';
       subunitsTeachersListItem.innerHTML = subunitTeachersInnerHTML;
       subunitsTeachersList.appendChild(subunitsTeachersListItem);
 
