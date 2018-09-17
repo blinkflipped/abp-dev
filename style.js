@@ -405,6 +405,7 @@ abpApp.loadHomepage = function(data,updateHash) {
               // TODO ADD LINK
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
+            tabListItem.className = 'abp-resources-list-item';
             tabListItem.innerHTML = '<a href="#"><span>'+subunitTitle+'</span></a>';
             tabList.appendChild(tabListItem);
           }
@@ -478,8 +479,28 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
   var subunits = data.units[currentUnit].subunits,
       unitImage =  data.units[currentUnit].image,
+      unitTitle =  data.units[currentUnit].title,
+      unitDescription =  data.units[currentUnit].description,
+      unitNumberBase = data.units[currentUnit].number,
+      unitNumberTemplate = unitNumberBase - 1,
+      unitNumber = ('0' + unitNumberTemplate).slice(-2),
       subunitsList = document.createDocumentFragment(),
       subunitsTeachersList = document.createDocumentFragment();
+
+  $('#abp-unit-title, #abp-unit-description, #abp-unit-image, #abp-unit-number').empty();
+  if (unitTitle !== '') {
+    $('#abp-unit-title').text(unitTitle);
+  }
+  if (unitDescription !== '') {
+    $('#abp-unit-description').text(unitDescription);
+  }
+  if (unitImage !== '') {
+    $('#abp-unit-image').prepend('<img src="'+unitImage+'">');
+  }
+  if (unitNumber !== '') {
+    $('#abp-unit-number').text(unitNumber);
+  }
+
 
   $.each(subunits, function(i, subunit){
 
@@ -511,8 +532,10 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       subunitsList.appendChild(subunitsListItem);
 
     } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
-      var subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
-          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
+      var subunitType = subunit.type,
+          subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
+          subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
+          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
 
       var subunitsTeachersListItem = document.createElement('li');
 
