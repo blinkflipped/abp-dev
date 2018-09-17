@@ -516,7 +516,6 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
       var subunitsTeachersListItem = document.createElement('li');
 
-
       //subunitsTeachersListItem.className = 'abp-resources-list-item';
       subunitsTeachersListItem.innerHTML = subunitTeachersInnerHTML;
       subunitsTeachersList.appendChild(subunitsTeachersListItem);
@@ -534,7 +533,15 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
   $subunitsTeachersWrapper.empty();
   $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
 
-
+  // Current Tab
+  //var currentClassTab = 'abp-tab_current';
+  if (abpApp.config.isStudent) {
+    //$('.abp-tab a[href="#abp-studentarea"').closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
+    $('.abp-tab a[href="#abp-studentarea"').click();
+  } else {
+    //$('.abp-tab a[href="#abp-teacherarea"').closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
+    $('.abp-tab a[href="#abp-teacherarea"').click();
+  }
 
   var currentIndex = 1;
   var currentPage = abpApp.config.tree[currentIndex].id,
@@ -574,6 +581,17 @@ $(document).ready(function() {
     var newHash = abpApp.config.tree[1].hash + currentUnit;
     console.log(currentUnit,newHash);
     window.location.hash = newHash;
+  });
+
+  $('body').on('click', '.abp-tabs a', function(e) {
+    e.preventDefault();
+    var target = $(this).attr('href'),
+        currentClassTab = 'abp-tab_current',
+        currentClassContent = 'abp-tabs-content_current';
+
+    $(this).closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
+    $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
+
   });
 
 });
