@@ -115,7 +115,7 @@ body.view-mode {
     background: #223c3f;
     z-index: 1002; }
   body.view-mode.canvas_events_loaded::before, .htmlReady body.view-mode::before {
-    display: none; }
+    z-index: 10; }
 
 .abp-empty {
   font-size: 70px;

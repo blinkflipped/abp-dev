@@ -16,7 +16,8 @@ body.view-mode {
 	}
 	&.canvas_events_loaded::before,
 	.htmlReady &::before {
-		display: none;
+		//display: none;
+		z-index: 10;
 	}
 }
 
