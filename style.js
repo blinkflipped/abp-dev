@@ -541,8 +541,9 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
     } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
       var subunitType = subunit.type,
+          subunitOnClick = subunit.onclickTitle
           subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
-          subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
+          subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
           subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
 
       var subunitsTeachersListItem = document.createElement('li');
