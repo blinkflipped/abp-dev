@@ -162,6 +162,8 @@ abpApp.config.statusLock2 = 2;
 abpApp.config.buttonGoBack = '.abp-js-goback';
 abpApp.config.auxTab = 'pestaña';
 
+
+abpApp.config.unitsIDs = [];
 abpApp.config.bodyClasses = ['abp-body-home', 'abp-body-unit'];
 
 abpApp.config.tree = {
@@ -347,6 +349,12 @@ abpApp.loadHomepage = function(data,updateHash) {
   if (abpApp.config.firstTime) {
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
+
+    $.each(data.units, function(i, unit){
+      var unitNumber = unit.number - 1,
+          unitNumberStr = unitNumber.toString();
+      abpApp.config.unitsIDs.push(unitNumberStr);
+    });
 
     var bookTitle = data.title,
         bookDescription = data.description;
