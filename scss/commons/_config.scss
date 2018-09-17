@@ -35,3 +35,8 @@ $space_3: 50px;
 $layout_max: 980px + $space_1*2;
 $layout_max_2: 1200px + $space_1*2;
 $layout_max_3: $layout_max_2 + 200px;
+
+
+$blink_header_height_base : 44px;
+$blink_header_margin_bottom : 20px;
+$blink_header_height : $blink_header_height_base + $blink_header_margin_bottom;

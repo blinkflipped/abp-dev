@@ -696,18 +696,19 @@ body.view-mode {
   .abp-container_3 {
     max-width: 1440px; }
 
-.page {
-  display: none; }
-  .abp-body-home .page_home {
-    display: block; }
-  .abp-body-unit .page_unit {
-    display: block; }
-
-.abp-section {
+.abp-page {
+  display: none;
+  padding-top: 64px;
   background: #223c3f;
   color: #ffffff;
   position: relative;
-  z-index: 1000;
+  z-index: 1000; }
+  .abp-body-home .abp-page_home {
+    display: block; }
+  .abp-body-unit .abp-page_unit {
+    display: block; }
+
+.abp-section {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px; }
   .abp-section * {

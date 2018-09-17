@@ -11,9 +11,13 @@
 }
 
 
-.page {
+.abp-page {
   display: none;
-
+  padding-top: $blink_header_height;
+  background: $background_color;
+  color: $negative_color;
+  position: relative;
+  z-index: 1000;
   .abp-body-home & {
     &_home {
       display: block;
