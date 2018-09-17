@@ -17,7 +17,7 @@ body.view-mode {
 	&.canvas_events_loaded::before,
 	.htmlReady &::before {
 		//display: none;
-		z-index: 10;
+		z-index: 110;
 	}
 }
 

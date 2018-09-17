@@ -528,7 +528,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           isSubunitLock = (subunitLockStatus === abpApp.config.statusLock1 || subunitLockStatus === abpApp.config.statusLock2),
           subunitLockClass = (isSubunitLock) ? 'lock' : 'unlock';
 
-      var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
+      var subunitOnClick = subunit.onclickTitle,
+          subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
           subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a></article>';
 
       var subunitsListItem = document.createElement('li');
@@ -607,14 +608,11 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
 $(document).ready(function() {
 
-  console.log("Document ready");
 
   $('body').on('click', '.abp-js-load-unit', function(e) {
     e.preventDefault();
-    console.log("Click");
-    var currentUnit = $(this).data('unit');
-    var newHash = abpApp.config.tree[1].hash + currentUnit;
-    console.log(currentUnit,newHash);
+    var currentUnit = $(this).data('unit'),
+        newHash = abpApp.config.tree[1].hash + currentUnit;
     window.location.hash = newHash;
   });
 
@@ -629,6 +627,7 @@ $(document).ready(function() {
 
   });
 
+  7
 
   // Go Home
   $('body').on('click', '.abp-js-gohome', function(e) {
