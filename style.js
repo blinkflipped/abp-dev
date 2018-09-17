@@ -266,10 +266,10 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
         unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0);
 
     if (abpunit !== '' && abpunit !== null && unitExists) {
-      var currentEpisode = abpunit,
+      var currentUnit = abpunit,
           activities = window.actividades;
 
-      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentEpisode,activities,updateHash)}, timeToWait);
+      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentUnit,activities,updateHash)}, timeToWait);
 
     } else {
 
@@ -386,7 +386,7 @@ abpApp.loadHomepage = function(data,updateHash) {
           unitImage = unit.image;
       var unitListItem = document.createElement('div');
       unitListItem.className = 'abp-units-slider-item';
-      unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-unit abp-unit-inner" data-episode="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
+      unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-unit abp-unit-inner" data-unit="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
       unitList.appendChild(unitListItem);
 
       $.each(unit, function(i, subunit){
@@ -579,7 +579,7 @@ $(document).ready(function() {
     e.preventDefault();
     console.log("Click");
     var currentUnit = $(this).data('unit');
-    var newHash = abpApp.config.tree[1].hash + currentEpisode;
+    var newHash = abpApp.config.tree[1].hash + currentUnit;
     console.log(currentUnit,newHash);
     window.location.hash = newHash;
   });
