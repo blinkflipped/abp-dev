@@ -489,7 +489,8 @@ body.view-mode {
   font-weight: 600; }
   .abp-tabs .abp-tab {
     width: 50%;
-    background: rgba(255, 255, 255, 0.5); }
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center; }
     .abp-tabs .abp-tab a, .abp-tabs .abp-tab span {
       display: block;
       padding: 40px;
