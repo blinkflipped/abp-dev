@@ -535,25 +535,23 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
   $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
 
 
-/*
+
   var currentIndex = 1;
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
       hash = abpApp.config.tree[currentIndex].hash,
-      hashWithID = hash+currentEpisode;
+      hashWithID = hash+currentUnit;
 
   abpApp.removeUnusedClass(bodyClass);
-
-  $('body').removeClass('oxfl-body-episodes');
 
   // Object Fit support
   abpApp.objectFitSupport();
 
-  $('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+  $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     $('body').addClass(bodyClass);
     if (updateHash) window.location.hash = hashWithID;
   });
-*/
+
 }
 
 
