@@ -59,50 +59,54 @@
           <div class="abp-tabs-wrapper">
             <ul class="abp-tabs">
               <li class="abp-tab">
-                <a href="#studentarea">'+abpApp.text.studentarea+'</a>
+                <a href="#abp-studentarea">'+abpApp.text.studentarea+'</a>
               </li>
               <li class="abp-tab abp-tab_current">
-                <a href="#teacherarea">'+abpApp.text.teacherarea+'</a>
+                <a href="#abp-teacherarea">'+abpApp.text.teacherarea+'</a>
               </li>
             </ul>
             <div class="abp-tabs-content-wrapper">
-              <div class="abp-tabs-content" id="studentarea">
+              <div class="abp-tabs-content" id="abp-studentarea">
                 <div class="abp-resources-list-wrapper">
                   <ul class="abp-resources-list">
                     <!-- For each to get Activities from unit visible to Students -->
                     <li class="abp-resources-list-item">
-                      <a href="#" class="abp-resources-list-item-inner">
-                        <div class="abp-resources-list-item-image">
-                          <div class="abp-resources-list-item-image-inner">
-                            <img src="'+resourceImage+'" alt="'+resourceTitle+'">
+                      <article class="abp-resources-list-item-article">
+                        <a href="#" class="abp-resources-list-item-inner">
+                          <div class="abp-resources-list-item-image">
+                            <div class="abp-resources-list-item-image-inner">
+                              <img src="'+resourceImage+'" alt="'+resourceTitle+'">
+                            </div>
                           </div>
-                        </div>
-                        <div class="abp-resources-list-item-text">
-                          <h3 class="abp-title-5">'+resourceTitle+'</h3>
-                          <p>'+resourceDescription+'</p>
-                        </div>
-                      </a>
+                          <div class="abp-resources-list-item-text">
+                            <h3 class="abp-title-5">'+resourceTitle+'</h3>
+                            <p>'+resourceDescription+'</p>
+                          </div>
+                        </a>
+                      </article>
                     </li>
                     <!--End forEach-->
                   </ul>
                 </div>
               </div>
-              <div class="abp-tabs-content abp-tabs-content_current" id="teacherarea">
+              <div class="abp-tabs-content abp-tabs-content_current" id="abp-teacherarea">
                 <div class="abp-resources-list-wrapper">
                   <ul class="abp-resources-list abp-resources-list_2">
                     <!-- For each to get Activities from unit visible only for Teachers -->
                     <li class="abp-resources-list-item">
-                      <a href="#" class="abp-resources-list-item-inner">
-                        <div class="abp-resources-list-item-image">
-                          <div class="abp-resources-list-item-image-inner">
-                            <span class="abp-resources-list-icon abp-resources-list-icon_'+resourceType+'" aria-hidden="true"></span>
+                      <article class="abp-resources-list-item-article">
+                        <a href="#" class="abp-resources-list-item-inner">
+                          <div class="abp-resources-list-item-image">
+                            <div class="abp-resources-list-item-image-inner">
+                              <span class="abp-resources-list-icon abp-resources-list-icon_'+resourceType+'" aria-hidden="true"></span>
+                            </div>
                           </div>
-                        </div>
-                        <div class="abp-resources-list-item-text">
-                          <h3 class="abp-title-5">'+resourceTitle+'</h3>
-                          <p>'+resourceDescription+'</p>
-                        </div>
-                      </a>
+                          <div class="abp-resources-list-item-text">
+                            <h3 class="abp-title-5">'+resourceTitle+'</h3>
+                            <p>'+resourceDescription+'</p>
+                          </div>
+                        </a>
+                      </article>
                     </li>
                     <!--End forEach-->
                   </ul>

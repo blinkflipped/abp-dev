@@ -262,7 +262,7 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
   } else if (currentHash.startsWith(abpApp.config.tree[1].hash)) { // Unit and ID
 
     // This works different because we need an ID to load the Unit
-    var abpunit = currentHash.replace(abpApp.config.tree[2].hash, ''),
+    var abpunit = currentHash.replace(abpApp.config.tree[1].hash, ''),
         unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0);
 
     if (abpunit !== '' && abpunit !== null && unitExists) {
@@ -357,11 +357,11 @@ abpApp.loadHomepage = function(data,updateHash) {
         sectionHomeContentHTML = '<div class="abp-section-content"><div class="abp-container">'+comp_slider+'</div></div>',
         sectionHomeHTML = '<div class="abp-page abp-page_home"><section class="abp-section abp-section_home">'+sectionHomeHeaderHTML+sectionHomeContentHTML+'</section></div>';
 
-    var comp_tabs_student = '<li class="abp-tab"> <a href="#studentarea">'+abpApp.text.studentarea+'</a> </li>',
-        comp_tabs_teacher = comp_tabs_student+'<li class="abp-tab"> <a href="#teacherarea">'+abpApp.text.teacherarea+'</a> </li>',
+    var comp_tabs_student = '<li class="abp-tab"> <a href="#abp-studentarea">'+abpApp.text.studentarea+'</a> </li>',
+        comp_tabs_teacher = comp_tabs_student+'<li class="abp-tab"> <a href="#abp-teacherarea">'+abpApp.text.teacherarea+'</a> </li>',
         comp_tabs = (abpApp.config.isStudent) ? comp_tabs_student : comp_tabs_teacher,
-        comp_tabs_wrapper_student = '<div class="abp-tabs-content" id="studentarea"> <div class="abp-resources-list-wrapper"></div> </div>',
-        comp_tabs_wrapper_teacher = comp_tabs_wrapper_student+ '<div class="abp-tabs-content" id="teacherarea"><div class="abp-resources-list-wrapper"></div></div>',
+        comp_tabs_wrapper_student = '<div class="abp-tabs-content" id="abp-studentarea"> <div class="abp-resources-list-wrapper"><ul class="abp-resources-list"></ul></div> </div>',
+        comp_tabs_wrapper_teacher = comp_tabs_wrapper_student+ '<div class="abp-tabs-content" id="abp-teacherarea"><div class="abp-resources-list-wrapper"><ul class="abp-resources-list abp-resources-list_2"></ul></div></div>',
         comp_tabs_wrapper = (abpApp.config.isStudent) ? comp_tabs_wrapper_student : comp_tabs_wrapper_teacher;
 
     var sectionUnitHeader = '<header class="abp-section-header"><div class="abp-section-header-top"> <h1 class="abp-title-2" id="abp-unit-title"></h1></div><div class="abp-section-header-bottom"> <div class="abp-section-header-bottom-description"> <h2 class="abp-title-3" id="abp-unit-description"></h2> </div> <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large"><div class="abp-unit-number-inner"><span id="abp-unit-number"></span></div> </div> <div class="abp-section-header-bottom-background" id="abp-unit-image"></div></div></header>',
@@ -466,99 +466,84 @@ abpApp.loadHomepage = function(data,updateHash) {
 
 abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
-	abpApp.console("Load Unit "+currentUnit);
+  abpApp.console("Load Unit "+currentUnit);
 
-	var subunits = data.units[currentUnit].subunits,
-			unitImage =  data.units[currentUnit].image,
-			subunitsList = document.createDocumentFragment();
+  var subunits = data.units[currentUnit].subunits,
+      unitImage =  data.units[currentUnit].image,
+      subunitsList = document.createDocumentFragment(),
+      subunitsTeachersList = document.createDocumentFragment();
+
+  $.each(subunits, function(i, subunit){
+
+    var subunitID = subunit.id,
+        subunitTitle = subunit.title,
+        //TODO REMOVE subunitTag = subunit.tag,
+        subunitDescription = subunit.description,
+        subunitImage = subunit.image,
+        subunitImageCode = (subunitImage !== '') ? '<img src="'+subunitImage+'" alt="'+subunitTitle+'">' : '',
+        subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
+    if (!chapterIsOnlyVisibleTeacher) {
+      // Students subunits: Visibles for both (student and teacher)
+
+      //Lock Subunits
+      var subunitLockStatus = subunit.lock,
+          isSubunitLock = (subunitLockStatus === abpApp.config.statusLock1 || subunitLockStatus === abpApp.config.statusLock2),
+          subunitLockClass = (isSubunitLock) ? 'lock' : 'unlock';
+
+      //TODO REMOVE var subunitNumber = i + 1,
+      //TODO USE AS BASE chapterUrlHTML = (abpApp.config.isStudent && (isSubunitLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
+      var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-chapter-id="'+subunitID+'"',
+          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
+
+      var subunitsListItem = document.createElement('li');
+
+      //subunitsListItem.className = 'abp-resources-list-item';
+      subunitsListItem.innerHTML = subunitInnerHTML;
+      subunitsList.appendChild(subunitsListItem);
+
+    } else if (chapterIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
+      var subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner abp-js-load-subunit" data-chapter-id="'+subunitID+'"',
+          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
+
+      var subunitsTeachersListItem = document.createElement('li');
+
+
+      //subunitsTeachersListItem.className = 'abp-resources-list-item';
+      subunitsTeachersListItem.innerHTML = subunitTeachersInnerHTML;
+      subunitsTeachersList.appendChild(subunitsTeachersListItem);
+
+    }
+
+
+  });
+
+  var $subunitsWrapper = $('#abp-studentarea .abp-resources-list');
+  $subunitsWrapper.empty();
+  $subunitsWrapper[0].appendChild(subunitsList);
+
+  var $subunitsTeachersWrapper = $('#abp-teacherarea .abp-resources-list');
+  $subunitsTeachersWrapper.empty();
+  $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
+
+
 /*
-	$.each(subunits, function(i, subunit){
+  var currentIndex = 1;
+  var currentPage = abpApp.config.tree[currentIndex].id,
+      bodyClass = abpApp.config.tree[currentIndex].class,
+      hash = abpApp.config.tree[currentIndex].hash,
+      hashWithID = hash+currentEpisode;
 
-		var subunitID = subunit.id,
-				subunitTitle = subunit.title,
-				subunitTag = subunit.tag,
-				subunitDescription = subunit.description,
-				subunitImage = subunit.image,
-				subunitImageCode = (chapterImage != '') ? '<img src="'+chapterImage+'" alt="'+chapterTitle+'">' : '',
-				subunitIsOnlyVisibleTeacher = chapter.onlyVisibleTeachers,
-				subunitIsChallenge = (chapterTitle === abpApp.config.nameChallenge),
-				subunitIsMarketplace = (chapterTag === abpApp.config.tagMarketplace);
-		if (!chapterIsMarketplace && !chapterIsOnlyVisibleTeacher) {
-			// Regular Chapters
-			if (!chapterIsChallenge) {
+  abpApp.removeUnusedClass(bodyClass);
 
-				// Activities not started
-				var isChapterNew = (typeof activities[chapterID] === 'undefined' || typeof activities[chapterID].custom_activity_status === 'undefined' || ( typeof activities[chapterID].custom_activity_status !== 'undefined' && activities[chapterID].custom_activity_status === abpApp.config.stateNew));
-				if (isChapterNew) {
-					chaptersNotStarted = true;
-				} else {
-					// Activities not completed
-					if (typeof actividades[chapterID].custom_activity_status === 'undefined' || actividades[chapterID].custom_activity_status !== abpApp.config.stateCompleted) {
-						lessonsNotCompleted = true;
-					}
-				}
+  $('body').removeClass('oxfl-body-episodes');
 
-				//custom_activity_status: 0: New; 1: Started; 2: Completed. It can be also New if the ID doesn't appear in array
-				var chapterStateTextArr = [abpApp.text.chapterStatus2, abpApp.text.chapterStatus0, abpApp.text.chapterStatus1],
-						chapterStateID = abpApp.getState(chapterID),
-						chapterStateText = chapterStateTextArr[chapterStateID];
+  // Object Fit support
+  abpApp.objectFitSupport();
 
-				//Lock Chapters
-				var chapterLockStatus = chapter.lock,
-						isChapterLock = (chapterLockStatus === abpApp.config.statusLock1 || chapterLockStatus === abpApp.config.statusLock2),
-						chapterLockClass = (isChapterLock) ? 'lock' : 'unlock';
-
-				var chapterNumber = i + 1,
-						chapterActionsStudentsClass = (chapterStateID === abpApp.config.stateNew) ? 'oxfl-stars-hidden' : '',
-						chapterActionsStudents = '<ul class="oxfl-stars '+chapterActionsStudentsClass+' oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>',
-						chapterActions = (abpApp.config.isStudent) ? chapterActionsStudents : '<button class="oxfl-button oxfl-button-lock oxfl-js-modal-lock-chapter '+chapterLockClass+'"></button>',
-						chapterPopoverText = abpApp.text.oxfordFlipped_no_access_alert,
-						chapterUrlHTML = (abpApp.config.isStudent && (chapterLockStatus === abpApp.config.statusLock1 || chapterLockStatus === abpApp.config.statusLock2)) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterinnerHTML = (abpApp.config.isStudent) ? '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> '+chapterTitle+' </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4">'+chapterDescription+'</h3> </div> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> </a> </article>' : '<article class="oxfl-chapter '+chapterLockClass+'" data-id="'+chapterID+'"> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'> '+chapterTitle+' </a> </h2> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> <h3 class="oxfl-title4"><a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterDescription+'</a></h3> </div> <a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-label oxfl-label-'+chapterStateID+'">'+chapterStateText+'</div><div class="oxfl-chapter-image-wrapper-img"> '+chapterImageCode+'</div> </div> </a> </article>';
-
-			} else { // Challenge Chapter
-
-				var isChallengeLock = ((chaptersNotStarted || lessonsNotCompleted) && abpApp.config.isStudent) ? true : false,
-						challengeStateID = abpApp.getState(chapterID),
-						challengeLockClass = (isChallengeLock) ? 'lock' : 'unlock';
-				var chapterActions = (abpApp.config.isStudent && challengeStateID !== abpApp.config.stateNew) ? '<ul class="oxfl-stars oxfl-stars-filled-'+chapterStars+'"><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li><li class="oxfl-star-item"><span></span></li></ul>' : '',
-						chapterPopoverText = abpApp.text.oxfordFlipped_no_complete_alert,
-						chapterUrlHTML = (abpApp.config.isStudent && isChallengeLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-						chapterinnerHTML = '<article class="oxfl-chapter oxfl-chapter-challenge '+challengeLockClass+'" data-id="'+chapterID+'"><a href="javascript:void(0)" '+chapterUrlHTML+'> <div class="oxfl-chapter-header"> <div class="oxfl-chapter-header-top"> <div class="oxfl-chapter-header-top-right">'+chapterActions+'</div> </div> </div>  <div class="oxfl-chapter-image-wrapper"> <div class="oxfl-chapter-image-wrapper-img">'+chapterImageCode+'</div> </div> <h2 class="oxfl-title3"> <a href="javascript:void(0)" '+chapterUrlHTML+'>'+chapterTitle+'</h2></a> </article>';
-			}
-			var chapterListItem = document.createElement('div');
-
-			chapterListItem.className = 'oxfl-chapter-item';
-			chapterListItem.innerHTML = chapterinnerHTML;
-			chaptersList.appendChild(chapterListItem);
-		}
-
-	});
-
-	var $chaptersWrapper = $('#oxfl-chapters');
-	$chaptersWrapper.empty();
-	$chaptersWrapper[0].appendChild(chaptersList);
-
-
-
-	var currentIndex = 2;
-	var currentPage = abpApp.config.tree[currentIndex].id,
-			bodyClass = abpApp.config.tree[currentIndex].class,
-			hash = abpApp.config.tree[currentIndex].hash,
-			hashWithID = hash+currentEpisode;
-
-	abpApp.removeUnusedClass(bodyClass);
-
-	$('body').removeClass('oxfl-body-episodes');
-
-	// Object Fit support
-	abpApp.objectFitSupport();
-
-	$('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
-		$('body').addClass(bodyClass);
-		if (updateHash) window.location.hash = hashWithID;
-	});
-
+  $('#oxfl-chapters-wrapper').imagesLoaded({background: 'div, a, span, button'}, function(){
+    $('body').addClass(bodyClass);
+    if (updateHash) window.location.hash = hashWithID;
+  });
 */
 }
 
