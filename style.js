@@ -492,8 +492,9 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
       //TODO REMOVE var subunitNumber = i + 1,
       //TODO USE AS BASE chapterUrlHTML = (abpApp.config.isStudent && (isSubunitLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
-      var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-chapter-id="'+subunitID+'"',
-          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
+
+      var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-chapter-id="'+subunitID+'"',
+          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a></article>';
 
       var subunitsListItem = document.createElement('li');
 
