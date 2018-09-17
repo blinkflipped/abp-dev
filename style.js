@@ -357,8 +357,12 @@ abpApp.loadHomepage = function(data,updateHash) {
         sectionHomeContentHTML = '<div class="abp-section-content"><div class="abp-container">'+comp_slider+'</div></div>',
         sectionHomeHTML = '<div class="page page_home"><section class="abp-section abp-section_home">'+sectionHomeHeaderHTML+sectionHomeContentHTML+'</section></div>';
 
-    var comp_tabs = (abpApp.config.isStudent) ? '<li class="abp-tab"> <a href="#studentarea">'+abpApp.text.studentarea+'</a> </li>' : '<li class="abp-tab"> <a href="#studentarea">'+abpApp.text.studentarea+'</a> </li><li class="abp-tab"> <a href="#teacherarea">'+abpApp.text.teacherarea+'</a> </li>',
-        comp_tabs_wrapper = (abpApp.config.isStudent) ? '<div class="abp-tabs-content" id="studentarea"> <div class="abp-resources-list-wrapper"></div> </div> ' : '<div class="abp-tabs-content" id="studentarea"> <div class="abp-resources-list-wrapper"></div> </div><div class="abp-tabs-content" id="teacherarea"><div class="abp-resources-list-wrapper"></div></div>';
+    var comp_tabs_student = '<li class="abp-tab"> <a href="#studentarea">'+abpApp.text.studentarea+'</a> </li>',
+        comp_tabs_teacher = comp_tabs_student+'<li class="abp-tab"> <a href="#teacherarea">'+abpApp.text.teacherarea+'</a> </li>',
+        comp_tabs = (abpApp.config.isStudent) ? comp_tabs_student : comp_tabs_teacher,
+        comp_tabs_wrapper_student = '<div class="abp-tabs-content" id="studentarea"> <div class="abp-resources-list-wrapper"></div> </div>',
+        comp_tabs_wrapper_teacher = comp_tabs_wrapper_student+ '<div class="abp-tabs-content" id="teacherarea"><div class="abp-resources-list-wrapper"></div></div>',
+        comp_tabs_wrapper = (abpApp.config.isStudent) ? comp_tabs_wrapper_student : comp_tabs_wrapper_teacher;
 
     var sectionUnitHeader = '<header class="abp-section-header"><div class="abp-section-header-top"> <h1 class="abp-title-2" id="abp-unit-title"></h1></div><div class="abp-section-header-bottom"> <div class="abp-section-header-bottom-description"> <h2 class="abp-title-3" id="abp-unit-description"></h2> </div> <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large"><div class="abp-unit-number-inner"><span id="abp-unit-number"></span></div> </div> <div class="abp-section-header-bottom-background" id="abp-unit-image"></div></div></header>',
         sectionUnitContent = '<div class="abp-section-content"><div class="abp-tabs-wrapper"><ul class="abp-tabs">'+comp_tabs+'</ul><div class="abp-tabs-content-wrapper">'+comp_tabs_wrapper+'</div> </div> </div>',
