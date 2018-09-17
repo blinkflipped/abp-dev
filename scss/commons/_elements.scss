@@ -587,6 +587,7 @@
 					margin-top: -6px;
 					width: 72px;
 					height: 72px;
+					box-sizing: content-box;
 				}
 				&::after {
 					@include gradient-a();

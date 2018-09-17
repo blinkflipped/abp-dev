@@ -663,7 +663,8 @@ body.view-mode {
           margin-left: -6px;
           margin-top: -6px;
           width: 72px;
-          height: 72px; }
+          height: 72px;
+          box-sizing: content-box; }
         .abp-resources-list_2 .abp-resources-list-item-image::after {
           background: #d43923;
           background: -moz-linear-gradient(0% 50% 0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
