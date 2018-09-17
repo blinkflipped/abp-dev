@@ -186,7 +186,8 @@ abpApp.bookData = '';
 abpApp.text = {
   goback : 'Volver',
   studentarea : 'Sesión del alumno',
-  teacherarea : 'Área del profesor'
+  teacherarea : 'Área del profesor',
+  noresources : 'No hay recursos disponibles'
 }
 
 
@@ -506,26 +507,26 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
     $('#abp-unit-number').text(unitNumber);
   }
 
+  var subunitsStudents = 0,
+      subunitsTeachers = 0;
 
   $.each(subunits, function(i, subunit){
 
+
+
     var subunitID = subunit.id,
         subunitTitle = subunit.title,
-        //TODO REMOVE subunitTag = subunit.tag,
         subunitDescription = subunit.description,
         subunitImage = subunit.image,
         subunitImageCode = (subunitImage !== '') ? '<img src="'+subunitImage+'" alt="'+subunitTitle+'">' : '',
         subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
+
     if (!subunitIsOnlyVisibleTeacher) {
       // Students subunits: Visibles for both (student and teacher)
-
       //Lock Subunits
       var subunitLockStatus = subunit.lock,
           isSubunitLock = (subunitLockStatus === abpApp.config.statusLock1 || subunitLockStatus === abpApp.config.statusLock2),
           subunitLockClass = (isSubunitLock) ? 'lock' : 'unlock';
-
-      //TODO REMOVE var subunitNumber = i + 1,
-      //TODO USE AS BASE chapterUrlHTML = (abpApp.config.isStudent && (isSubunitLock) ? 'class="oxfl-js-popover" data-toggle="popover" title="" data-content="'+chapterPopoverText+'"' : 'class="oxfl-js-load-chapter" data-chapter-id="'+chapterID+'"',
 
       var subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner abp-js-load-subunit" data-subunit-id="'+subunitID+'"',
           subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a></article>';
@@ -535,6 +536,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
       subunitsListItem.innerHTML = subunitInnerHTML;
       subunitsList.appendChild(subunitsListItem);
+      subunitsStudents++;
 
     } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
       var subunitType = subunit.type,
@@ -547,7 +549,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
       subunitsTeachersListItem.innerHTML = subunitTeachersInnerHTML;
       subunitsTeachersList.appendChild(subunitsTeachersListItem);
-
+      subunitsTeachers++;
     }
 
 
@@ -555,19 +557,24 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
   var $subunitsWrapper = $('#abp-studentarea .abp-resources-list');
   $subunitsWrapper.empty();
-  $subunitsWrapper[0].appendChild(subunitsList);
+  if (subunitsStudents > 0) {
+    $subunitsWrapper[0].appendChild(subunitsList);
+  } else {
+    $subunitsWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
+  }
 
   var $subunitsTeachersWrapper = $('#abp-teacherarea .abp-resources-list');
   $subunitsTeachersWrapper.empty();
-  $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
+  if (subunitsTeachers > 0) {
+    $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
+  } else {
+    $subunitsTeachersWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
+  }
 
   // Current Tab
-  //var currentClassTab = 'abp-tab_current';
   if (abpApp.config.isStudent) {
-    //$('.abp-tab a[href="#abp-studentarea"').closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
     $('.abp-tab a[href="#abp-studentarea"').click();
   } else {
-    //$('.abp-tab a[href="#abp-teacherarea"').closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
     $('.abp-tab a[href="#abp-teacherarea"').click();
   }
 

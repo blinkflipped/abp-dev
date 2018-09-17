@@ -1,5 +1,14 @@
 // Elements
 
+.abp-empty {
+	font-size: 70px;
+	line-height: (84em/70);
+	font-weight: 300;
+	text-align: center;
+	padding: 40px 0;
+	margin: 0;
+}
+
 // Buttons and links
 
 @mixin button-base() {
