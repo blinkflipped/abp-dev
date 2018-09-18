@@ -17,7 +17,14 @@ body.view-mode {
 	&.canvas_events_loaded::before,
 	.htmlReady &::before {
 		//display: none;
-		z-index: 110;
+		z-index: 0;
+		pointer-events: none;
+	}
+	.htmlReady &.abp-body-home,
+	.htmlReady &.abp-body-unit {
+		&::before {
+			z-index: 110;
+		}
 	}
 }
 

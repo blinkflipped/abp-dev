@@ -115,6 +115,9 @@ body.view-mode {
     background: #223c3f;
     z-index: 1002; }
   body.view-mode.canvas_events_loaded::before, .htmlReady body.view-mode::before {
+    z-index: 0;
+    pointer-events: none; }
+  .htmlReady body.view-mode.abp-body-home::before, .htmlReady body.view-mode.abp-body-unit::before {
     z-index: 110; }
 
 .abp-empty {
