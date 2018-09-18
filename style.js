@@ -439,10 +439,11 @@ abpApp.loadHomepage = function(data,updateHash) {
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
 
-    $unitsWrapper.addClass('slider--toleft').slick(abpApp.config.carouselOpt);
+    $unitsWrapper.slick(abpApp.config.carouselOpt);
 
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
+    $unitsWrapperContent.addClass('slider--toleft');
     $unitsWrapper.on('afterChange', function(event, slick, currentSlide) {
       if (currentSlide > 0) {
         $unitsWrapperContent.removeClass('slider--toleft');
