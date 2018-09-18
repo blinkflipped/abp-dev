@@ -368,11 +368,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     abpApp.bookData = data;
 
     var backgroundImageSrc = abpApp.config.bookcover.image,
-        backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImage+');' : '';
-
-        console.log(backgroundImageSrc)
-        console.log(backgroundImage)
-
+        backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImageSrc+');' : '';
 
     $.each(data.units, function(i, unit){
       var unitNumber = unit.number - 1,
