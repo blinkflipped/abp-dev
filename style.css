@@ -738,6 +738,9 @@ body.view-mode {
   color: #ffffff;
   position: relative;
   z-index: 1000; }
+  .abp-page .abp-gohome {
+    position: relative;
+    z-index: 10; }
   .abp-page::before {
     content: '';
     background: rgba(34, 60, 63, 0.6);
@@ -759,9 +762,6 @@ body.view-mode {
   z-index: 10;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px; }
-  .abp-section .abp-gohome {
-    position: relative;
-    z-index: 10; }
   .abp-section * {
     box-sizing: border-box; }
   .abp-section img {

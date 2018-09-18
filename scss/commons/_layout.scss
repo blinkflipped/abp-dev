@@ -21,6 +21,10 @@
   color: $negative_color;
   position: relative;
   z-index: 1000;
+  .abp-gohome {
+    position: relative;
+    z-index: 10;
+  }
   &::before {
     content: '';
     background : fade-out($color_1,.4);
