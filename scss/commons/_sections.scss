@@ -1,5 +1,6 @@
 
-$page_unit_min_elements : $blink_header_height + 30px + 50px;
+$page_unit_padding_bottom : 50px;
+$page_unit_min_elements : $blink_header_height + 30px + $page_unit_padding_bottom;
 $page_unit_min_height : 500px;
 $page_unit_tab_height : 112px;
 
@@ -101,6 +102,7 @@ $page_unit_tab_height : 112px;
   }
 
   &_unit {
+    padding-bottom: $page_unit_padding_bottom;
     &-inner {
       display: flex;
       justify-content: space-between;
