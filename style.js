@@ -511,9 +511,6 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       subunitsTeachers = 0;
 
   $.each(subunits, function(i, subunit){
-
-
-
     var subunitID = subunit.id,
         subunitTitle = subunit.title,
         subunitDescription = subunit.description,
@@ -585,13 +582,11 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       bodyClass = abpApp.config.tree[currentIndex].class,
       hash = abpApp.config.tree[currentIndex].hash,
       hashWithID = hash+currentUnit;
-
-  abpApp.removeUnusedClass(bodyClass);
-
-  // Object Fit support
-  abpApp.objectFitSupport();
-
+      
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
+    // Object Fit support
+    abpApp.objectFitSupport();
+    abpApp.removeUnusedClass(bodyClass);
     $('body').addClass(bodyClass);
     if (updateHash) window.location.hash = hashWithID;
   });
