@@ -64,14 +64,13 @@
 
       console.log("onCourseDataLoaded");
 
-      /*var unit = _.findWhere(data.units, {id: window.idtema.toString()}); // TODO necessary?
-      var subunit = _.findWhere(unit.subunits, {id: window.idclase.toString()}); // TODO necessary?
+      abpApp.config.bookcover = data.units[0].subunits[0].id;
+      var isBookCover = idclase.toString() === abpApp.config.bookcover;
 
-      this.cursoJson = data;
-
-      this.loadUserData(); // TODO necessary?*/
-      var updateHash = false;
-      abpApp.loadHomepage(data, updateHash);
+      if (isBookCover) {
+        var updateHash = false;
+        abpApp.loadHomepage(data, updateHash);
+      }
 
     },
 
@@ -161,6 +160,7 @@ abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
 abpApp.config.buttonGoHome = '.abp-js-gohome';
 abpApp.config.auxTab = 'pestaña';
+abpApp.config.bookcover = '';
 
 
 abpApp.config.unitsIDs = [];
