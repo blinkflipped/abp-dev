@@ -14,7 +14,10 @@
 .abp-page {
   display: none;
   padding-top: $blink_header_height;
-  background: $background_color;
+  background-color: $background_color;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   color: $negative_color;
   position: relative;
   z-index: 1000;

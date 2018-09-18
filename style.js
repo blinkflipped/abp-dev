@@ -364,6 +364,9 @@ abpApp.loadHomepage = function(data,updateHash) {
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
 
+    var backgroundImageSrc = abpApp.config.bookcover.image,
+        backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImage+');' : '';
+
     $.each(data.units, function(i, unit){
       var unitNumber = unit.number - 1,
           unitNumberStr = unitNumber.toString();
@@ -377,7 +380,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         comp_slider = '<div class="abp-units-slider abp-js--slider"></div>';
     var sectionHomeHeaderHTML = '<header class="abp-section-header"><div class="abp-container"><div class="abp-section-header-inner"><h1 class="abp-title-1">'+bookTitle+'</h1><div class="abp-intro"><p>'+bookDescription+'</p></div></div></div>'+comp_navigationSecondary+'</header>',
         sectionHomeContentHTML = '<div class="abp-section-content"><div class="abp-container">'+comp_slider+'</div></div>',
-        sectionHomeHTML = '<div class="abp-page abp-page_home"><section class="abp-section abp-section_home">'+sectionHomeHeaderHTML+sectionHomeContentHTML+'</section></div>';
+        sectionHomeHTML = '<div class="abp-page abp-page_home" style="'+backgroundImage+'"><section class="abp-section abp-section_home">'+sectionHomeHeaderHTML+sectionHomeContentHTML+'</section></div>';
 
     var comp_tabs_student = '<li class="abp-tab"> <a href="#abp-studentarea">'+abpApp.text.studentarea+'</a> </li>',
         comp_tabs_teacher = comp_tabs_student+'<li class="abp-tab"> <a href="#abp-teacherarea">'+abpApp.text.teacherarea+'</a> </li>',
@@ -388,7 +391,7 @@ abpApp.loadHomepage = function(data,updateHash) {
 
     var sectionUnitHeader = '<header class="abp-section-header"><div class="abp-section-header-top"> <h1 class="abp-title-2" id="abp-unit-title"></h1></div><div class="abp-section-header-bottom"> <div class="abp-section-header-bottom-description"> <h2 class="abp-title-3" id="abp-unit-description"></h2> </div> <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large"><div class="abp-unit-number-inner"><span id="abp-unit-number"></span></div> </div> <div class="abp-section-header-bottom-background" id="abp-unit-image"></div></div></header>',
         sectionUnitContent = '<div class="abp-section-content"><div class="abp-tabs-wrapper"><ul class="abp-tabs">'+comp_tabs+'</ul><div class="abp-tabs-content-wrapper">'+comp_tabs_wrapper+'</div> </div> </div>',
-        sectionUnitHTML = '<div class="abp-page abp-page_unit"><div class="abp-gohome"><div class="abp-container abp-container_3"> <a href="#" class="abp-js-gohome link link_back"><span>'+abpApp.text.goback+'</span></a></div></div><section class="abp-section abp-section_unit"><div class="abp-container abp-container_2"><div class="abp-section_unit-inner">'+sectionUnitHeader+sectionUnitContent+'</div></div></section></div>'
+        sectionUnitHTML = '<div class="abp-page abp-page_unit" style="'+backgroundImage+'"><div class="abp-gohome"><div class="abp-container abp-container_3"> <a href="#" class="abp-js-gohome link link_back"><span>'+abpApp.text.goback+'</span></a></div></div><section class="abp-section abp-section_unit"><div class="abp-container abp-container_2"><div class="abp-section_unit-inner">'+sectionUnitHeader+sectionUnitContent+'</div></div></section></div>'
 
     var totalSectionsHTML = sectionHomeHTML+sectionUnitHTML;
 

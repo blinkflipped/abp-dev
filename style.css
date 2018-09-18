@@ -731,7 +731,10 @@ body.view-mode {
 .abp-page {
   display: none;
   padding-top: 64px;
-  background: #223c3f;
+  background-color: #223c3f;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
   color: #ffffff;
   position: relative;
   z-index: 1000; }
