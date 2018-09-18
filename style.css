@@ -208,6 +208,8 @@ body.view-mode {
   padding: 0; }
   .abp-title-5:last-child {
     margin-bottom: 0; }
+  .abp-title-5 + *:empty {
+    margin-top: -4px; }
 
 .abp-intro {
   font-size: 31px;

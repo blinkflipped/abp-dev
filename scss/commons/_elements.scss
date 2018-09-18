@@ -102,6 +102,9 @@
 		&:last-child {
 			margin-bottom: 0;
 		}
+		& + *:empty {
+			margin-top: -4px;
+		}
 	}
 }
 
