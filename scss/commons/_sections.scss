@@ -1,5 +1,6 @@
 
 $page_unit_min_elements : $blink_header_height + 30px + 50px;
+$page_unit_min_height : 500px;
 $page_unit_tab_height : 112px;
 
 .abp-section {
@@ -69,8 +70,9 @@ $page_unit_tab_height : 112px;
         @include gradient-2();
         position: absolute;
         bottom: 0;
+        z-index: 1;
         height: 100%;
-        width: calc((100vw -  #{$layout_max} + 50)/2);
+        width: calc(50vw - #{$layout_max/2 - 100px});
       }
       &::before {
         left: 0;
@@ -92,7 +94,7 @@ $page_unit_tab_height : 112px;
       align-content: flex-start;
       .abp-section-header {
         height: calc(100vh - #{$page_unit_min_elements});
-        min-height: 600px;//TODO PUT CORRECT
+        min-height: $page_unit_min_height;
         width: 370px;
         position: relative;
         z-index: 10;
@@ -155,11 +157,11 @@ $page_unit_tab_height : 112px;
         z-index: 5;
         width: calc(100% - 370px);
         height: calc(100vh - #{$page_unit_min_elements});
-        min-height: 600px;
+        min-height: $page_unit_min_height;
         overflow: hidden;
         .abp-resources-list-wrapper {
           height: calc(100vh - #{$page_unit_min_elements + $page_unit_tab_height});
-          min-height: 600px - $page_unit_tab_height;
+          min-height: $page_unit_min_height - $page_unit_tab_height;
           overflow: hidden;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;

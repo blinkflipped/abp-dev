@@ -295,17 +295,6 @@
 
 .abp-units-slider {
 	position: relative;
-	&::before {
-		content: '';
-		display: block;
-		background: $color_1;
-		height: 7px;
-		width: calc(100% - #{$unit_item_number_space*4});
-		position: absolute;
-		left: $unit_item_number_space*2;
-		right: $unit_item_number_space*2;
-		bottom: #{$space_3 - 7px};
-	}
 	.slick-arrow {
 		border: 0;
 		background: none;
@@ -392,6 +381,30 @@
 	}
 	&-item {
 		margin-right: 8px;
+		position: relative;
+		&::before {
+			content: '';
+			display: block;
+			background: $color_1;
+			height: 7px;
+			width: calc(100% + #{$unit_item_number_space});
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: #{$space_3 - 7px};
+		}
+		&:first-child {
+			&::before {
+				width: calc(100% - #{$unit_item_number_space*2});
+				left: $unit_item_number_space*2;
+			}
+		}
+		&:last-child {
+			&::before {
+				width: $unit_item_number_space*2;
+				left: 0;
+			}
+		}
 	}
 }
 
