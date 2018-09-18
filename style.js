@@ -471,6 +471,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     $('body').imagesLoaded({background: 'div, a, span, button'}, function(){
       $('html').addClass('htmlReady');
       $('body').addClass(userBodyClass);
+      $('html, body').animate({ scrollTop: 0 }, 1);
       if (currentHash !== '' && currentHash !== hash) {
         abpApp.loadByHash(currentHash,data);
       } else {
@@ -494,6 +495,7 @@ abpApp.loadHomepage = function(data,updateHash) {
       abpApp.removeUnusedClass(bodyClass);
       if (updateHash) window.location.hash = hash;
     }
+    $('html, body').animate({ scrollTop: 0 }, 1);
 
   }
 
@@ -615,7 +617,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
     abpApp.objectFitSupport();
     abpApp.removeUnusedClass(bodyClass);
     $('body').addClass(bodyClass);
-    $('html, body').animate({ scrollTop: 0 }, 0);
+    $('html, body').animate({ scrollTop: 0 }, 1);
 
     if (updateHash) window.location.hash = hashWithID;
   });
