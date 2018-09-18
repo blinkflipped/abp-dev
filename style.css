@@ -428,7 +428,8 @@ body.view-mode {
     overflow: hidden;
     white-space: nowrap;
     width: 45px;
-    height: 45px; }
+    height: 45px;
+    color: #223c3f; }
     .abp-units-slider .slick-arrow::before, .abp-units-slider .slick-arrow::after {
       /* use !important to prevent issues with browser extensions that change fonts */
       font-family: "abpicons" !important;

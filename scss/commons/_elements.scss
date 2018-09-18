@@ -314,6 +314,7 @@
 		white-space: nowrap;
 		width: 45px;
 		height: 45px;
+		color: $color_1;
 		&::before,
 		&::after {
 			@include icon();

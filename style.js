@@ -59,7 +59,7 @@
     * @param  {Object} data Información del curso.
     */
     onCourseDataLoaded: function(data) {
-
+      console.log(data);
       abpApp.config.bookcover = data.units[0].subunits[2]; //TODO Preguntar Nelly una forma más fiable ¿Quizás por nombre "Portada"? ¿Por etiqueta?
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
