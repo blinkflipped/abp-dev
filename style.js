@@ -614,7 +614,9 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
     // Object Fit support
     abpApp.objectFitSupport();
     abpApp.removeUnusedClass(bodyClass);
-    $('body').addClass(bodyClass).scrollTop(0);
+    $('body').addClass(bodyClass);
+    $('html, body').animate({ scrollTop: 0 }, 0);
+
     if (updateHash) window.location.hash = hashWithID;
   });
 
