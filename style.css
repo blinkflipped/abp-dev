@@ -732,18 +732,31 @@ body.view-mode {
   display: none;
   padding-top: 64px;
   background-color: #223c3f;
-  background-size: contain;
+  background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   color: #ffffff;
   position: relative;
   z-index: 1000; }
+  .abp-page::before {
+    content: '';
+    background: rgba(34, 60, 63, 0.6);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%; }
   .abp-body-home .abp-page_home {
     display: block; }
   .abp-body-unit .abp-page_unit {
     display: block; }
 
 .abp-section {
+  position: relative;
+  z-index: 10;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 20px; }
   .abp-section * {

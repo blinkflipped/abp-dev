@@ -4,6 +4,8 @@ $page_unit_min_height : 500px;
 $page_unit_tab_height : 112px;
 
 .abp-section {
+  position: relative;
+  z-index: 10;
   * {
     box-sizing: border-box;
   }
