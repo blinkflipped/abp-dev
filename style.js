@@ -441,13 +441,23 @@ abpApp.loadHomepage = function(data,updateHash) {
 
     $unitsWrapper.addClass('slider--toleft').slick(abpApp.config.carouselOpt);
 
+
+    var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     $unitsWrapper.on('afterChange', function(event, slick, currentSlide) {
       console.log(slick, currentSlide);
+
       if (currentSlide > 0) {
-        $unitsWrapper.removeClass('slider--toleft');
+        $unitsWrapperContent.removeClass('slider--toleft');
       } else {
-        $unitsWrapper.addClass('slider--toleft');
+        $unitsWrapperContent.addClass('slider--toleft');
       }
+
+      if (slick.currentLeft >= 0) {
+        $unitsWrapperContent.addClass('slider--toright');
+      } else {
+        $unitsWrapperContent.removeClass('slider--toright');
+      }
+
     });
 
 

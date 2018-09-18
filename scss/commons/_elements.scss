@@ -393,13 +393,13 @@
 			right: 0;
 			bottom: #{$space_3 - 7px};
 		}
-		&:first-child {
+		.slick-slide:first-child & {
 			&::before {
 				width: calc(100% - #{$unit_item_number_space*2});
 				left: $unit_item_number_space*2;
 			}
 		}
-		&:last-child {
+		.slick-slide:last-child &{
 			&::before {
 				width: $unit_item_number_space*2;
 				left: 0;

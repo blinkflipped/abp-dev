@@ -72,7 +72,8 @@ $page_unit_tab_height : 112px;
         bottom: 0;
         z-index: 1;
         height: 100%;
-        width: calc(50vw - #{$layout_max/2 - 100px});
+        width: calc(50vw - #{$layout_max/2 - 20px});
+        transition: width .3s linear;
       }
       &::before {
         left: 0;
@@ -80,6 +81,16 @@ $page_unit_tab_height : 112px;
       }
       &::after {
         right: 0;
+      }
+      &.slider--toleft {
+        &::before {
+          width: calc(50vw - #{$layout_max/2 - 100px});
+        }
+      }
+      &.slider--toright {
+        &::after {
+          width: calc(50vw - #{$layout_max/2 - 100px});
+        }
       }
       .abp-unit {
         margin-bottom: $space_3;
