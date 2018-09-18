@@ -408,9 +408,8 @@ abpApp.loadHomepage = function(data,updateHash) {
 
       var unitTitle = unit.title,
           unitDescription = unit.description,
-          unitNumberBase = unit.number,
-          unitNumberTemplate = unitNumberBase - 1,
-          unitNumber = ('0' + unitNumberTemplate).slice(-2),
+          unitNumberBase = unit.number - 1,
+          unitNumber = ('0' + unitNumberBase).slice(-2),
           unitImage = unit.image;
       var unitListItem = document.createElement('div');
       unitListItem.className = 'abp-units-slider-item';
