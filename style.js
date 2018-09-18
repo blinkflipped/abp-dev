@@ -17,8 +17,6 @@
     init: function() {
       this.parent.init.call(this);
 
-      console.log("init");
-
       this.activityInitialized = true;
 
       this.parent.init.call(this);
@@ -61,8 +59,6 @@
     * @param  {Object} data Información del curso.
     */
     onCourseDataLoaded: function(data) {
-
-      console.log("onCourseDataLoaded");
 
       abpApp.config.bookcover = data.units[0].subunits[2]; //TODO Preguntar Nelly una forma más fiable ¿Quizás por nombre "Portada"? ¿Por etiqueta?
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
@@ -353,8 +349,7 @@ abpApp.gohome = function() {
 
 abpApp.loadHomepage = function(data,updateHash) {
 
-  console.log("Load Homepage");
-  console.log(data);
+  abpApp.console('Loading Homepage');
 
   var currentIndex = 0;
   var currentPage = abpApp.config.tree[currentIndex].id,
@@ -449,8 +444,6 @@ abpApp.loadHomepage = function(data,updateHash) {
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     $unitsWrapper.on('afterChange', function(event, slick, currentSlide) {
-      console.log(slick, currentSlide);
-
       if (currentSlide > 0) {
         $unitsWrapperContent.removeClass('slider--toleft');
       } else {
