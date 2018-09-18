@@ -660,8 +660,6 @@ $(document).ready(function() {
 
   });
 
-  7
-
   // Go Home
   $('body').on('click', '.abp-js-gohome', function(e) {
 
