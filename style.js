@@ -68,8 +68,11 @@
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
       if (isBookCover) {
+        $('html').addClass('abp-isBookCover');
         var updateHash = false;
         abpApp.loadHomepage(data, updateHash);
+      } else {
+        $('html').removeClass('abp-isBookCover');
       }
 
     },

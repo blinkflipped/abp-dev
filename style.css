@@ -117,7 +117,7 @@ body.view-mode {
   body.view-mode.canvas_events_loaded::before, .htmlReady body.view-mode::before {
     z-index: 0;
     pointer-events: none; }
-  .htmlReady body.view-mode.abp-body-home::before, .htmlReady body.view-mode.abp-body-unit::before {
+  .abp-isBookCover body.view-mode::before, .htmlReady body.view-mode.abp-body-home::before, .htmlReady body.view-mode.abp-body-unit::before {
     z-index: 110; }
 
 .abp-empty {
@@ -799,7 +799,7 @@ body.view-mode {
       bottom: 0;
       z-index: 1;
       height: 100%;
-      width: calc(50vw - 490px);
+      width: calc(50vw - 410px);
       transition: width .3s linear; }
     .abp-section_home .abp-section-content::before {
       left: 0;
@@ -807,9 +807,9 @@ body.view-mode {
     .abp-section_home .abp-section-content::after {
       right: 0; }
     .abp-section_home .abp-section-content.slider--toleft::before {
-      width: calc(50vw - 410px); }
+      width: calc(50vw - 490px); }
     .abp-section_home .abp-section-content.slider--toright::after {
-      width: calc(50vw - 410px); }
+      width: calc(50vw - 490px); }
     .abp-section_home .abp-section-content .abp-unit {
       margin-bottom: 50px; }
   .abp-section_unit-inner {
