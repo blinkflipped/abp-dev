@@ -64,8 +64,8 @@
 
       console.log("onCourseDataLoaded");
 
-      abpApp.config.bookcover = data.units[0].subunits[0].id;
-      var isBookCover = idclase.toString() === abpApp.config.bookcover;
+      abpApp.config.bookcover = data.units[0].subunits[2]; //TODO Preguntar Nelly una forma más fiable ¿Quizás por nombre "Portada"? ¿Por etiqueta?
+      var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
       if (isBookCover) {
         var updateHash = false;
