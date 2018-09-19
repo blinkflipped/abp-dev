@@ -6,8 +6,9 @@
 	font-weight: 300;
 	text-align: center;
 	padding: 40px 0;
-	margin: 0;
+	margin: 0 auto;
 	opacity: .25;
+	max-width: 680px;
 }
 
 // Buttons and links
@@ -52,9 +53,9 @@
 
 .abp-title {
 	&-1 {
-		font-size: 70px;
+		font-size: 60px;
 		line-height: (84em/70);
-		font-weight: 600;
+		font-weight: 300;
 		margin: 0 0 10px 0;
 		padding: 0;
 		&:last-child {
@@ -72,7 +73,7 @@
 		}
 	}
 	&-3 {
-		font-size: 35px;
+		font-size: 28px;
 		line-height: (42em/35);
 		font-weight: 600;
 		margin: 0 0 10px 0 ;
@@ -82,10 +83,9 @@
 		}
 	}
 	&-4 {
-		font-size: 30px;
+		font-size: 25px;
 		line-height: 1em;
 		font-weight: 300;
-		text-transform: uppercase;
 		margin: 0 0 10px 0;
 		padding: 0;
 		&:last-child {
@@ -94,7 +94,7 @@
 	}
 
 	&-5 {
-		font-size: 20px;
+		font-size: 18px;
 		line-height: (24em/20);
 		font-weight: 300;
 		margin: 0 0 4px 0;
@@ -255,19 +255,35 @@
 		position: relative;
 		flex-grow: 2;
 		background: $color_6;
+		&::before {
+			content: '';
+			background : $negative_color;
+			opacity : .6;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 5;
+			width: 100%;
+			height: 100%;
+		}
 		&-description {
 			font-size: 20px;
 			line-height: (24em/20);
 			font-weight: 600;
 			color: $color_1;
 			padding-right: $space_2;
+			position: relative;
+			z-index: 10;
+			padding-top: 40px - 16px;
 		}
 		&-background {
 			position: absolute;
 			top: 0;
 			left: 0;
+			z-index: 1;
 			width: 100%;
 			height: 100%;
+
 			@include img-fit();
 		}
 	}
@@ -421,8 +437,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
-	font-size: 27px;
-	line-height: (32em/27);
+	font-size: 22px;
+	line-height: (24em/22);
 	text-transform: uppercase;
 	font-weight: 600;
 	.abp-tab {
@@ -431,7 +447,7 @@
 		text-align: center;
 		a, span {
 			display: block;
-			padding: 40px;
+			padding: 30px 40px;
 			white-space: nowrap;
 			max-width: 100%;
 			overflow: hidden;
@@ -469,35 +485,36 @@
 	margin-bottom: -$space_1;
 	&-icon {
 		display: block;
-		width: 45px;
-		height: 45px;
+		width: 30px;
+		height: 30px;
 		background: url(img/resources-icons.png) 0 0 no-repeat;
+		background-size: 118px 60px;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%,-50%);
 		&_musica {
-			background-position: -67px -45px;
+			background-position: -44px -30px;
 		}
 		&_video {
-			background-position: -133px 0;
+			background-position: -88px 0;
 		}
 		&_img {
 			background-position: 0 0;
 		}
 		&_url {
-			background-position: 0 -45px;
+			background-position: 0 -30px;
 		}
 		&_archivo {
-			background-position: -67px 0;
+			background-position: -44px 0;
 		}
 		&_libro,
 		&_actividad {
-			background-position: -133px -45px;
+			background-position: -88px -30px;
 		}
 	}
 	&-item {
-		margin: 0 0 $space_1 0;
+		margin: 0 0 15px 0;
 		&-inner {
 			display: flex;
 			align-items: center;
@@ -514,14 +531,14 @@
 		}
 		&-image {
 			position: relative;
-			width: 88px;
-			height: 88px;
+			width: 54px;
+			height: 54px;
 			border-radius: 100px;
 			&-inner {
 				position: relative;
 				z-index: 10;
-				width: 88px;
-				height: 88px;
+				width: 54px;
+				height: 54px;
 				border-radius: 100px;
 				overflow: hidden;
 				@include img-fit();
@@ -536,11 +553,11 @@
 					width: 200%;
 				}
 				&::before {
-					height: 12px;
+					height: 10px;
 					left: -75%;
 				}
 				&::after {
-					height: 6px;
+					height: 5px;
 				}
 			}
 			&::before {
@@ -604,32 +621,51 @@
 			width: 50%;
 			padding-left: 20px;
 			padding-right: 20px;
+			margin-bottom: $space_1;
 			&-image {
-				width: 72px;
-				height: 72px;
+				//width: 72px;
+				//height: 72px;
+				width: 58px;
+				height: 58px;
+				position: relative;
+				&::after,
+				&::before {
+					position:absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+				}
 				&::before {
 					background: transparent;
-					border: 6px solid $color_1;
-					margin-left: -6px;
-					margin-top: -6px;
-					width: 72px;
-					height: 72px;
-					box-sizing: content-box;
+					border: 4px solid $color_1;
+					//margin-left: -6px;
+					//margin-top: -6px;
+					width: 68px;
+					height: 68px;
+					z-index: 2;
+					//box-sizing: content-box;
 				}
 				&::after {
 					@include gradient-a();
-					width: 112px;
-					height: 112px;
-					top: -20px;
-					left: -20px;
+					//width: 90px;
+					width: 72px;
+					//height: 90px;
+					height: 72px;
+					//top: -9px;
+					//left: -9px;
+					//top: -7px;
+					//left: -16px;
 					opacity: 1;
 					z-index: 1;
+
 				}
 				&-inner {
 					@include gradient-a();
 					z-index: 10;
-					width: 72px;
-					height: 72px;
+					//width: 72px;
+					//height: 72px;
+					width: 58px;
+					height: 58px;
 					&::before,
 					&::after {
 						content: none;
@@ -638,11 +674,13 @@
 			}
 			&-text {
 				z-index: 2;
-				min-height: 112px;
+				//min-height: 90px;
+				min-height: 72px;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
 				justify-content: center;
+				margin-left: -32px;
 				&::before {
 					border-radius: 0;
 				}

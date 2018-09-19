@@ -21,6 +21,9 @@
   color: $negative_color;
   position: relative;
   z-index: 1000;
+  &_home {
+    padding-top: $blink_header_height_base;
+  }
   .abp-gohome {
     position: relative;
     z-index: 10;

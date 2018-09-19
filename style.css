@@ -126,8 +126,9 @@ body.view-mode {
   font-weight: 300;
   text-align: center;
   padding: 40px 0;
-  margin: 0;
-  opacity: .25; }
+  margin: 0 auto;
+  opacity: .25;
+  max-width: 680px; }
 
 .link {
   font-family: "Source Sans Pro", sans-serif;
@@ -168,9 +169,9 @@ body.view-mode {
   padding-bottom: 10px; }
 
 .abp-title-1 {
-  font-size: 70px;
+  font-size: 60px;
   line-height: 1.2em;
-  font-weight: 600;
+  font-weight: 300;
   margin: 0 0 10px 0;
   padding: 0; }
   .abp-title-1:last-child {
@@ -184,7 +185,7 @@ body.view-mode {
   .abp-title-2:last-child {
     margin-bottom: 0; }
 .abp-title-3 {
-  font-size: 35px;
+  font-size: 28px;
   line-height: 1.2em;
   font-weight: 600;
   margin: 0 0 10px 0;
@@ -192,16 +193,15 @@ body.view-mode {
   .abp-title-3:last-child {
     margin-bottom: 0; }
 .abp-title-4 {
-  font-size: 30px;
+  font-size: 25px;
   line-height: 1em;
   font-weight: 300;
-  text-transform: uppercase;
   margin: 0 0 10px 0;
   padding: 0; }
   .abp-title-4:last-child {
     margin-bottom: 0; }
 .abp-title-5 {
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.2em;
   font-weight: 300;
   margin: 0 0 4px 0;
@@ -354,16 +354,30 @@ body.view-mode {
     position: relative;
     flex-grow: 2;
     background: #f4e9ce; }
+    .abp-unit-content::before {
+      content: '';
+      background: #ffffff;
+      opacity: .6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 5;
+      width: 100%;
+      height: 100%; }
     .abp-unit-content-description {
       font-size: 20px;
       line-height: 1.2em;
       font-weight: 600;
       color: #223c3f;
-      padding-right: 30px; }
+      padding-right: 30px;
+      position: relative;
+      z-index: 10;
+      padding-top: 24px; }
     .abp-unit-content-background {
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1;
       width: 100%;
       height: 100%; }
       .abp-unit-content-background img {
@@ -508,8 +522,8 @@ body.view-mode {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-size: 27px;
-  line-height: 1.1851851852em;
+  font-size: 22px;
+  line-height: 1.0909090909em;
   text-transform: uppercase;
   font-weight: 600; }
   .abp-tabs .abp-tab {
@@ -518,7 +532,7 @@ body.view-mode {
     text-align: center; }
     .abp-tabs .abp-tab a, .abp-tabs .abp-tab span {
       display: block;
-      padding: 40px;
+      padding: 30px 40px;
       white-space: nowrap;
       max-width: 100%;
       overflow: hidden;
@@ -542,27 +556,28 @@ body.view-mode {
   margin-bottom: -20px; }
   .abp-resources-list-icon {
     display: block;
-    width: 45px;
-    height: 45px;
+    width: 30px;
+    height: 30px;
     background: url(img/resources-icons.png) 0 0 no-repeat;
+    background-size: 118px 60px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); }
     .abp-resources-list-icon_musica {
-      background-position: -67px -45px; }
+      background-position: -44px -30px; }
     .abp-resources-list-icon_video {
-      background-position: -133px 0; }
+      background-position: -88px 0; }
     .abp-resources-list-icon_img {
       background-position: 0 0; }
     .abp-resources-list-icon_url {
-      background-position: 0 -45px; }
+      background-position: 0 -30px; }
     .abp-resources-list-icon_archivo {
-      background-position: -67px 0; }
+      background-position: -44px 0; }
     .abp-resources-list-icon_libro, .abp-resources-list-icon_actividad {
-      background-position: -133px -45px; }
+      background-position: -88px -30px; }
   .abp-resources-list-item {
-    margin: 0 0 20px 0; }
+    margin: 0 0 15px 0; }
     .abp-resources-list-item-inner {
       display: flex;
       align-items: center;
@@ -571,14 +586,14 @@ body.view-mode {
         background: #e6b7b0; }
     .abp-resources-list-item-image {
       position: relative;
-      width: 88px;
-      height: 88px;
+      width: 54px;
+      height: 54px;
       border-radius: 100px; }
       .abp-resources-list-item-image-inner {
         position: relative;
         z-index: 10;
-        width: 88px;
-        height: 88px;
+        width: 54px;
+        height: 54px;
         border-radius: 100px;
         overflow: hidden; }
         .abp-resources-list-item-image-inner img {
@@ -602,10 +617,10 @@ body.view-mode {
           background: rgba(255, 255, 255, 0.2);
           width: 200%; }
         .abp-resources-list-item-image-inner::before {
-          height: 12px;
+          height: 10px;
           left: -75%; }
         .abp-resources-list-item-image-inner::after {
-          height: 6px; }
+          height: 5px; }
       .abp-resources-list-item-image::before {
         content: '';
         position: absolute;
@@ -675,18 +690,23 @@ body.view-mode {
     .abp-resources-list_2 .abp-resources-list-item {
       width: 50%;
       padding-left: 20px;
-      padding-right: 20px; }
+      padding-right: 20px;
+      margin-bottom: 20px; }
       .abp-resources-list_2 .abp-resources-list-item-image {
-        width: 72px;
-        height: 72px; }
+        width: 58px;
+        height: 58px;
+        position: relative; }
+        .abp-resources-list_2 .abp-resources-list-item-image::after, .abp-resources-list_2 .abp-resources-list-item-image::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
         .abp-resources-list_2 .abp-resources-list-item-image::before {
           background: transparent;
-          border: 6px solid #223c3f;
-          margin-left: -6px;
-          margin-top: -6px;
-          width: 72px;
-          height: 72px;
-          box-sizing: content-box; }
+          border: 4px solid #223c3f;
+          width: 68px;
+          height: 68px;
+          z-index: 2; }
         .abp-resources-list_2 .abp-resources-list-item-image::after {
           background: #d43923;
           background: -moz-linear-gradient(0% 50% 0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
@@ -694,10 +714,8 @@ body.view-mode {
           background: -o-linear-gradient(0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
           background: -ms-linear-gradient(0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
           background: linear-gradient(0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
-          width: 112px;
-          height: 112px;
-          top: -20px;
-          left: -20px;
+          width: 72px;
+          height: 72px;
           opacity: 1;
           z-index: 1; }
         .abp-resources-list_2 .abp-resources-list-item-image-inner {
@@ -708,17 +726,18 @@ body.view-mode {
           background: -ms-linear-gradient(0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
           background: linear-gradient(0deg, #e2764e 0%, #e2764e 50%, #d43923 50%, #d43923 99.84%);
           z-index: 10;
-          width: 72px;
-          height: 72px; }
+          width: 58px;
+          height: 58px; }
           .abp-resources-list_2 .abp-resources-list-item-image-inner::before, .abp-resources-list_2 .abp-resources-list-item-image-inner::after {
             content: none; }
       .abp-resources-list_2 .abp-resources-list-item-text {
         z-index: 2;
-        min-height: 112px;
+        min-height: 72px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: center; }
+        justify-content: center;
+        margin-left: -32px; }
         .abp-resources-list_2 .abp-resources-list-item-text::before {
           border-radius: 0; }
 
@@ -741,6 +760,8 @@ body.view-mode {
   color: #ffffff;
   position: relative;
   z-index: 1000; }
+  .abp-page_home {
+    padding-top: 44px; }
   .abp-page .abp-gohome {
     position: relative;
     z-index: 10; }
@@ -786,12 +807,13 @@ body.view-mode {
     .abp-section p:last-child {
       margin-bottom: 0; }
   .abp-section_home .abp-section-header {
-    min-height: 280px;
+    min-height: 210px;
+    height: 30vh;
     background: transparent;
     color: #ffffff;
     position: relative; }
     .abp-section_home .abp-section-header-inner {
-      min-height: 280px;
+      min-height: 210px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -804,7 +826,12 @@ body.view-mode {
   .abp-section_home .abp-section-content {
     padding: 50px 0 50px;
     background: rgba(255, 255, 255, 0.5);
-    position: relative; }
+    position: relative;
+    height: calc(70vh - 45px);
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
     .abp-section_home .abp-section-content::before, .abp-section_home .abp-section-content::after {
       content: '';
       background: transparent;
@@ -840,7 +867,7 @@ body.view-mode {
       .abp-section_unit-inner .abp-section-header {
         height: calc(100vh - 144px);
         min-height: 500px;
-        width: 370px;
+        width: 290px;
         position: relative;
         z-index: 10;
         background: #f4e9ce;
@@ -861,12 +888,12 @@ body.view-mode {
           position: relative;
           margin: 0;
           width: 100%;
-          min-height: 234px; }
+          min-height: 150px; }
           .abp-section_unit-inner .abp-section-header-top::before {
             content: '';
             display: block;
             position: absolute;
-            top: 40px;
+            top: 28px;
             right: -20px;
             z-index: 10;
             width: 0;
@@ -879,6 +906,16 @@ body.view-mode {
           position: relative;
           flex-grow: 2;
           padding: 20px 40px; }
+          .abp-section_unit-inner .abp-section-header-bottom::before {
+            content: '';
+            background: #ffffff;
+            opacity: .6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            width: 100%;
+            height: 100%; }
           .abp-section_unit-inner .abp-section-header-bottom-description {
             position: relative;
             z-index: 10;
@@ -893,6 +930,7 @@ body.view-mode {
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
             width: 100%;
             height: 100%; }
             .abp-section_unit-inner .abp-section-header-bottom-background img {
@@ -910,13 +948,13 @@ body.view-mode {
       .abp-section_unit-inner .abp-section-content {
         position: relative;
         z-index: 5;
-        width: calc(100% - 370px);
+        width: calc(100% - 290px);
         height: calc(100vh - 144px);
         min-height: 500px;
         overflow: hidden; }
         .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper {
-          height: calc(100vh - 256px);
-          min-height: 388px;
+          height: calc(100vh - 230px);
+          min-height: 414px;
           overflow: hidden;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch; }

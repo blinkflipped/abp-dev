@@ -60,7 +60,7 @@
     */
     onCourseDataLoaded: function(data) {
       console.log(data);
-      abpApp.config.bookcover = data.units[0].subunits[2]; //TODO Preguntar Nelly una forma más fiable ¿Quizás por nombre "Portada"? ¿Por etiqueta?
+      abpApp.config.bookcover = abpApp.getCover();
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
       if (isBookCover) {
@@ -167,6 +167,7 @@ abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
 abpApp.config.buttonGoHome = '.abp-js-gohome';
 abpApp.config.auxTab = 'pestaña';
+abpApp.config.coverName = 'Portada';
 abpApp.config.bookcover = '';
 
 
@@ -208,7 +209,7 @@ abpApp.text = {
 abpApp.objectFitSupport = function() {
 
   if ( ! Modernizr.objectfit ) {
-    $('.multimedia-container').each(function () {
+    $('.abp-unit-content-background').each(function () {
       var $container = $(this),
           imgUrl = $container.find('img').prop('src');
       if (imgUrl && !$container.hasClass('compat-object-fit')) {
@@ -240,6 +241,27 @@ abpApp.removeUnusedClass = function(currentClass) {
     $body.removeClass(v);
   });
 
+}
+
+
+// Get General background
+abpApp.getCover = function() {
+  var cover =  abpApp.bookData.units[0].subunits[0];
+  $.each(abpApp.bookData.units, function(i, unit) {
+    $.each(unit.subunits, function(ind, subunit) {
+      if (subunit.title === abpApp.config.coverName) {
+        cover = abpApp.bookData.units[i].subunits[ind];
+
+      }
+    });
+  });
+  return cover;
+}
+
+// Go Homepage
+
+abpApp.gohome = function() {
+  window.location.hash = abpApp.config.tree[0].hash;
 }
 
 //----------------------------------//
@@ -332,12 +354,6 @@ abpApp.onChangeHash = function() {
 
 window.addEventListener("hashchange", abpApp.onChangeHash, false);
 
-
-// Go Homepage
-
-abpApp.gohome = function() {
-  window.location.hash = abpApp.config.tree[0].hash;
-}
 
 //----------------------------------//
 //                                  //

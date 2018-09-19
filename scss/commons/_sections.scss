@@ -1,8 +1,9 @@
 
+$page_unit_header_width : 290px;
 $page_unit_padding_bottom : 50px;
 $page_unit_min_elements : $blink_header_height + 30px + $page_unit_padding_bottom;
 $page_unit_min_height : 500px;
-$page_unit_tab_height : 112px;
+$page_unit_tab_height : 86px;
 
 .abp-section {
   position: relative;
@@ -43,6 +44,7 @@ $page_unit_tab_height : 112px;
   &_home {
     .abp-section-header {
       min-height: $section_header_home_minheight;
+      height: 30vh;
       background: transparent;
       color: $negative_color;
       position: relative;
@@ -66,7 +68,11 @@ $page_unit_tab_height : 112px;
       padding: $space_3 0 $space_3;
       background: fade-out($negative_color, .5);
       position: relative;
-
+      height: calc(70vh - #{$blink_header_height_base + 1px});
+      min-height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       &::before,
       &::after {
         content: '';
@@ -110,7 +116,7 @@ $page_unit_tab_height : 112px;
       .abp-section-header {
         height: calc(100vh - #{$page_unit_min_elements});
         min-height: $page_unit_min_height;
-        width: 370px;
+        width: #{$page_unit_header_width};
         position: relative;
         z-index: 10;
         background: $color_6;
@@ -125,12 +131,12 @@ $page_unit_tab_height : 112px;
           position: relative;
           margin: 0;
           width: 100%;
-          min-height: 234px;
+          min-height: 150px;
           &::before {
             content: '';
             display: block;
             position: absolute;
-            top: 40px;
+            top: 28px;
             right: -20px;
             z-index: 10;
             width: 0;
@@ -145,6 +151,17 @@ $page_unit_tab_height : 112px;
           position: relative;
           flex-grow: 2;
           padding: 20px 40px;
+          &::before {
+            content: '';
+            background : $negative_color;
+            opacity : .6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 5;
+            width: 100%;
+            height: 100%;
+          }
           &-description {
             position: relative;
             z-index: 10;
@@ -161,6 +178,7 @@ $page_unit_tab_height : 112px;
             position: absolute;
             top: 0;
             left: 0;
+            z-index: 1;
             width: 100%;
             height: 100%;
             @include img-fit();
@@ -170,7 +188,7 @@ $page_unit_tab_height : 112px;
       .abp-section-content {
         position: relative;
         z-index: 5;
-        width: calc(100% - 370px);
+        width: calc(100% - #{$page_unit_header_width});
         height: calc(100vh - #{$page_unit_min_elements});
         min-height: $page_unit_min_height;
         overflow: hidden;
