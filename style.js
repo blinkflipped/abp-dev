@@ -1,38 +1,36 @@
 (function (blink) {
   'use strict';
 
-  var AbpDevStyle = function() {
-    blink.theme.styles.basic.apply(this, arguments);
+  var AbpDevStyle = function () {
+    blink.theme.styles.aprendizaje_basado_en_proyectos.apply(this, arguments);
   }
 
   AbpDevStyle.prototype = {
-    parent: blink.theme.styles.basic.prototype,
+    parent: blink.theme.styles.aprendizaje_basado_en_proyectos.prototype,
     bodyClassName: 'content_type_clase_abp_dev',
     ckEditorStyles: {
       name: 'abp-dev',
-      styles: [
-        { name: 'Énfasis', element: 'span', attributes: { 'class': 'bck-enfasis'} },
-      ]
+      styles: []
     },
     init: function() {
-      this.parent.init.call(this);
+      this.parent.init.call(this.parent, this);
 
       this.activityInitialized = true;
-
-      this.parent.init.call(this);
-
       this.fetchData();
 
-      this.preventTouchCarousel();
+      //this.preventTouchCarousel();
     },
-    preventTouchCarousel: function () {
+    removeFinalSlide: function () {
+      this.parent.removeFinalSlide.call(this.parent, this, true);
+    },
+    /*preventTouchCarousel: function () {
       $('#swipeview-slider')
         .on('touchstart', function (event) {
           event.stopPropagation();
           event.stopImmediatePropagation();
           return;
         });
-    },
+    },*/
 
    /**
      * Cierra el iframe de una actividad flipped.
@@ -87,13 +85,13 @@
   };
 
 
-  AbpDevStyle.prototype = _.extend({}, new blink.theme.styles.basic(), AbpDevStyle.prototype);
+  AbpDevStyle.prototype = _.extend({}, new blink.theme.styles.aprendizaje_basado_en_proyectos(), AbpDevStyle.prototype);
 
-  blink.theme.styles['abp_dev'] = AbpDevStyle;
+  blink.theme.styles['abp-dev'] = AbpDevStyle;
 
-  blink.events.on('digitalbook:bpdfloaded', function() {
+  blink.events.on('digitalbook:bpdfloaded', function () {
     // Ejemplo carga de datos del curso desde un libro digital.
-    blink.getCourse(idcurso).done(function(data) {
+    blink.getCourse(idcurso).done(function (data) {
       var style = new AbpDevStyle;
       style.onCourseDataLoaded(data);
     });
