@@ -58,7 +58,7 @@
     */
     onCourseDataLoaded: function(data) {
       console.log(data);
-      abpApp.config.bookcover = abpApp.getCover();
+      abpApp.config.bookcover = abpApp.getCover(data);
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
       if (isBookCover) {
@@ -243,13 +243,12 @@ abpApp.removeUnusedClass = function(currentClass) {
 
 
 // Get General background
-abpApp.getCover = function() {
-  var cover =  abpApp.bookData.units[0].subunits[0];
-  $.each(abpApp.bookData.units, function(i, unit) {
+abpApp.getCover = function(data) {
+  var cover =  data.units[0].subunits[0];
+  $.each(data.units, function(i, unit) {
     $.each(unit.subunits, function(ind, subunit) {
       if (subunit.title === abpApp.config.coverName) {
-        cover = abpApp.bookData.units[i].subunits[ind];
-
+        cover = data.units[i].subunits[ind];
       }
     });
   });
