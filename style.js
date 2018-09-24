@@ -428,6 +428,7 @@ abpApp.loadHomepage = function(data,updateHash) {
       }
       $.each(unit, function(i, subunit){
         var subunitIsAux = subunit.tag === abpApp.config.auxTab;
+        console.log(subunit);
         console.log(subunit.tag);
         console.log(abpApp.config.auxTab);
         console.log(subunitIsAux);
