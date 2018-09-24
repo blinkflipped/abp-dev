@@ -414,7 +414,6 @@ abpApp.loadHomepage = function(data,updateHash) {
     var unitList = document.createDocumentFragment(),
         tabList = document.createDocumentFragment();
     $.each(data.units, function(i, unit){
-      console.log(i, abpApp.config.auxUnit);
       if (i !== abpApp.config.auxUnit) {
         var unitTitle = unit.title,
             unitDescription = unit.description,
@@ -429,18 +428,14 @@ abpApp.loadHomepage = function(data,updateHash) {
       var subunits = unit.subunits;
       $.each(subunits, function(i, subunit){
         var subunitIsAux = subunit.tag === abpApp.config.auxTab;
-        console.log(subunit);
-        console.log(subunit.tag);
-        console.log(abpApp.config.auxTab);
-        console.log(subunitIsAux);
         if (subunitIsAux) {
           var subunitTitle = subunit.title,
+              subunitOnClick = subunit.onclickTitle,
               subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
-              // TODO ADD LINK AAAA
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
 
-            tabListItem.innerHTML = '<a href="#"><span>'+subunitTitle+'</span></a>';
+            tabListItem.innerHTML = '<a href="javascript:void()" onclick="'.subunitOnClick.'"><span>'+subunitTitle+'</span></a>';
             tabList.appendChild(tabListItem);
           }
 
