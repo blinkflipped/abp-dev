@@ -435,7 +435,7 @@ abpApp.loadHomepage = function(data,updateHash) {
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
 
-            tabListItem.innerHTML = '<a href="javascript:void()" onclick="'.subunitOnClick.'"><span>'+subunitTitle+'</span></a>';
+            tabListItem.innerHTML = '<a href="javascript:void()" onclick="'+subunitOnClick+'"><span>'+subunitTitle+'</span></a>';
             tabList.appendChild(tabListItem);
           }
 
