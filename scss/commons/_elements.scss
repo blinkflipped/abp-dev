@@ -644,7 +644,7 @@
 					width: 54px;
 					height: 54px;
 					z-index: 2;
-					//box-sizing: content-box;
+					box-sizing: content-box;
 				}
 				&::after {
 					@include gradient-a();
