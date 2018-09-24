@@ -781,6 +781,9 @@ body.view-mode {
   .abp-body-unit .abp-page_unit {
     display: block; }
 
+#book-index.active {
+  z-index: 1100; }
+
 .abp-section {
   position: relative;
   z-index: 10;

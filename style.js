@@ -676,4 +676,10 @@ $(document).ready(function() {
 
   });
 
+
+  // Fix btn-book-index
+  $('#btn-book-index').click(function(e) {
+    e.preventDefault();
+  });
+
 });
