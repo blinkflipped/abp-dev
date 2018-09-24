@@ -35,22 +35,22 @@
    /**
      * Cierra el iframe de una actividad flipped.
      */
-    closeIframe: function() {
+    /*closeIframe: function() {
       if (parent) {
         parent.cerrarIframe();
         //parent.$('#abp-modal-close-chapter').modal('hide');
         //parent.$('body').removeClass('abp-iframe-visible');
       }
-    },
+    },*/
 
     /**
      * Carga de datos del libro en un actividad
      */
-    fetchData: function() {
+    /*fetchData: function() {
       blink.getCourse(idcurso).done((function(data) {
         this.onCourseDataLoaded(data);
       }).bind(this));
-    },
+    },*/
 
     /**
     * Realiza operaciones al cargar los datos del curso.
@@ -75,13 +75,13 @@
      * Realiza operaciones al cargar los datos de la actividad.
      * @param  {Object} data Información de la actividad.
      */
-    onActivityDataLoaded: function(data) {
+    /*onActivityDataLoaded: function(data) {
       console.log("onActivityDataLoaded");
 
     },
     onCourseLoaded: function(data) {
       console.log(data);
-    }
+    }*/
   };
 
 
