@@ -167,6 +167,7 @@ abpApp.config.buttonGoHome = '.abp-js-gohome';
 abpApp.config.auxTab = 'pestaña';
 abpApp.config.coverName = 'Portada';
 abpApp.config.bookcover = '';
+abpApp.config.auxUnit = 0;
 
 
 abpApp.config.unitsIDs = [];
@@ -413,23 +414,27 @@ abpApp.loadHomepage = function(data,updateHash) {
     var unitList = document.createDocumentFragment(),
         tabList = document.createDocumentFragment();
     $.each(data.units, function(i, unit){
-
-      var unitTitle = unit.title,
-          unitDescription = unit.description,
-          unitNumberBase = unit.number - 1,
-          unitNumber = ('0' + unitNumberBase).slice(-2),
-          unitImage = unit.image;
-      var unitListItem = document.createElement('div');
-      unitListItem.className = 'abp-units-slider-item';
-      unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-unit abp-unit-inner" data-unit="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
-      unitList.appendChild(unitListItem);
-
+      console.log(i, abpApp.config.auxUnit);
+      if (i !== abpApp.config.auxUnit) {
+        var unitTitle = unit.title,
+            unitDescription = unit.description,
+            unitNumberBase = unit.number - 1,
+            unitNumber = ('0' + unitNumberBase).slice(-2),
+            unitImage = unit.image;
+        var unitListItem = document.createElement('div');
+        unitListItem.className = 'abp-units-slider-item';
+        unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-unit abp-unit-inner" data-unit="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
+        unitList.appendChild(unitListItem);
+      }
       $.each(unit, function(i, subunit){
         var subunitIsAux = subunit.tag === abpApp.config.auxTab;
+        console.log(subunit.tag);
+        console.log(abpApp.config.auxTab);
+        console.log(subunitIsAux);
         if (subunitIsAux) {
           var subunitTitle = subunit.title,
               subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
-              // TODO ADD LINK
+              // TODO ADD LINK AAAA
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
 
