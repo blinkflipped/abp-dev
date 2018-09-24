@@ -15,8 +15,8 @@
     init: function() {
       this.parent.init.call(this.parent, this);
 
-      this.activityInitialized = true;
-      this.fetchData();
+      //this.activityInitialized = true;
+      //this.fetchData();
 
       //this.preventTouchCarousel();
     },
