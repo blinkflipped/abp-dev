@@ -283,6 +283,24 @@ abpApp.gohome = function() {
   window.location.hash = abpApp.config.tree[0].hash;
 }
 
+// Toggle Lock/Unlock unit
+
+abpApp.toggleLockSubunit = function(subunitID, isLocked) {
+
+  onCursoCambiarBloqueado(chapterID, idcurso);
+
+  var $items = $(this),
+      newIsLocked = !isLocked;
+
+  if (newIsLocked) {
+    $items.removeClass('unlock').addClass('lock');
+  } else {
+    $items.addClass('unlock').removeClass('lock');
+  }
+
+}
+
+
 //----------------------------------//
 //                                  //
 //  Hash navigation                 //
@@ -608,7 +626,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
       var subunitOnClick = subunit.onclickTitle,
           subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner" onclick="_showAlert('+abpApp.text.lockcontent+')"' : 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
-          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text">'+subunitAux1+'<div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top"><h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
+          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top">'+subunitAux1+'<h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
 
       var subunitsListItem = document.createElement('li');
       subunitsListItem.className = 'abp-resources-list-item';
@@ -715,12 +733,23 @@ $(document).ready(function() {
 
   });
 
+  $('.abp-resources-list-item-inner').on('click', function(e) {
+    e.stopPropagation();
+  });
   $('.abp-js--sendActivity').on('click', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
     openSendActivityHomework( subunitID );
     e.stopPropagation();
-  })
+  });
+
+  $('.abp-js--lockActivity').on('click', function(e) {
+    e.preventDefault();
+    var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id'),
+        isLocked = !$(this).is('.abp-unlock');
+    abpApp.toggleLockSubunit(subunitID, isLocked);
+    e.stopPropagation();
+  });
 
 
   // Fix btn-book-index
