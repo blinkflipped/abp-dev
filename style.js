@@ -62,7 +62,7 @@
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
       if (isBookCover) {
-        style.loadUserData();
+        this.parent.loadUserData();
         $('html').addClass('abp-isBookCover');
         var updateHash = false;
         abpApp.loadHomepage(data, updateHash);
