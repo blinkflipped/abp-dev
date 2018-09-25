@@ -649,8 +649,8 @@
 				align-items: flex-start;
 				flex-grow: 2;
 				padding-left: 10px;
-				max-width: 100%;
-				min-width: 100%;
+				max-width: calc(100% - 150px);
+				min-width: calc(100% - 150px);
 				&:first-child {
 					padding-left: 0;
 				}
@@ -692,7 +692,7 @@
 					}
 					.abp-activity-pages {
 						margin: 4px 0;
-						padding: 4px 6px;
+						padding: 2px 6px;
 						font-size: 12px;
 					}
 					.abp-activity-grade {
@@ -705,7 +705,7 @@
 						line-height: 30px;
 						border-radius: 100px 0 0 100px;
 						color: $negative_color;
-						margin: 4px 0;
+						margin: 2px 0;
 						padding: 0 8px 0 14px;
 					}
 				}
@@ -806,6 +806,8 @@
 				justify-content: center;
 				margin-left: -32px;
 				&-main {
+					max-width: 100%;
+					min-width: 100%;
 					&-bottom {
 						padding-left: 0;
 					}
