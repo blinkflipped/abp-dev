@@ -287,7 +287,7 @@ abpApp.gohome = function() {
 
 abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
-  onCursoCambiarBloqueado(chapterID, idcurso);
+  onCursoCambiarBloqueado(subunitID, idcurso);
 
   var $items = $(this),
       newIsLocked = !isLocked;
