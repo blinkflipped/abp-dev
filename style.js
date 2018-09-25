@@ -167,7 +167,7 @@ abpApp.config.buttonGoHome = '.abp-js-gohome';
 abpApp.config.auxTab = 'pestaña';
 abpApp.config.coverName = 'Portada';
 abpApp.config.bookcover = '';
-abpApp.config.auxUnit = 0;
+abpApp.config.auxUnitName = 'Info';
 
 
 abpApp.config.unitsIDs = [];
@@ -254,6 +254,17 @@ abpApp.getCover = function(data) {
     });
   });
   return cover;
+}
+
+// Get Auxiliary Unit abpApp.config.auxUnitName
+abpApp.getAuxUnit = function(data) {
+  var auxUnit =  data.units[0];
+  $.each(data.units, function(i, unit) {
+    if (unit.title === abpApp.config.auxUnitName) {
+      auxUnit = data.units[i];
+    }
+  });
+  return auxUnit;
 }
 
 // Go Homepage
@@ -414,7 +425,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     var unitList = document.createDocumentFragment(),
         tabList = document.createDocumentFragment();
     $.each(data.units, function(i, unit){
-      if (i !== abpApp.config.auxUnit) {
+      if (i !== abpApp.getAuxUnit()) {
         var unitTitle = unit.title,
             unitDescription = unit.description,
             unitNumberBase = unit.number - 1,
