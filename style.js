@@ -293,9 +293,9 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
       newIsLocked = !isLocked;
 
   if (newIsLocked) {
-    $items.removeClass('unlock').addClass('lock');
+    $items.addClass('abp-lock');
   } else {
-    $items.addClass('unlock').removeClass('lock');
+    $items.removeClass('abp-lock');
   }
 
 }
