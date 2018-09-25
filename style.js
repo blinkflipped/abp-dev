@@ -733,17 +733,17 @@ $(document).ready(function() {
 
   });
 
-  $('.abp-resources-list-item-inner').on('click', function(e) {
+  $('body').on('click' '.abp-resources-list-item-inner', function(e) {
     e.stopPropagation();
   });
-  $('.abp-js--sendActivity').on('click', function(e) {
+  $('body').on('click' '.abp-js--sendActivity', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
     openSendActivityHomework( subunitID );
     e.stopPropagation();
   });
 
-  $('.abp-js--lockActivity').on('click', function(e) {
+  $('body').on('click', '.abp-js--lockActivity', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id'),
         isLocked = !$(this).is('.abp-unlock');
