@@ -715,7 +715,7 @@ $(document).ready(function() {
 
   });
 
-  $('.abp-js--sendActivity').onc('click', function(e) {
+  $('.abp-js--sendActivity').on('click', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
     openSendActivityHomework( subunitID );
