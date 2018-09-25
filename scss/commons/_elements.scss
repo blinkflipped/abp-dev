@@ -480,9 +480,10 @@
 	font-weight: 600;
 	.abp-tab {
 		width: 50%;
-		background: fade-out($negative_color, .5);
 		text-align: center;
+		background: $color_1;
 		a, span {
+			background: fade-out($negative_color, .5);
 			display: block;
 			padding: 30px 40px;
 			white-space: nowrap;
@@ -491,17 +492,18 @@
 			text-overflow: ellipsis;
 		}
 		&_current {
-			background: transparent;
-			&, a, span {
+			color: $negative_color;
+			a, span {
 				color: $negative_color;
+				background: transparent;
 			}
 		}
 	}
 
-	&-wrapper {
-		background: $color_1;
-	}
 	&-content {
+		&-wrapper {
+			background: $color_1;
+		}
 		display: none;
 		& > * {
 			padding: 0 40px;
@@ -647,6 +649,8 @@
 				align-items: flex-start;
 				flex-grow: 2;
 				padding-left: 10px;
+				max-width: 100%;
+				min-width: 100%;
 				&:first-child {
 					padding-left: 0;
 				}
@@ -654,11 +658,15 @@
 					display: flex;
 					justify-content: flex-start;
 					align-items: center;
+					max-width: 100%;
+					min-width: 100%;
 					.abp-button-icon {
 						margin-right: 10px;
 					}
 				}
 				&-bottom {
+					max-width: 100%;
+					min-width: 100%;
 					.abp-body-user-not-student & {
 						padding-left: 36px;
 					}
@@ -790,12 +798,18 @@
 				z-index: 2;
 				//min-height: 90px;
 				max-width: calc(100% - 46px);
+				padding-left: 40px;
 				min-height: 72px;
 				display: flex;
 				flex-direction: column;
 				align-items: flex-start;
 				justify-content: center;
 				margin-left: -32px;
+				&-main {
+					&-bottom {
+						padding-left: 0;
+					}
+				}
 				&::before {
 					border-radius: 0;
 				}

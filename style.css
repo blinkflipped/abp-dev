@@ -565,9 +565,10 @@ body.view-mode {
   font-weight: 600; }
   .abp-tabs .abp-tab {
     width: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    text-align: center; }
+    text-align: center;
+    background: #223c3f; }
     .abp-tabs .abp-tab a, .abp-tabs .abp-tab span {
+      background: rgba(255, 255, 255, 0.5);
       display: block;
       padding: 30px 40px;
       white-space: nowrap;
@@ -575,13 +576,14 @@ body.view-mode {
       overflow: hidden;
       text-overflow: ellipsis; }
     .abp-tabs .abp-tab_current {
-      background: transparent; }
-      .abp-tabs .abp-tab_current, .abp-tabs .abp-tab_current a, .abp-tabs .abp-tab_current span {
-        color: #ffffff; }
-  .abp-tabs-wrapper {
-    background: #223c3f; }
+      color: #ffffff; }
+      .abp-tabs .abp-tab_current a, .abp-tabs .abp-tab_current span {
+        color: #ffffff;
+        background: transparent; }
   .abp-tabs-content {
     display: none; }
+    .abp-tabs-content-wrapper {
+      background: #223c3f; }
     .abp-tabs-content > * {
       padding: 0 40px; }
     .abp-tabs-content_current {
@@ -713,17 +715,24 @@ body.view-mode {
         justify-content: center;
         align-items: flex-start;
         flex-grow: 2;
-        padding-left: 10px; }
+        padding-left: 10px;
+        max-width: 100%;
+        min-width: 100%; }
         .abp-resources-list-item-text-main:first-child {
           padding-left: 0; }
         .abp-resources-list-item-text-main-top {
           display: flex;
           justify-content: flex-start;
-          align-items: center; }
+          align-items: center;
+          max-width: 100%;
+          min-width: 100%; }
           .abp-resources-list-item-text-main-top .abp-button-icon {
             margin-right: 10px; }
-        .abp-body-user-not-student .abp-resources-list-item-text-main-bottom {
-          padding-left: 36px; }
+        .abp-resources-list-item-text-main-bottom {
+          max-width: 100%;
+          min-width: 100%; }
+          .abp-body-user-not-student .abp-resources-list-item-text-main-bottom {
+            padding-left: 36px; }
       .abp-resources-list-item-text-aux-1 {
         align-self: flex-start; }
       .abp-resources-list-item-text-aux-2 {
@@ -830,12 +839,15 @@ body.view-mode {
       .abp-resources-list_2 .abp-resources-list-item-text {
         z-index: 2;
         max-width: calc(100% - 46px);
+        padding-left: 40px;
         min-height: 72px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
         margin-left: -32px; }
+        .abp-resources-list_2 .abp-resources-list-item-text-main-bottom {
+          padding-left: 0; }
         .abp-resources-list_2 .abp-resources-list-item-text::before {
           border-radius: 0; }
 
