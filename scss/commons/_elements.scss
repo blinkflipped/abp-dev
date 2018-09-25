@@ -1,7 +1,7 @@
 // Elements
 
 .abp-empty {
-	font-size: 70px;
+	font-size: 40px;
 	line-height: (84em/70);
 	font-weight: 300;
 	text-align: center;
@@ -42,6 +42,9 @@
 			@include icon();
 			content: $abp-icon-chevron-left;
 		}
+	}
+	&:hover {
+		color: #D43B24;
 	}
 }
 .abp-gohome {
@@ -205,13 +208,13 @@
 	}
 
 	&_large {
-		width: 118px;
-		height: 118px;
+		width: 95px;
+		height: 95px;
 		.abp-unit-number-inner {
-			width: 105px;
-			height: 105px;
+			width: 85px;
+			height: 85px;
 			span {
-				font-size: 54px;
+				font-size: 47px;
 				line-height: (64em/54);
 			}
 		}

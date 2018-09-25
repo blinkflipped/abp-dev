@@ -121,7 +121,7 @@ body.view-mode {
     z-index: 110; }
 
 .abp-empty {
-  font-size: 70px;
+  font-size: 40px;
   line-height: 1.2em;
   font-weight: 300;
   text-align: center;
@@ -163,6 +163,8 @@ body.view-mode {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: ""; }
+  .link:hover {
+    color: #D43B24; }
 
 .abp-gohome {
   padding-top: 0;
@@ -307,13 +309,13 @@ body.view-mode {
       background: -ms-radial-gradient(50% -0.72%, circle farthest-side, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
       background: radial-gradient(50% -0.72%, circle farthest-side, #ffffff 0%, rgba(255, 255, 255, 0) 100%); }
   .abp-unit-number_large {
-    width: 118px;
-    height: 118px; }
+    width: 95px;
+    height: 95px; }
     .abp-unit-number_large .abp-unit-number-inner {
-      width: 105px;
-      height: 105px; }
+      width: 85px;
+      height: 85px; }
       .abp-unit-number_large .abp-unit-number-inner span {
-        font-size: 54px;
+        font-size: 47px;
         line-height: 1.1851851852em; }
 
 .abp-unit {

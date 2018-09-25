@@ -383,6 +383,11 @@ abpApp.loadHomepage = function(data,updateHash) {
       currentHash = window.location.hash;
       currentHash = currentHash.replace('#','');
 
+  var bookTitle = data.title,
+      bookDescription = data.description;
+
+  $('.navbar .libro-left .title').text(bookTitle);
+
   if (abpApp.config.firstTime) {
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
@@ -395,9 +400,6 @@ abpApp.loadHomepage = function(data,updateHash) {
           unitNumberStr = unitNumber.toString();
       abpApp.config.unitsIDs.push(unitNumberStr);
     });
-
-    var bookTitle = data.title,
-        bookDescription = data.description;
 
     var comp_navigationSecondary = '<nav class="abp-navigation abp-navigation_secondary"><ul></ul></nav>',
         comp_slider = '<div class="abp-units-slider abp-js--slider"></div>';
@@ -425,7 +427,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     var unitList = document.createDocumentFragment(),
         tabList = document.createDocumentFragment();
     $.each(data.units, function(i, unit){
-      if (i !== abpApp.getAuxUnit()) {
+      if (i !== abpApp.getAuxUnit(data)) {
         var unitTitle = unit.title,
             unitDescription = unit.description,
             unitNumberBase = unit.number - 1,
@@ -547,6 +549,10 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       unitNumber = ('0' + unitNumberTemplate).slice(-2),
       subunitsList = document.createDocumentFragment(),
       subunitsTeachersList = document.createDocumentFragment();
+
+  var bookTitle = data.title;
+
+  $('.navbar .libro-left .title').text(bookTitle +' > '+unitTitle);
 
   $('#abp-unit-title, #abp-unit-description, #abp-unit-image, #abp-unit-number').empty();
   if (unitTitle !== '') {
