@@ -627,7 +627,7 @@
 		}
 		&-text {
 			flex-grow: 2;
-			max-width: calc(100% - 10px);
+			max-width: calc(100% - 50px);
 			height: 63px;
 			background: $color_7;
 			transition: background-color .2s ease-in;
