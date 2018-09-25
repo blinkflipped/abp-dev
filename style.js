@@ -258,10 +258,10 @@ abpApp.getCover = function(data) {
 
 // Get Auxiliary Unit abpApp.config.auxUnitName
 abpApp.getAuxUnit = function(data) {
-  var auxUnit =  data.units[0];
+  var auxUnit =  0;
   $.each(data.units, function(i, unit) {
     if (unit.title === abpApp.config.auxUnitName) {
-      auxUnit = data.units[i];
+      auxUnit = i;
     }
   });
   return auxUnit;

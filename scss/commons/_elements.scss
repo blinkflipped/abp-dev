@@ -536,14 +536,14 @@
 		}
 		&-image {
 			position: relative;
-			width: 54px;
-			height: 54px;
+			width: 74px; //54px
+			height: 74px; //54px
 			border-radius: 100px;
 			&-inner {
 				position: relative;
 				z-index: 10;
-				width: 54px;
-				height: 54px;
+				width: 74px; //54px
+				height: 74px; //54px
 				border-radius: 100px;
 				overflow: hidden;
 				@include img-fit();
@@ -592,6 +592,8 @@
 		}
 		&-text {
 			flex-grow: 2;
+			max-width: calc(100% - 10px);
+			height: 63px;
 			background: $color_7;
 			transition: background-color .2s ease-in;
 			margin-left: -44px;
@@ -602,6 +604,17 @@
 			font-size: 12px;
 			line-height: (14em/12);
 			font-weight: 600;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: flex-start;
+			.abp-title-5,
+			p {
+				max-width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
 			&::before {
 				content: '';
 				display: block;
@@ -624,6 +637,7 @@
 		margin-right: -20px;
 		.abp-resources-list-item {
 			width: 50%;
+			max-width: 50%;
 			padding-left: 20px;
 			padding-right: 20px;
 			margin-bottom: $space_1;
@@ -680,6 +694,7 @@
 			&-text {
 				z-index: 2;
 				//min-height: 90px;
+				max-width: calc(100% - 46px);
 				min-height: 72px;
 				display: flex;
 				flex-direction: column;

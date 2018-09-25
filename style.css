@@ -589,14 +589,14 @@ body.view-mode {
         background: #e6b7b0; }
     .abp-resources-list-item-image {
       position: relative;
-      width: 54px;
-      height: 54px;
+      width: 74px;
+      height: 74px;
       border-radius: 100px; }
       .abp-resources-list-item-image-inner {
         position: relative;
         z-index: 10;
-        width: 54px;
-        height: 54px;
+        width: 74px;
+        height: 74px;
         border-radius: 100px;
         overflow: hidden; }
         .abp-resources-list-item-image-inner img {
@@ -658,6 +658,8 @@ body.view-mode {
         opacity: .2; }
     .abp-resources-list-item-text {
       flex-grow: 2;
+      max-width: calc(100% - 10px);
+      height: 63px;
       background: #ededed;
       transition: background-color .2s ease-in;
       margin-left: -44px;
@@ -667,7 +669,17 @@ body.view-mode {
       position: relative;
       font-size: 12px;
       line-height: 1.1666666667em;
-      font-weight: 600; }
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start; }
+      .abp-resources-list-item-text .abp-title-5,
+      .abp-resources-list-item-text p {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
       .abp-resources-list-item-text::before {
         content: '';
         display: block;
@@ -692,6 +704,7 @@ body.view-mode {
     margin-right: -20px; }
     .abp-resources-list_2 .abp-resources-list-item {
       width: 50%;
+      max-width: 50%;
       padding-left: 20px;
       padding-right: 20px;
       margin-bottom: 20px; }
@@ -736,6 +749,7 @@ body.view-mode {
             content: none; }
       .abp-resources-list_2 .abp-resources-list-item-text {
         z-index: 2;
+        max-width: calc(100% - 46px);
         min-height: 72px;
         display: flex;
         flex-direction: column;
@@ -787,6 +801,16 @@ body.view-mode {
 
 #book-index.active {
   z-index: 1100; }
+
+#book-index .col-main {
+  background: #DF6A46; }
+
+body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
+#book-index #indice .units ul li.active a {
+  background: #DF6A46; }
+
+#book-index #indice .unit-content .actividades .item {
+  opacity: 1; }
 
 .abp-section {
   position: relative;

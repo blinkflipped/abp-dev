@@ -52,7 +52,21 @@
   }
 }
 
-// Book z-index
+// Book index
 #book-index.active {
   z-index: 1100;
+}
+
+// Custom by blink.
+#book-index .col-main {
+  background: #DF6A46;
+}
+
+body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
+#book-index #indice .units ul li.active a {
+  background: #DF6A46;
+}
+
+#book-index #indice .unit-content .actividades .item {
+  opacity: 1;
 }
