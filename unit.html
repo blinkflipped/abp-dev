@@ -14,6 +14,7 @@
 
 <!-- Variables:
 * abpApp.text.goback = 'Volver'
+* abpApp.text.pages = 'pág'
 * unitTitle = unit title (e.g. "Título del tema")
 * unitDescription = unit description (e.g. "Descripción del tema")
 * unitImage = unit image URL
@@ -58,15 +59,15 @@
         <div class="abp-section-content">
           <div class="abp-tabs-wrapper">
             <ul class="abp-tabs">
-              <li class="abp-tab">
+              <li class="abp-tab abp-tab_current">
                 <a href="#abp-studentarea">'+abpApp.text.studentarea+'</a>
               </li>
-              <li class="abp-tab abp-tab_current">
+              <li class="abp-tab">
                 <a href="#abp-teacherarea">'+abpApp.text.teacherarea+'</a>
               </li>
             </ul>
             <div class="abp-tabs-content-wrapper">
-              <div class="abp-tabs-content" id="abp-studentarea">
+              <div class="abp-tabs-content abp-tabs-content_current" id="abp-studentarea">
                 <div class="abp-resources-list-wrapper">
                   <ul class="abp-resources-list">
                     <!-- For each to get Activities from unit visible to Students -->
@@ -79,8 +80,34 @@
                             </div>
                           </div>
                           <div class="abp-resources-list-item-text">
-                            <h3 class="abp-title-5">'+resourceTitle+'</h3>
-                            <p>'+resourceDescription+'</p>
+                            <!-- IF Teacher -->
+                            <div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-1">
+                              <button class="abp-button-icon abp-button-sendactivity abp-js--sendActivity">
+                                <i class="abp-icon" aria-hidden="true"></i>
+                              </button>
+                            </div>
+                            <!-- ENDIF -->
+                            <div class="abp-resources-list-item-text-main">
+                              <h3 class="abp-title-5">'+resourceTitle+'</h3>
+                              <p>'+resourceDescription+'</p>
+                            </div>
+                            <div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2">
+                              <div class="abp-resources-list-item-text-aux-left">
+                                <!-- IF Teacher -->
+                                <button class="abp-button-icon abp-button-lock abp-unlock abp-js--lockActivity">
+                                  <i class="abp-icon" aria-hidden="true"></i>
+                                </button>
+                                <!-- ELSE -->
+                                <span class="abp-button-icon abp-button-lock">
+                                  <i class="abp-icon" aria-hidden="true"></i>
+                                </span>
+                                <!-- ENDIF -->
+                              </div>
+                              <div class="abp-resources-list-item-text-aux-right">
+                                <div class="abp-activity-pages"><span>7</span> '+abpApp.text.pages+'</div>
+                                <div class="abp-activity-grade"><span>10</span></div>
+                              </div>
+                            </div>
                           </div>
                         </a>
                       </article>
@@ -89,7 +116,7 @@
                   </ul>
                 </div>
               </div>
-              <div class="abp-tabs-content abp-tabs-content_current" id="abp-teacherarea">
+              <div class="abp-tabs-content" id="abp-teacherarea">
                 <div class="abp-resources-list-wrapper">
                   <ul class="abp-resources-list abp-resources-list_2">
                     <!-- For each to get Activities from unit visible only for Teachers -->
@@ -102,8 +129,10 @@
                             </div>
                           </div>
                           <div class="abp-resources-list-item-text">
-                            <h3 class="abp-title-5">'+resourceTitle+'</h3>
-                            <p>'+resourceDescription+'</p>
+                            <div class="abp-resources-list-item-text-main">
+                              <h3 class="abp-title-5">'+resourceTitle+'</h3>
+                              <p>'+resourceDescription+'</p>
+                            </div>
                           </div>
                         </a>
                       </article>

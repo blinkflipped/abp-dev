@@ -62,6 +62,7 @@
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
       if (isBookCover) {
+        style.loadUserData();
         $('html').addClass('abp-isBookCover');
         var updateHash = false;
         abpApp.loadHomepage(data, updateHash);
@@ -69,6 +70,13 @@
         $('html').removeClass('abp-isBookCover');
       }
 
+    },
+
+    loadUserData: function() {
+      var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+      loadScript(urlSeguimiento, true, (function(data) {
+        console.log(data)
+      }).bind(this));
     },
 
     /**
@@ -194,7 +202,8 @@ abpApp.text = {
   goback : 'Volver',
   studentarea : 'Sesión del alumno',
   teacherarea : 'Área del profesor',
-  noresources : 'No hay recursos disponibles'
+  noresources : 'No hay recursos disponibles',
+  pages : 'pág'
 }
 
 
@@ -581,14 +590,24 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
     if (!subunitIsOnlyVisibleTeacher) {
       // Students subunits: Visibles for both (student and teacher)
+
       //Lock Subunits
       var subunitLockStatus = subunit.lock,
           isSubunitLock = (subunitLockStatus === abpApp.config.statusLock1 || subunitLockStatus === abpApp.config.statusLock2),
           subunitLockClass = (isSubunitLock) ? 'lock' : 'unlock';
 
+      // Other info
+      var subunitPages = subunit.pags,
+          subunitPagesHTML = (subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
+          subunitGrade = '',
+          subunitLockButton = (!abpApp.config.isStudent) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : (abpApp.config.isStudent && isSubunitLock) ? '<span class="abp-button-icon abp-button-lock"><i class="abp-icon" aria-hidden="true"></i></span>' : '';
+
+      var subunitAux1 = (!abpApp.config.isStudent) ? '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-1"><button class="abp-button-icon abp-button-sendactivity abp-js--sendActivity"><i class="abp-icon" aria-hidden="true"></i></button></div>' : '',
+          subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+'</div></div>';
+
       var subunitOnClick = subunit.onclickTitle,
           subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
-          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a></article>';
+          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text">'+subunitAux1+'<div class="abp-resources-list-item-text-main"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div>'+subunitAux2+'</div></a></article>';
 
       var subunitsListItem = document.createElement('li');
       subunitsListItem.className = 'abp-resources-list-item';
@@ -602,7 +621,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           subunitOnClick = subunit.onclickTitle
           subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
           subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
-          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></a> </article>';
+          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></div></a> </article>';
 
       var subunitsTeachersListItem = document.createElement('li');
       subunitsTeachersListItem.className = 'abp-resources-list-item';

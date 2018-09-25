@@ -170,6 +170,40 @@ body.view-mode {
   padding-top: 0;
   padding-bottom: 10px; }
 
+.abp-button-icon {
+  font-family: "Source Sans Pro", sans-serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: inline-block;
+  border-radius: 0;
+  position: relative;
+  background: transparent;
+  text-decoration: none;
+  transition-property: color, background-color, border-color, box-shadow, opacity, height;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+  width: 26px;
+  height: 26px;
+  position: relative; }
+  .abp-button-icon .abp-icon {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat; }
+  .abp-button-icon.abp-button-sendactivity .abp-icon {
+    background-image: url(img/icon-sendactivity.png); }
+  .abp-button-icon.abp-button-lock .abp-icon {
+    background-image: url(img/button-locks.png);
+    background-size: 26px 78px;
+    background-position: 0 -52px; }
+  .abp-button-icon.abp-button-lock.abp-unlock .abp-icon {
+    background-position: 0 0; }
+
 .abp-title-1 {
   font-size: 60px;
   line-height: 1.2em;
@@ -671,9 +705,45 @@ body.view-mode {
       line-height: 1.1666666667em;
       font-weight: 600;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start; }
+      justify-content: space-between;
+      align-items: center; }
+      .abp-resources-list-item-text-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        flex-grow: 2;
+        padding-left: 10px; }
+        .abp-resources-list-item-text-main:first-child {
+          padding-left: 0; }
+      .abp-resources-list-item-text-aux-1 {
+        align-self: flex-start; }
+      .abp-resources-list-item-text-aux-2 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: -10px;
+        padding-left: 10px; }
+        .abp-resources-list-item-text-aux-2 .abp-resources-list-item-text-aux-right {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          padding-left: 10px; }
+        .abp-resources-list-item-text-aux-2 .abp-activity-pages {
+          margin: 4px 0;
+          font-size: 12px; }
+        .abp-resources-list-item-text-aux-2 .abp-activity-grade {
+          font-size: 14px;
+          font-weight: 600;
+          text-align: center;
+          background: #6ecb44;
+          width: 50px;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 100px 0 0 100px;
+          color: #ffffff;
+          margin: 4px 0; }
       .abp-resources-list-item-text .abp-title-5,
       .abp-resources-list-item-text p {
         max-width: 100%;

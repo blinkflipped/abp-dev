@@ -52,6 +52,39 @@
 	padding-bottom: 10px;
 }
 
+.abp-button-icon {
+	@include button-base();
+	width: 26px;
+	height: 26px;
+	position: relative;
+	.abp-icon {
+		display: inline-block;
+		width: 26px;
+		height: 26px;
+		background-size: contain;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	&.abp-button-sendactivity {
+		.abp-icon {
+			background-image: url(img/icon-sendactivity.png);
+		}
+	}
+	&.abp-button-lock {
+		.abp-icon {
+			background-image: url(img/button-locks.png);
+			background-size: 26px 78px;
+			background-position: 0 -52px;
+
+		}
+		&.abp-unlock {
+			.abp-icon {
+				background-position: 0 0;
+			}
+		}
+	}
+}
+
 // Titles
 
 .abp-title {
@@ -605,9 +638,56 @@
 			line-height: (14em/12);
 			font-weight: 600;
 			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: flex-start;
+			justify-content: space-between;
+			align-items: center;
+			&-main {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: flex-start;
+				flex-grow: 2;
+				padding-left: 10px;
+				&:first-child {
+					padding-left: 0;
+				}
+			}
+
+			&-aux {
+				&-1 {
+					align-self: flex-start;
+				}
+				&-2 {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					margin-right: -10px;
+					padding-left: 10px;
+					.abp-resources-list-item-text-aux-right {
+						display: flex;
+						flex-direction: column;
+						align-items: flex-end;
+						justify-content: center;
+						padding-left: 10px;
+					}
+					.abp-activity-pages {
+						margin: 4px 0;
+						font-size: 12px;
+					}
+					.abp-activity-grade {
+						font-size: 14px;
+						font-weight: 600;
+						text-align: center;
+						background: $color_8;
+						width: 50px;
+						height: 30px;
+						line-height: 30px;
+						border-radius: 100px 0 0 100px;
+						color: $negative_color;
+						margin: 4px 0;
+					}
+				}
+			}
+
 			.abp-title-5,
 			p {
 				max-width: 100%;
