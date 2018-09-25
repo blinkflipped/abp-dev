@@ -73,10 +73,10 @@
     },
 
     loadUserData: function() {
-      var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+      /*var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
       loadScript(urlSeguimiento, false, (function(data) {
         console.log(data)
-      }).bind(this));
+      }).bind(this));*/
     },
 
     /**
@@ -618,11 +618,11 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
       // Other info
       var subunitPages = subunit.pags,
           subunitPagesHTML = (subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
-          subunitGrade = '',
+          subunitGrade = (typeof window.actividades !== 'undefined' && typeof window.actividades[i] !== 'undefined' && window.actividades[i].nota !== '') ? '<div class="abp-activity-grade"><span>'+window.actividades[i].nota+'</span></div>' : '',
           subunitLockButton = (!abpApp.config.isStudent) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : (abpApp.config.isStudent && isSubunitLock) ? '<span class="abp-button-icon abp-button-lock"><i class="abp-icon" aria-hidden="true"></i></span>' : '';
 
       var subunitAux1 = (!abpApp.config.isStudent) ? '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-1"><button class="abp-button-icon abp-button-sendactivity abp-js--sendActivity"><i class="abp-icon" aria-hidden="true"></i></button></div>' : '',
-          subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+'</div></div>';
+          subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+subunitGrade+'</div></div>';
 
       var subunitOnClick = subunit.onclickTitle,
           subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner" onclick="_showAlert('+abpApp.text.lockcontent+')"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
