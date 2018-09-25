@@ -74,7 +74,7 @@
 
     loadUserData: function() {
       var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-      loadScript(urlSeguimiento, true, (function(data) {
+      loadScript(urlSeguimiento, false, (function(data) {
         console.log(data)
       }).bind(this));
     },
@@ -203,7 +203,8 @@ abpApp.text = {
   studentarea : 'Sesión del alumno',
   teacherarea : 'Área del profesor',
   noresources : 'No hay recursos disponibles',
-  pages : 'pág'
+  pages : 'pág',
+  lockcontent : 'Contenido bloqueado por el profesor'
 }
 
 
@@ -606,8 +607,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+'</div></div>';
 
       var subunitOnClick = subunit.onclickTitle,
-          subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner"' : 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
-          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text">'+subunitAux1+'<div class="abp-resources-list-item-text-main"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div>'+subunitAux2+'</div></a></article>';
+          subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner" onclick="_showAlert('+abpApp.text.lockcontent+')"' : 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
+          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text">'+subunitAux1+'<div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top"><h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
 
       var subunitsListItem = document.createElement('li');
       subunitsListItem.className = 'abp-resources-list-item';
@@ -621,7 +622,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           subunitOnClick = subunit.onclickTitle
           subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
           subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
-          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><h3 class="abp-title-5">'+subunitTitle+'</h3><p>'+subunitDescription+'</p></div></div></a> </article>';
+          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top"><h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div></div></a> </article>';
 
       var subunitsTeachersListItem = document.createElement('li');
       subunitsTeachersListItem.className = 'abp-resources-list-item';
@@ -713,6 +714,13 @@ $(document).ready(function() {
     abpApp.gohome();
 
   });
+
+  $('.abp-js--sendActivity').onc('click', function(e) {
+    e.preventDefault();
+    var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
+    openSendActivityHomework( subunitID );
+    e.stopPropagation();
+  })
 
 
   // Fix btn-book-index

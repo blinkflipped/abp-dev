@@ -650,6 +650,19 @@
 				&:first-child {
 					padding-left: 0;
 				}
+				&-top {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					.abp-button-icon {
+						margin-right: 10px;
+					}
+				}
+				&-bottom {
+					.abp-body-user-not-student & {
+						padding-left: 36px;
+					}
+				}
 			}
 
 			&-aux {
@@ -671,6 +684,7 @@
 					}
 					.abp-activity-pages {
 						margin: 4px 0;
+						padding: 4px 6px;
 						font-size: 12px;
 					}
 					.abp-activity-grade {
@@ -684,6 +698,7 @@
 						border-radius: 100px 0 0 100px;
 						color: $negative_color;
 						margin: 4px 0;
+						padding: 0 8px 0 14px;
 					}
 				}
 			}
