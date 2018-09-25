@@ -733,10 +733,10 @@ $(document).ready(function() {
 
   });
 
-  $('body').on('click' '.abp-resources-list-item-inner', function(e) {
+  $('body').on('click', '.abp-resources-list-item-inner', function(e) {
     e.stopPropagation();
   });
-  $('body').on('click' '.abp-js--sendActivity', function(e) {
+  $('body').on('click', '.abp-js--sendActivity', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
     openSendActivityHomework( subunitID );
