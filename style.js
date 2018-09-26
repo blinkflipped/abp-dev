@@ -76,7 +76,7 @@
       var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
       loadScript(urlSeguimiento, false, (function(data) {
         console.log(data);
-        
+        window.actividades = actividades;
       }).bind(this));
     },
 
@@ -337,7 +337,7 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
 
     if (abpunit !== '' && abpunit !== null && unitExists) {
       var currentUnit = abpunit,
-          activities = window.actividades;
+          activities = window.actividades; // TODO CHECK
 
       hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentUnit,activities,updateHash)}, timeToWait);
 
