@@ -289,9 +289,9 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
   onCursoCambiarBloqueado(subunitID, idcurso);
 
-  var $items = $(this),
+  var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity'),
       newIsLocked = !isLocked;
-
+      console.log(subunitID,idcurso,newIsLocked);
   if (newIsLocked) {
     $items.removeClass('abp-unlock');
   } else {
@@ -626,7 +626,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
 
       var subunitOnClick = subunit.onclickTitle,
           subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner" onclick="_showAlert("'+abpApp.text.lockcontent+'")"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
-          subunitTitleUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? '<h3 class="abp-title-5">'+subunitTitle+'</h3>' : '<h3 class="abp-title-5" onclick="'+subunitOnClick+'">'+subunitTitle+'</h3>',
+          subunitTitleUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? '<h3 class="abp-title-5">'+subunitTitle+'</h3>' : '<h3 class="abp-title-5 abp-js--gotoActivity" onclick="'+subunitOnClick+'">'+subunitTitle+'</h3>',
           subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top">'+subunitAux1+subunitTitleUrlHTML+'</div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
 
       var subunitsListItem = document.createElement('li');
@@ -734,9 +734,14 @@ $(document).ready(function() {
 
   });
 
-  $('body').on('click', '.abp-resources-list-item-inner', function(e) {
-    e.stopPropagation();
+
+  // Simulate click outside buttons
+  $('.abp-resources-list-item-inner').click(function(event) {
+    if(!$(event.target).closest('.abp-js--sendActivity').length && !$(event.target).closest('.abp-js--lockActivity').length) {
+      $(this).find('.abp-js--gotoActivity').click();
+    }
   });
+
   $('body').on('click', '.abp-js--sendActivity', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
