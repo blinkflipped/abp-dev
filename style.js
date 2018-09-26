@@ -74,7 +74,7 @@
 
     loadUserData: function() {
       var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
-      loadScript(urlSeguimiento, false, (function(data) {
+      loadScript(urlSeguimiento, true, (function(data) {
         console.log(data);
         window.actividades = actividades;
       }).bind(this));
@@ -738,7 +738,7 @@ $(document).ready(function() {
 
   // Simulate click outside buttons
     $('body').on('click', '.abp-resources-list-item-inner', function(event) {
-    if(!$(event.target).closest('.abp-js--sendActivity').length && !$(event.target).closest('.abp-js--lockActivity').length) {
+    if(!$(event.target).closest('.abp-js--gotoActivity').length && !$(event.target).closest('.abp-js--sendActivity').length && !$(event.target).closest('.abp-js--lockActivity').length) {
       $(this).find('.abp-js--gotoActivity').click();
     }
   });
