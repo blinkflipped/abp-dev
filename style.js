@@ -73,10 +73,11 @@
     },
 
     loadUserData: function() {
-      /*var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
+      var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
       loadScript(urlSeguimiento, false, (function(data) {
-        console.log(data)
-      }).bind(this));*/
+        console.log(data);
+        
+      }).bind(this));
     },
 
     /**
@@ -291,7 +292,7 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
   var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity'),
       newIsLocked = !isLocked;
-      console.log(subunitID,idcurso,newIsLocked);
+
   if (newIsLocked) {
     $items.removeClass('abp-unlock');
   } else {
