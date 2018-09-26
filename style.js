@@ -736,7 +736,7 @@ $(document).ready(function() {
 
 
   // Simulate click outside buttons
-  $('.abp-resources-list-item-inner').click(function(event) {
+    $('body').on('click', '.abp-resources-list-item-inner', function(event) {
     if(!$(event.target).closest('.abp-js--sendActivity').length && !$(event.target).closest('.abp-js--lockActivity').length) {
       $(this).find('.abp-js--gotoActivity').click();
     }
