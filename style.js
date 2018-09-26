@@ -626,7 +626,7 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
           subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+subunitGrade+'</div></div>';
 
       var subunitOnClick = subunit.onclickTitle,
-          subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner" onclick="_showAlert("'+abpApp.text.lockcontent+'")"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
+          subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner abp-js--subunitLocked"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
           subunitTitleUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? '<h3 class="abp-title-5">'+subunitTitle+'</h3>' : '<h3 class="abp-title-5 abp-js--gotoActivity" onclick="'+subunitOnClick+'">'+subunitTitle+'</h3>',
           subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top">'+subunitAux1+subunitTitleUrlHTML+'</div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
 
@@ -758,6 +758,10 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
+  $('body').on('click', '.abp-js--subunitLocked', function(e) {
+    e.preventDefault();
+    _showAlert(abpApp.text.lockcontent);
+  });
 
   // Fix btn-book-index
   $('#btn-book-index').click(function(e) {
