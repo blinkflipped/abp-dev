@@ -671,12 +671,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
     $subunitsTeachersWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
   }
 
-  // Current Tab
-  if (abpApp.config.isStudent) {
-    $('.abp-tab a[href="#abp-studentarea"').click();
-  } else {
-    $('.abp-tab a[href="#abp-teacherarea"').click();
-  }
+  // Current Tab: always student tab
+  $('.abp-tab a[href="#abp-studentarea"').click();
 
   var currentIndex = 1;
   var currentPage = abpApp.config.tree[currentIndex].id,

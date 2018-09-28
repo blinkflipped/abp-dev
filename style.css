@@ -907,6 +907,9 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
 #book-index #indice .unit-content .actividades .item {
   opacity: 1; }
 
+#book-index #indice .unit-content a:hover {
+  color: #223c3f; }
+
 .abp-section {
   position: relative;
   z-index: 10;
@@ -1084,3 +1087,13 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
           overflow: hidden;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch; }
+          .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper::-webkit-scrollbar {
+            width: 6px !important;
+            height: 6px !important;
+            background: rgba(237, 237, 237, 0.25); }
+          .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper::-webkit-scrollbar-thumb {
+            background-color: #d43923;
+            border-radius: 20px; }
+          .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper::-webkit-scrollbar-track {
+            background-color: #ededed;
+            border-radius: 20px; }
