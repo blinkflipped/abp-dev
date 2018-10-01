@@ -196,7 +196,7 @@ abpApp.config.tree = {
   }
 }
 
-
+abpApp.unitAlreayLoaded = false;
 
 abpApp.bookData = '';
 
@@ -413,10 +413,12 @@ window.addEventListener("hashchange", abpApp.onChangeHash, false);
 
 
 
+
 abpApp.loadHomepage = function(data,updateHash) {
 
   abpApp.console('Loading Homepage');
-
+  abpApp.unitAlreayLoaded = false;
+  
   var currentIndex = 0;
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
@@ -576,10 +578,9 @@ abpApp.loadHomepage = function(data,updateHash) {
 
 // Load units
 
-
 abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
-  if (!unitAlreayLoaded) {
+  if (!abpApp.unitAlreayLoaded) {
     abpApp.console("Load Unit "+currentUnit);
 
     var subunits = data.units[currentUnit].subunits,
@@ -684,6 +685,8 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
       $subunitsTeachersWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
     }
 
+
+    abpApp.unitAlreayLoaded = true;
   }
 
   // Current Tab
