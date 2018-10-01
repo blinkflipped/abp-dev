@@ -191,7 +191,8 @@ abpApp.config.tree = {
   1 : {
     'id' : 'unit',
     'hash' : 'unit_',
-    'class' : abpApp.config.bodyClasses[1]
+    'class' : abpApp.config.bodyClasses[1],
+    'suffix' : ['_studentarea', '_teacherarea']
   }
 }
 
@@ -320,6 +321,17 @@ abpApp.getParameterByHash = function(name, url) {
   return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+// Get ID by hash
+abpApp.getIDByHash = function(hash) {
+  var unitID = hash.replace(abpApp.config.tree[1].hash, '');
+  $.each(abpApp.config.tree[1].suffix, function(i, suffix){
+    unitID = unitID.replace(suffix, '');
+  });
+
+  return unitID;
+}
+
+
 // Hash distributor
 var hashDistributorTimeout;
 abpApp.hashDistributor = function(currentHash,data,updateHash) {
@@ -332,14 +344,13 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
   } else if (currentHash.startsWith(abpApp.config.tree[1].hash)) { // Unit and ID
 
     // This works different because we need an ID to load the Unit
-    var abpunit = currentHash.replace(abpApp.config.tree[1].hash, ''),
+    var abpunit = abpApp.getIDByHash(currentHash),
         unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0);
 
     if (abpunit !== '' && abpunit !== null && unitExists) {
-      var currentUnit = abpunit,
-          activities = window.actividades; // TODO CHECK
+      var currentUnit = abpunit;
 
-      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentUnit,activities,updateHash)}, timeToWait);
+      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentUnit,updateHash)}, timeToWait);
 
     } else {
 
@@ -565,7 +576,7 @@ abpApp.loadHomepage = function(data,updateHash) {
 // Load units
 
 
-abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
+abpApp.loadUnit = function(data,currentUnit,updateHash) {
 
   abpApp.console("Load Unit "+currentUnit);
 
@@ -678,7 +689,8 @@ abpApp.loadUnit = function(data,currentUnit,activities,updateHash) {
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
       hash = abpApp.config.tree[currentIndex].hash,
-      hashWithID = hash+currentUnit;
+      suffixStudent = abpApp.config.tree[currentIndex].suffix[0],
+      hashWithID = hash+currentUnit+suffixStudent;
 
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
