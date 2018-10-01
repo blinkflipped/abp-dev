@@ -71,4 +71,5 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
   opacity: 1;
 }
 
-#book-index #indice .unit-content a:hover {color: $color_1}
+#book-index #indice .unit-content a:hover,
+#book-index #indice li.current a {color: $color_1} 

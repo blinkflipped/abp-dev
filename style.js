@@ -704,7 +704,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
       suffix = abpApp.config.tree[currentIndex].suffix[indexSuffix],
       hashWithID = hash+currentUnit+suffix;
 
-  console.log(suffix,hashWithID);
+  console.log(indexSuffix, suffix, hashWithID);
 
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
@@ -777,7 +777,7 @@ $(document).ready(function() {
   $('body').on('click', '.abp-js--sendActivity', function(e) {
     e.preventDefault();
     var subunitID = $(this).closest('[data-subunit-id]').attr('data-subunit-id');
-    openSendActivityHomework( subunitID );
+    openSendActivityHomework( subunitID , 1);
     e.stopPropagation();
   });
 
