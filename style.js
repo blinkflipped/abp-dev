@@ -692,6 +692,8 @@ abpApp.loadUnit = function(data,currentUnit,updateHash) {
       suffixStudent = abpApp.config.tree[currentIndex].suffix[0],
       hashWithID = hash+currentUnit+suffixStudent;
 
+  console.log(suffixStudent,hashWithID);
+
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
     abpApp.objectFitSupport();
@@ -726,11 +728,19 @@ $(document).ready(function() {
   $('body').on('click', '.abp-tabs a', function(e) {
     e.preventDefault();
     var target = $(this).attr('href'),
+        tabIndex = $(this).closest('li').index(),
         currentClassTab = 'abp-tab_current',
         currentClassContent = 'abp-tabs-content_current';
 
     $(this).closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
     $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
+
+    var currentPageIndex = 1;
+    var hash = abpApp.config.tree[currentIndex].hash,
+        suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
+        hashWithID = hash+currentUnit+suffix;
+
+    window.location.hash = hashWithID;
 
   });
 
