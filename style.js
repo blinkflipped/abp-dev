@@ -345,12 +345,13 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
 
     // This works different because we need an ID to load the Unit
     var abpunit = abpApp.getIDByHash(currentHash),
-        unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0);
+        unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0),
+        activeAreaTeacher = currentHash.includes(abpApp.config.tree[1].suffix[1]);
 
     if (abpunit !== '' && abpunit !== null && unitExists) {
       var currentUnit = abpunit;
 
-      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentUnit,updateHash)}, timeToWait);
+      hashDistributorTimeout = setTimeout(function() {abpApp.loadUnit(data,currentUnit,activeAreaTeacher,updateHash)}, timeToWait);
 
     } else {
 
@@ -576,123 +577,130 @@ abpApp.loadHomepage = function(data,updateHash) {
 // Load units
 
 
-abpApp.loadUnit = function(data,currentUnit,updateHash) {
+abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
-  abpApp.console("Load Unit "+currentUnit);
+  if (!unitAlreayLoaded) {
+    abpApp.console("Load Unit "+currentUnit);
 
-  var subunits = data.units[currentUnit].subunits,
-      unitImage =  data.units[currentUnit].image,
-      unitTitle =  data.units[currentUnit].title,
-      unitDescription =  data.units[currentUnit].description,
-      unitNumberBase = data.units[currentUnit].number,
-      unitNumberTemplate = unitNumberBase - 1,
-      unitNumber = ('0' + unitNumberTemplate).slice(-2),
-      subunitsList = document.createDocumentFragment(),
-      subunitsTeachersList = document.createDocumentFragment();
+    var subunits = data.units[currentUnit].subunits,
+        unitImage =  data.units[currentUnit].image,
+        unitTitle =  data.units[currentUnit].title,
+        unitDescription =  data.units[currentUnit].description,
+        unitNumberBase = data.units[currentUnit].number,
+        unitNumberTemplate = unitNumberBase - 1,
+        unitNumber = ('0' + unitNumberTemplate).slice(-2),
+        subunitsList = document.createDocumentFragment(),
+        subunitsTeachersList = document.createDocumentFragment();
 
-  var bookTitle = data.title;
+    var bookTitle = data.title;
 
-  $('.navbar .libro-left .title').text(bookTitle +' > '+unitTitle);
+    $('.navbar .libro-left .title').text(bookTitle +' > '+unitTitle);
 
-  $('#abp-unit-title, #abp-unit-description, #abp-unit-image, #abp-unit-number').empty();
-  if (unitTitle !== '') {
-    $('#abp-unit-title').text(unitTitle);
-  }
-  if (unitDescription !== '') {
-    $('#abp-unit-description').text(unitDescription);
-  }
-  if (unitImage !== '') {
-    $('#abp-unit-image').prepend('<img src="'+unitImage+'">');
-  }
-  if (unitNumber !== '') {
-    $('#abp-unit-number').text(unitNumber);
-  }
-
-  var subunitsStudents = 0,
-      subunitsTeachers = 0;
-
-  $.each(subunits, function(i, subunit){
-    var subunitID = subunit.id,
-        subunitTitle = subunit.title,
-        subunitDescription = subunit.description,
-        subunitImage = subunit.image,
-        subunitImageCode = (subunitImage !== '') ? '<img src="'+subunitImage+'" alt="'+subunitTitle+'">' : '',
-        subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
-
-    if (!subunitIsOnlyVisibleTeacher) {
-      // Students subunits: Visibles for both (student and teacher)
-
-      //Lock Subunits
-      var subunitLockStatus = subunit.lock,
-          isSubunitLock = (subunitLockStatus === abpApp.config.statusLock1 || subunitLockStatus === abpApp.config.statusLock2),
-          subunitLockClass = (isSubunitLock) ? 'lock' : 'unlock';
-
-      // Other info
-      var subunitPages = subunit.pags,
-          subunitPagesHTML = (subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
-          subunitGrade = (typeof window.actividades !== 'undefined' && typeof window.actividades[i] !== 'undefined' && window.actividades[i].nota !== '') ? '<div class="abp-activity-grade"><span>'+window.actividades[i].nota+'</span></div>' : '',
-          subunitLockButton = (!abpApp.config.isStudent) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : (abpApp.config.isStudent && isSubunitLock) ? '<span class="abp-button-icon abp-button-lock"><i class="abp-icon" aria-hidden="true"></i></span>' : '';
-
-      var subunitAux1 = (!abpApp.config.isStudent) ? '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-1"><button class="abp-button-icon abp-button-sendactivity abp-js--sendActivity"><i class="abp-icon" aria-hidden="true"></i></button></div>' : '',
-          subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+subunitGrade+'</div></div>';
-
-      var subunitOnClick = subunit.onclickTitle,
-          subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner abp-js--subunitLocked"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
-          subunitTitleUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? '<h3 class="abp-title-5">'+subunitTitle+'</h3>' : '<h3 class="abp-title-5 abp-js--gotoActivity" onclick="'+subunitOnClick+'">'+subunitTitle+'</h3>',
-          subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top">'+subunitAux1+subunitTitleUrlHTML+'</div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
-
-      var subunitsListItem = document.createElement('li');
-      subunitsListItem.className = 'abp-resources-list-item';
-
-      subunitsListItem.innerHTML = subunitInnerHTML;
-      subunitsList.appendChild(subunitsListItem);
-      subunitsStudents++;
-
-    } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
-      var subunitType = subunit.type,
-          subunitOnClick = subunit.onclickTitle
-          subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
-          subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
-          subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top"><h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div></div></a> </article>';
-
-      var subunitsTeachersListItem = document.createElement('li');
-      subunitsTeachersListItem.className = 'abp-resources-list-item';
-
-      subunitsTeachersListItem.innerHTML = subunitTeachersInnerHTML;
-      subunitsTeachersList.appendChild(subunitsTeachersListItem);
-      subunitsTeachers++;
+    $('#abp-unit-title, #abp-unit-description, #abp-unit-image, #abp-unit-number').empty();
+    if (unitTitle !== '') {
+      $('#abp-unit-title').text(unitTitle);
+    }
+    if (unitDescription !== '') {
+      $('#abp-unit-description').text(unitDescription);
+    }
+    if (unitImage !== '') {
+      $('#abp-unit-image').prepend('<img src="'+unitImage+'">');
+    }
+    if (unitNumber !== '') {
+      $('#abp-unit-number').text(unitNumber);
     }
 
+    var subunitsStudents = 0,
+        subunitsTeachers = 0;
 
-  });
+    $.each(subunits, function(i, subunit){
+      var subunitID = subunit.id,
+          subunitTitle = subunit.title,
+          subunitDescription = subunit.description,
+          subunitImage = subunit.image,
+          subunitImageCode = (subunitImage !== '') ? '<img src="'+subunitImage+'" alt="'+subunitTitle+'">' : '',
+          subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
 
-  var $subunitsWrapper = $('#abp-studentarea .abp-resources-list');
-  $subunitsWrapper.empty();
-  if (subunitsStudents > 0) {
-    $subunitsWrapper[0].appendChild(subunitsList);
-  } else {
-    $subunitsWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
+      if (!subunitIsOnlyVisibleTeacher) {
+        // Students subunits: Visibles for both (student and teacher)
+
+        //Lock Subunits
+        var subunitLockStatus = subunit.lock,
+            isSubunitLock = (subunitLockStatus === abpApp.config.statusLock1 || subunitLockStatus === abpApp.config.statusLock2),
+            subunitLockClass = (isSubunitLock) ? 'lock' : 'unlock';
+
+        // Other info
+        var subunitPages = subunit.pags,
+            subunitPagesHTML = (subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
+            subunitGrade = (typeof window.actividades !== 'undefined' && typeof window.actividades[i] !== 'undefined' && window.actividades[i].nota !== '') ? '<div class="abp-activity-grade"><span>'+window.actividades[i].nota+'</span></div>' : '',
+            subunitLockButton = (!abpApp.config.isStudent) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : (abpApp.config.isStudent && isSubunitLock) ? '<span class="abp-button-icon abp-button-lock"><i class="abp-icon" aria-hidden="true"></i></span>' : '';
+
+        var subunitAux1 = (!abpApp.config.isStudent) ? '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-1"><button class="abp-button-icon abp-button-sendactivity abp-js--sendActivity"><i class="abp-icon" aria-hidden="true"></i></button></div>' : '',
+            subunitAux2 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2"><div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div><div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+subunitGrade+'</div></div>';
+
+        var subunitOnClick = subunit.onclickTitle,
+            subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner abp-js--subunitLocked"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
+            subunitTitleUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? '<h3 class="abp-title-5">'+subunitTitle+'</h3>' : '<h3 class="abp-title-5 abp-js--gotoActivity" onclick="'+subunitOnClick+'">'+subunitTitle+'</h3>',
+            subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top">'+subunitAux1+subunitTitleUrlHTML+'</div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux2+'</div></a></article>';
+
+        var subunitsListItem = document.createElement('li');
+        subunitsListItem.className = 'abp-resources-list-item';
+
+        subunitsListItem.innerHTML = subunitInnerHTML;
+        subunitsList.appendChild(subunitsListItem);
+        subunitsStudents++;
+
+      } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
+        var subunitType = subunit.type,
+            subunitOnClick = subunit.onclickTitle
+            subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
+            subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
+            subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top"><h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div></div></a> </article>';
+
+        var subunitsTeachersListItem = document.createElement('li');
+        subunitsTeachersListItem.className = 'abp-resources-list-item';
+
+        subunitsTeachersListItem.innerHTML = subunitTeachersInnerHTML;
+        subunitsTeachersList.appendChild(subunitsTeachersListItem);
+        subunitsTeachers++;
+      }
+
+
+    });
+
+    var $subunitsWrapper = $('#abp-studentarea .abp-resources-list');
+    $subunitsWrapper.empty();
+    if (subunitsStudents > 0) {
+      $subunitsWrapper[0].appendChild(subunitsList);
+    } else {
+      $subunitsWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
+    }
+
+    var $subunitsTeachersWrapper = $('#abp-teacherarea .abp-resources-list');
+    $subunitsTeachersWrapper.empty();
+    if (subunitsTeachers > 0) {
+      $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
+    } else {
+      $subunitsTeachersWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
+    }
+
   }
 
-  var $subunitsTeachersWrapper = $('#abp-teacherarea .abp-resources-list');
-  $subunitsTeachersWrapper.empty();
-  if (subunitsTeachers > 0) {
-    $subunitsTeachersWrapper[0].appendChild(subunitsTeachersList);
+  // Current Tab
+  if (activeAreaTeacher) {
+    $('.abp-tab a[href="#abp-teacherarea"').click();
   } else {
-    $subunitsTeachersWrapper.append('<h2 class="abp-empty">'+abpApp.text.noresources+'</h2>');
+    $('.abp-tab a[href="#abp-studentarea"').click();
   }
-
-  // Current Tab: always student tab
-  $('.abp-tab a[href="#abp-studentarea"').click();
 
   var currentIndex = 1;
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
       hash = abpApp.config.tree[currentIndex].hash,
-      suffixStudent = abpApp.config.tree[currentIndex].suffix[0],
-      hashWithID = hash+currentUnit+suffixStudent;
+      suffix = abpApp.config.tree[currentIndex].suffix[activeAreaTeacher],
+      hashWithID = hash+currentUnit+suffix;
 
-  console.log(suffixStudent,hashWithID);
+  console.log(suffix,hashWithID);
 
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
@@ -703,6 +711,7 @@ abpApp.loadUnit = function(data,currentUnit,updateHash) {
 
     if (updateHash) window.location.hash = hashWithID;
   });
+
 
 }
 
@@ -735,13 +744,13 @@ $(document).ready(function() {
     $(this).closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
     $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
 
-    var currentPageIndex = 1;
+  /*  var currentPageIndex = 1;
     var hash = abpApp.config.tree[currentIndex].hash,
         suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
         hashWithID = hash+currentUnit+suffix;
 
     window.location.hash = hashWithID;
-
+    */
   });
 
   // Go Home
