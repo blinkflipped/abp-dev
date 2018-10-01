@@ -418,7 +418,7 @@ abpApp.loadHomepage = function(data,updateHash) {
 
   abpApp.console('Loading Homepage');
   abpApp.unitAlreayLoaded = false;
-  
+
   var currentIndex = 0;
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
@@ -700,7 +700,8 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
       hash = abpApp.config.tree[currentIndex].hash,
-      suffix = abpApp.config.tree[currentIndex].suffix[activeAreaTeacher],
+      indexSuffix = (activeAreaTeacher) ? 1 : 0,
+      suffix = abpApp.config.tree[currentIndex].suffix[indexSuffix],
       hashWithID = hash+currentUnit+suffix;
 
   console.log(suffix,hashWithID);
