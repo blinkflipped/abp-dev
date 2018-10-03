@@ -1154,3 +1154,6 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
 #indice .unit-content {
     background-color: #243C3F;
 }
+.navbar.libro {
+    background: red !important;
+}
