@@ -749,6 +749,7 @@ $(document).ready(function() {
     $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
 
     console.log(tabIndex);
+    var currentIndex = 1; // Unit Index 
     var hash = abpApp.config.tree[currentIndex].hash,
         suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
         hashWithID = hash+currentUnit+suffix;
