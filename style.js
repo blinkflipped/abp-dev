@@ -303,29 +303,22 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
 abpApp.removeAuxFromBookIndex = function() {
 
-  $('#book-index li .title').each(function(i,e) {
-    var title = $(e).text(),
-        parseTitle = title.replace(/[^A-Za-z0-9]/g, ''),
-        auxTitle = abpApp.config.auxUnitName,
-        parseAuxTitle = auxTitle.replace(/[^A-Za-z0-9]/g, '');
-    if (parseTitle === parseAuxTitle) {
-      $(e).closest('li').remove();
-      $('#book-index .col-main').css({'left' : 0});
-    }
-  });
+  var auxUnit = abpApp.getAuxUnit(abpApp.bookData),
+      auxUnitID = abpApp.bookData.units[auxUnit].id;
+  $('#book-index')
+    .find('li[data-id="'+auxUnitID+'"]')
+      .remove()
+      .end()
+    .find('.col-main')
+      .css({'left' : 0});
 
 }
 
-abpApp.currentSectionInBookIndex = function(currentTitle) {
+abpApp.currentSectionInBookIndex = function(currentID) {
 
-  $('#book-index li .title').each(function(i,e) {
-    var title = $(e).text(),
-        parseTitle = title.replace(/[^A-Za-z0-9]/g, ''),
-        parseCurrentTitle = currentTitle.replace(/[^A-Za-z0-9]/g, '');
-    if (parseTitle === parseCurrentTitle) {
-      $(e).closest('a').click();
-    }
-  });
+  $('#book-index')
+    .find('li[data-id="'+currentID+'"] a')
+      .click();
 
 }
 
@@ -639,10 +632,14 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
     var unitImage =  data.units[currentUnit].image,
         unitTitle =  data.units[currentUnit].title,
+        unitID =  data.units[currentUnit].id,
         unitDescription =  data.units[currentUnit].description,
         unitNumberBase = data.units[currentUnit].number,
         unitNumberTemplate = unitNumberBase - 1,
         unitNumber = ('0' + unitNumberTemplate).slice(-2);
+
+
+    abpApp.currentSectionInBookIndex(unitID);
 
     var bookTitle = data.title;
 
@@ -651,7 +648,6 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     $('#abp-unit-title, #abp-unit-description, #abp-unit-image, #abp-unit-number').empty();
     if (unitTitle !== '') {
       $('#abp-unit-title').text(unitTitle);
-      abpApp.currentSectionInBookIndex(unitTitle);
     }
     if (unitDescription !== '') {
       $('#abp-unit-description').text(unitDescription);
