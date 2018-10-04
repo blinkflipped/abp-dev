@@ -745,7 +745,8 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
 
 abpApp.loadUnitTab = function(tab) {
-  var $this = $('.abp-tabs:eq('+tab+') a');
+  console.log(tab);
+  var $this = $('.abp-tabs').eq(tab).children('a');
   var target = $this.attr('href'),
       tabIndex = tab,
       currentClassTab = 'abp-tab_current',
@@ -762,7 +763,7 @@ abpApp.loadUnitTab = function(tab) {
       suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
       hashWithID = hash+currentUnit+suffix;
 
-  abpApp.updateHashWithListener(hashWithID);
+  window.location.hash = hashWithID;
 }
 
 
