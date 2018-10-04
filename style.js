@@ -708,6 +708,13 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
 
     abpApp.unitAlreayLoaded = true;
+    $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
+      if (updateHash) {
+        abpApp.onChangeHashListener();
+        window.location.hash = hashWithID;
+      }
+
+    });
 
   }
 
@@ -717,19 +724,11 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     abpApp.removeUnusedClass(bodyClass);
     $('body').addClass(bodyClass);
     $('html, body').animate({ scrollTop: 0 }, 1);
-
-    if (!abpApp.unitAlreayLoaded) {
-      if (updateHash) {
-        abpApp.onChangeHashListener();
-        window.location.hash = hashWithID;
-      }
+    // Current Tab
+    if (activeAreaTeacher) {
+      abpApp.loadUnitTab(1);
     } else {
-      // Current Tab
-      if (activeAreaTeacher) {
-        abpApp.loadUnitTab(1);
-      } else {
-        abpApp.loadUnitTab(0);
-      }
+      abpApp.loadUnitTab(0);
     }
 
   });
