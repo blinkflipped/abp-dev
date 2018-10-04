@@ -610,15 +610,12 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
   if (!abpApp.unitAlreayLoaded) {
     abpApp.console("Load Unit "+currentUnit);
 
-    var subunits = data.units[currentUnit].subunits,
-        unitImage =  data.units[currentUnit].image,
+    var unitImage =  data.units[currentUnit].image,
         unitTitle =  data.units[currentUnit].title,
         unitDescription =  data.units[currentUnit].description,
         unitNumberBase = data.units[currentUnit].number,
         unitNumberTemplate = unitNumberBase - 1,
-        unitNumber = ('0' + unitNumberTemplate).slice(-2),
-        subunitsList = document.createDocumentFragment(),
-        subunitsTeachersList = document.createDocumentFragment();
+        unitNumber = ('0' + unitNumberTemplate).slice(-2);
 
     var bookTitle = data.title;
 
@@ -640,6 +637,12 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
     var subunitsStudents = 0,
         subunitsTeachers = 0;
+
+    var subunits_1 = data.units[currentUnit].subunits,
+        subunits_2 = data.units[current].resources,
+        subunits = subunits_1.concat(subunits_2);
+        subunitsList = document.createDocumentFragment(),
+        subunitsTeachersList = document.createDocumentFragment();
 
     $.each(subunits, function(i, subunit){
       var subunitID = subunit.id,
