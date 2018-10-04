@@ -758,6 +758,7 @@ abpApp.loadUnitTab = function(tab) {
   console.log(tabIndex);
   var currentIndex = 1, // Unit Index
       currentHash = window.location.hash,
+      currentHash = currentHash.replace('#',''),
       currentUnit = abpApp.getIDByHash(currentHash);
   var hash = abpApp.config.tree[currentIndex].hash,
       suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
