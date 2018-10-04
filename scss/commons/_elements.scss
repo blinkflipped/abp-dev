@@ -43,6 +43,8 @@
 			content: $abp-icon-chevron-left;
 		}
 	}
+	&:focus,
+	&:active,
 	&:hover {
 		color: #D43B24;
 	}

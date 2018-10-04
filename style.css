@@ -163,7 +163,7 @@ body.view-mode {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     content: ""; }
-  .link:hover {
+  .link:focus, .link:active, .link:hover {
     color: #D43B24; }
 
 .abp-gohome {

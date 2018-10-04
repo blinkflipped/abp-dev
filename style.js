@@ -282,7 +282,8 @@ abpApp.getAuxUnit = function(data) {
 // Go Homepage
 
 abpApp.gohome = function() {
-  window.location.hash = abpApp.config.tree[0].hash;
+  var hash = abpApp.config.tree[0].hash;
+  abpApp.updateHashWithListener(hash);
 }
 
 // Toggle Lock/Unlock unit
@@ -356,9 +357,8 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
     } else {
 
       abpApp.console("Not Unit ID given, redirecting to Units");
-      abpApp.onChangeHashListener();
-      window.location.hash = abpApp.config.tree[0].hash;
-      abpApp.removeOnChangeHashListener();
+      var hash = abpApp.config.tree[0].hash;
+      abpApp.updateHashWithListener(hash);
     }
 
   } else { // Incorrect hash
@@ -366,10 +366,9 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
     abpApp.console("Incorrect hash, redirecting to Home");
 
     if (currentHash !== '') {
-      abpApp.onChangeHashListener();
-      window.location.hash = '';
+      var hash = '';
+      abpApp.updateHashWithListener(hash);
       var updateHash = true;
-      abpApp.removeOnChangeHashListener();
     } else {
       var updateHash = false;
       $(abpApp.config.buttonGoHome).addClass('disabled');
@@ -387,9 +386,7 @@ abpApp.loadByHash = function(currentHash,data) {
   var currentHash = currentHash.replace('#',''),
       updateHash = false;
 
-  abpApp.onChangeHashListener();
   abpApp.hashDistributor(currentHash, data, updateHash);
-  abpApp.removeOnChangeHashListener();
 }
 
 abpApp.onChangeHash = function() {
@@ -413,6 +410,14 @@ abpApp.removeOnChangeHashListener = function() {
   window.removeEventListener("hashchange", abpApp.onChangeHash, false);
 }
 
+
+abpApp.updateHashWithListener = function(hash) {
+
+  abpApp.onChangeHashListener();
+  window.location.hash = hash;
+  abpApp.removeOnChangeHashListener();
+
+}
 
 
 //----------------------------------//
@@ -559,8 +564,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         $('body').addClass(bodyClass);
         abpApp.removeUnusedClass(bodyClass);
         if (updateHash) {
-          abpApp.onChangeHashListener();
-          window.location.hash = hash;
+          abpApp.updateHashWithListener(hash);
         }
       }
 
@@ -577,8 +581,7 @@ abpApp.loadHomepage = function(data,updateHash) {
       $('body').addClass(bodyClass);
       abpApp.removeUnusedClass(bodyClass);
       if (updateHash) {
-        abpApp.onChangeHashListener();
-        window.location.hash = hash;
+        abpApp.updateHashWithListener(hash);
       }
     }
     $('html, body').animate({ scrollTop: 0 }, 1);
@@ -714,8 +717,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     abpApp.unitAlreayLoaded = true;
     $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
       if (updateHash) {
-        abpApp.onChangeHashListener();
-        window.location.hash = hashWithID;
+        abpApp.updateHashWithListener(hashWithID);
       }
 
     });
@@ -758,8 +760,7 @@ abpApp.loadUnitTab = function(tab) {
       suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
       hashWithID = hash+currentUnit+suffix;
 
-  abpApp.removeOnChangeHashListener();
-  window.location.hash = hashWithID;
+  abpApp.updateHashWithListener(hashWithID);
 }
 
 
@@ -776,8 +777,9 @@ $(document).ready(function() {
   $('body').on('click', '.abp-js-load-unit', function(e) {
     e.preventDefault();
     var currentUnit = $(this).data('unit'),
-        newHash = abpApp.config.tree[1].hash + currentUnit;
-    window.location.hash = newHash;
+        suffix = abpApp.config.tree[currentIndex].suffix[0],
+        newHash = abpApp.config.tree[1].hash + currentUnit + suffix;
+    abpApp.updateHashWithListener(newHash);
   });
 
   $('body').on('click', '.abp-tabs a', function(e) {
