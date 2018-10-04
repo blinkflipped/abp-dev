@@ -305,13 +305,14 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 abpApp.removeAuxFromBookIndex = function() {
 
   $('#book-index li .title').each(function(i,e) {
-
     var title = $(e).text();
+    console.log(title);
     if (title === abpApp.config.auxUnitName) {
       $(e).closest('li').remove();
       return;
     }
   });
+  
 }
 
 
