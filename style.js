@@ -74,7 +74,6 @@
     loadUserData: function() {
       var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
       loadScript(urlSeguimiento, true, (function(data) {
-        console.log(data);
         window.actividades = actividades;
       }).bind(this));
     },
@@ -476,8 +475,6 @@ abpApp.loadHomepage = function(data,updateHash) {
 
   if (abpApp.config.firstTime) {
 
-    abpApp.removeAuxFromBookIndex();
-
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
 
@@ -865,4 +862,8 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+});
+
+$(window).load(function() {
+  abpApp.removeAuxFromBookIndex();
 });
