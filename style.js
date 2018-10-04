@@ -746,7 +746,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
 abpApp.loadUnitTab = function(tab) {
   console.log(tab);
-  var $this = $('.abp-tabs').eq(tab).children('a');
+  var $this = $('.abp-tabs li').eq(tab).children('a');
   var target = $this.attr('href'),
       tabIndex = tab,
       currentClassTab = 'abp-tab_current',
