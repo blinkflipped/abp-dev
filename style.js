@@ -57,7 +57,6 @@
     * @param  {Object} data Información del curso.
     */
     onCourseDataLoaded: function(data) {
-      console.log(data);
       abpApp.config.bookcover = abpApp.getCover(data);
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
@@ -348,7 +347,7 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
     var abpunit = abpApp.getIDByHash(currentHash),
         unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0),
         activeAreaTeacher = currentHash.includes(abpApp.config.tree[1].suffix[1]);
-    console.log(activeAreaTeacher)
+
     if (abpunit !== '' && abpunit !== null && unitExists) {
       var currentUnit = abpunit;
 
@@ -608,8 +607,6 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
       suffix = abpApp.config.tree[currentIndex].suffix[indexSuffix],
       hashWithID = hash+currentUnit+suffix;
 
-  console.log(indexSuffix, suffix, hashWithID);
-
   if (!abpApp.unitAlreayLoaded) {
     abpApp.console("Load Unit "+currentUnit);
 
@@ -745,7 +742,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
 
 abpApp.loadUnitTab = function(tab) {
-  console.log(tab);
+
   var $this = $('.abp-tabs li').eq(tab).children('a');
   var target = $this.attr('href'),
       tabIndex = tab,
@@ -755,7 +752,6 @@ abpApp.loadUnitTab = function(tab) {
   $this.closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
   $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
 
-  console.log(tabIndex);
   var currentIndex = 1, // Unit Index
       currentHash = window.location.hash,
       currentHash = currentHash.replace('#',''),
