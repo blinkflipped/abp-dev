@@ -305,27 +305,30 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 abpApp.removeAuxFromBookIndex = function() {
 
   $('#book-index li .title').each(function(i,e) {
-    var title = $(e).text();
-    console.log(title);
-    if (title === abpApp.config.auxUnitName) {
+    var title = $(e).text(),
+        parseTitle = title.replace(/[^A-Za-z0-9]/g, ''),
+        auxTitle = abpApp.config.auxUnitName,
+        parseAuxTitle = auxTitle.replace(/[^A-Za-z0-9]/g, '');
+    if (parseTitle === parseAuxTitle) {
       $(e).closest('li').remove();
-      return;
+      $('#book-index .col-main').css({'left' : 0});
     }
   });
-  
-}
 
+}
 
 abpApp.currentSectionInBookIndex = function(currentTitle) {
+
   $('#book-index li .title').each(function(i,e) {
-    var title = $(e).text();
-    if (title === currentTitle) {
-      $(e).closest('li').addClass('current-parent active');
-      return;
+    var title = $(e).text(),
+        parseTitle = title.replace(/[^A-Za-z0-9]/g, ''),
+        parseCurrentTitle = currentTitle.replace(/[^A-Za-z0-9]/g, '');
+    if (parseTitle === parseCurrentTitle) {
+      $(e).closest('a').click();
     }
   });
-}
 
+}
 
 //----------------------------------//
 //                                  //
