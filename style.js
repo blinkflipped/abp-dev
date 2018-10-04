@@ -639,7 +639,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
         subunitsTeachers = 0;
 
     var subunits_1 = data.units[currentUnit].subunits,
-        subunits_2 = data.units[current].resources,
+        subunits_2 = data.units[currentUnit].resources,
         subunits = subunits_1.concat(subunits_2);
         subunitsList = document.createDocumentFragment(),
         subunitsTeachersList = document.createDocumentFragment();
