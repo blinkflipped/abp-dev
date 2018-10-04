@@ -347,7 +347,7 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
     var abpunit = abpApp.getIDByHash(currentHash),
         unitExists = (abpApp.config.unitsIDs.indexOf(abpunit) >= 0),
         activeAreaTeacher = currentHash.includes(abpApp.config.tree[1].suffix[1]);
-
+    console.log(activeAreaTeacher)
     if (abpunit !== '' && abpunit !== null && unitExists) {
       var currentUnit = abpunit;
 
@@ -748,13 +748,12 @@ $(document).ready(function() {
     $(this).closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
     $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
 
-  /*  var currentPageIndex = 1;
+    console.log(tabIndex);
     var hash = abpApp.config.tree[currentIndex].hash,
         suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
         hashWithID = hash+currentUnit+suffix;
 
     window.location.hash = hashWithID;
-    */
   });
 
   // Go Home
