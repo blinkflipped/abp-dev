@@ -777,7 +777,7 @@ $(document).ready(function() {
   $('body').on('click', '.abp-js-load-unit', function(e) {
     e.preventDefault();
     var currentUnit = $(this).data('unit'),
-        suffix = abpApp.config.tree[currentIndex].suffix[0],
+        suffix = abpApp.config.tree[1].suffix[0],
         newHash = abpApp.config.tree[1].hash + currentUnit + suffix;
     abpApp.updateHashWithListener(newHash);
   });
