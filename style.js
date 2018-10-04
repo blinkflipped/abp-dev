@@ -356,8 +356,9 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
     } else {
 
       abpApp.console("Not Unit ID given, redirecting to Units");
+      abpApp.onChangeHashListener();
       window.location.hash = abpApp.config.tree[0].hash;
-
+      abpApp.removeOnChangeHashListener();
     }
 
   } else { // Incorrect hash
@@ -365,8 +366,10 @@ abpApp.hashDistributor = function(currentHash,data,updateHash) {
     abpApp.console("Incorrect hash, redirecting to Home");
 
     if (currentHash !== '') {
+      abpApp.onChangeHashListener();
       window.location.hash = '';
       var updateHash = true;
+      abpApp.removeOnChangeHashListener();
     } else {
       var updateHash = false;
       $(abpApp.config.buttonGoHome).addClass('disabled');
@@ -384,8 +387,9 @@ abpApp.loadByHash = function(currentHash,data) {
   var currentHash = currentHash.replace('#',''),
       updateHash = false;
 
+  abpApp.onChangeHashListener();
   abpApp.hashDistributor(currentHash, data, updateHash);
-
+  abpApp.removeOnChangeHashListener();
 }
 
 abpApp.onChangeHash = function() {
