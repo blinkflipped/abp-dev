@@ -415,7 +415,7 @@ abpApp.updateHashWithListener = function(hash) {
 
   abpApp.onChangeHashListener();
   window.location.hash = hash;
-  abpApp.removeOnChangeHashListener();
+  //abpApp.removeOnChangeHashListener();
 
 }
 
