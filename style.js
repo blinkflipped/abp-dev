@@ -302,6 +302,29 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
 }
 
+abpApp.removeAuxFromBookIndex = function() {
+
+  $('#book-index li .title').each(function(i,e) {
+
+    var title = $(e).text();
+    if (title === abpApp.config.auxUnitName) {
+      $(e).closest('li').remove();
+      return;
+    }
+  });
+}
+
+
+abpApp.currentSectionInBookIndex = function(currentTitle) {
+  $('#book-index li .title').each(function(i,e) {
+    var title = $(e).text();
+    if (title === currentTitle) {
+      $(e).closest('li').addClass('current-parent active');
+      return;
+    }
+  });
+}
+
 
 //----------------------------------//
 //                                  //
@@ -448,6 +471,9 @@ abpApp.loadHomepage = function(data,updateHash) {
   $('.navbar .libro-left .title').text(bookTitle);
 
   if (abpApp.config.firstTime) {
+
+    abpApp.removeAuxFromBookIndex();
+
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
 
@@ -624,6 +650,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     $('#abp-unit-title, #abp-unit-description, #abp-unit-image, #abp-unit-number').empty();
     if (unitTitle !== '') {
       $('#abp-unit-title').text(unitTitle);
+      abpApp.currentSectionInBookIndex(unitTitle);
     }
     if (unitDescription !== '') {
       $('#abp-unit-description').text(unitDescription);
@@ -662,7 +689,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
         // Other info
         var subunitPages = subunit.pags,
-            subunitPagesHTML = (subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
+            subunitPagesHTML = (subunitPages !== 0 && subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
             subunitGrade = (typeof window.actividades !== 'undefined' && typeof window.actividades[i] !== 'undefined' && window.actividades[i].nota !== '') ? '<div class="abp-activity-grade"><span>'+window.actividades[i].nota+'</span></div>' : '',
             subunitLockButton = (!abpApp.config.isStudent) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : (abpApp.config.isStudent && isSubunitLock) ? '<span class="abp-button-icon abp-button-lock"><i class="abp-icon" aria-hidden="true"></i></span>' : '';
 
