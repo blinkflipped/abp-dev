@@ -474,6 +474,8 @@ abpApp.loadHomepage = function(data,updateHash) {
     var backgroundImageSrc = abpApp.config.bookcover.image,
         backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImageSrc+');' : '';
 
+    abpApp.removeAuxFromBookIndex();
+    
     $.each(data.units, function(i, unit){
       var unitNumber = unit.number - 1,
           unitNumberStr = unitNumber.toString();
@@ -858,8 +860,4 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-});
-
-$(window).load(function() {
-  abpApp.removeAuxFromBookIndex();
 });
