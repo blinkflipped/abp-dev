@@ -402,7 +402,13 @@ abpApp.onChangeHash = function() {
 
 }
 
-window.addEventListener("hashchange", abpApp.onChangeHash, false);
+abpApp.onChangeHashListener = function() {
+  window.addEventListener("hashchange", abpApp.onChangeHash, false);
+}
+abpApp.removeOnChangeHashListener = function() {
+  window.removeEventListener("hashchange", abpApp.onChangeHash, false);
+}
+
 
 
 //----------------------------------//
@@ -548,8 +554,10 @@ abpApp.loadHomepage = function(data,updateHash) {
       } else {
         $('body').addClass(bodyClass);
         abpApp.removeUnusedClass(bodyClass);
-
-        if (updateHash) window.location.hash = hash;
+        if (updateHash) {
+          abpApp.onChangeHashListener();
+          window.location.hash = hash;
+        }
       }
 
       abpApp.config.firstTime = false;
@@ -564,7 +572,10 @@ abpApp.loadHomepage = function(data,updateHash) {
     } else {
       $('body').addClass(bodyClass);
       abpApp.removeUnusedClass(bodyClass);
-      if (updateHash) window.location.hash = hash;
+      if (updateHash) {
+        abpApp.onChangeHashListener();
+        window.location.hash = hash;
+      }
     }
     $('html, body').animate({ scrollTop: 0 }, 1);
 
@@ -579,6 +590,16 @@ abpApp.loadHomepage = function(data,updateHash) {
 // Load units
 
 abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
+
+  var currentIndex = 1;
+  var currentPage = abpApp.config.tree[currentIndex].id,
+      bodyClass = abpApp.config.tree[currentIndex].class,
+      hash = abpApp.config.tree[currentIndex].hash,
+      indexSuffix = (activeAreaTeacher) ? 1 : 0,
+      suffix = abpApp.config.tree[currentIndex].suffix[indexSuffix],
+      hashWithID = hash+currentUnit+suffix;
+
+  console.log(indexSuffix, suffix, hashWithID);
 
   if (!abpApp.unitAlreayLoaded) {
     abpApp.console("Load Unit "+currentUnit);
@@ -687,24 +708,8 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
 
     abpApp.unitAlreayLoaded = true;
+
   }
-
-  // Current Tab
-  if (activeAreaTeacher) {
-    $('.abp-tab a[href="#abp-teacherarea"').click();
-  } else {
-    $('.abp-tab a[href="#abp-studentarea"').click();
-  }
-
-  var currentIndex = 1;
-  var currentPage = abpApp.config.tree[currentIndex].id,
-      bodyClass = abpApp.config.tree[currentIndex].class,
-      hash = abpApp.config.tree[currentIndex].hash,
-      indexSuffix = (activeAreaTeacher) ? 1 : 0,
-      suffix = abpApp.config.tree[currentIndex].suffix[indexSuffix],
-      hashWithID = hash+currentUnit+suffix;
-
-  console.log(indexSuffix, suffix, hashWithID);
 
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
@@ -713,12 +718,46 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     $('body').addClass(bodyClass);
     $('html, body').animate({ scrollTop: 0 }, 1);
 
-    if (updateHash) window.location.hash = hashWithID;
-  });
+    if (!abpApp.unitAlreayLoaded) {
+      if (updateHash) {
+        abpApp.onChangeHashListener();
+        window.location.hash = hashWithID;
+      }
+    } else {
+      // Current Tab
+      if (activeAreaTeacher) {
+        abpApp.loadUnitTab(1);
+      } else {
+        abpApp.loadUnitTab(0);
+      }
+    }
 
+  });
 
 }
 
+
+abpApp.loadUnitTab = function(tab) {
+  var $this = $('.abp-tabs:eq('+tab+') a');
+  var target = $this.attr('href'),
+      tabIndex = tab,
+      currentClassTab = 'abp-tab_current',
+      currentClassContent = 'abp-tabs-content_current';
+
+  $this.closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
+  $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
+
+  console.log(tabIndex);
+  var currentIndex = 1, // Unit Index
+      currentHash = window.location.hash,
+      currentUnit = abpApp.getIDByHash(currentHash);
+  var hash = abpApp.config.tree[currentIndex].hash,
+      suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
+      hashWithID = hash+currentUnit+suffix;
+
+  abpApp.removeOnChangeHashListener();
+  window.location.hash = hashWithID;
+}
 
 
 //----------------------------------//
@@ -740,23 +779,8 @@ $(document).ready(function() {
 
   $('body').on('click', '.abp-tabs a', function(e) {
     e.preventDefault();
-    var target = $(this).attr('href'),
-        tabIndex = $(this).closest('li').index(),
-        currentClassTab = 'abp-tab_current',
-        currentClassContent = 'abp-tabs-content_current';
-
-    $(this).closest('li').addClass(currentClassTab).siblings().removeClass(currentClassTab);
-    $(target).addClass(currentClassContent).siblings('.abp-tabs-content').removeClass(currentClassContent);
-
-    console.log(tabIndex);
-    var currentIndex = 1, // Unit Index
-        currentHash = window.location.hash,
-        currentUnit = abpApp.getIDByHash(currentHash);
-    var hash = abpApp.config.tree[currentIndex].hash,
-        suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
-        hashWithID = hash+currentUnit+suffix;
-
-    window.location.hash = hashWithID;
+    var tab = $(this).closest('li').index();
+    abpApp.loadUnitTab(tab);
   });
 
   // Go Home
