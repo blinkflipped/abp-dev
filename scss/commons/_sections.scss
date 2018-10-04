@@ -127,7 +127,7 @@ $page_unit_tab_height : 86px;
         &-top {
           @include gradient();
           color: $negative_color;
-          padding: 40px;
+          padding: 30px;
           position: relative;
           margin: 0;
           width: 100%;
@@ -150,7 +150,7 @@ $page_unit_tab_height : 86px;
           width: 100%;
           position: relative;
           flex-grow: 2;
-          padding: 20px 40px;
+          padding: 20px 30px;
           &::before {
             content: '';
             background : $negative_color;

@@ -1015,7 +1015,7 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
           background: -ms-linear-gradient(0deg, #e2764e 0%, #d43923 99.84%);
           background: linear-gradient(90deg, #e2764e 0%, #d43923 99.84%);
           color: #ffffff;
-          padding: 40px;
+          padding: 30px;
           position: relative;
           margin: 0;
           width: 100%;
@@ -1036,7 +1036,7 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
           width: 100%;
           position: relative;
           flex-grow: 2;
-          padding: 20px 40px; }
+          padding: 20px 30px; }
           .abp-section_unit-inner .abp-section-header-bottom::before {
             content: '';
             background: #ffffff;
