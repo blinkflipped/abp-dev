@@ -638,9 +638,6 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
         unitNumberTemplate = unitNumberBase - 1,
         unitNumber = ('0' + unitNumberTemplate).slice(-2);
 
-
-    abpApp.currentSectionInBookIndex(unitID);
-
     var bookTitle = data.title;
 
     $('.navbar .libro-left .title').text(bookTitle +' > '+unitTitle);
@@ -857,12 +854,7 @@ $(document).ready(function() {
   // Fix btn-book-index
   $('#btn-book-index').click(function(e) {
     e.preventDefault();
+  });
 
-  });
-  // Remove Auxiliar Unit from Book Index.
-  $('#btn-book-index').one('click', function(e) {
-    e.preventDefault();
-    abpApp.removeAuxFromBookIndex();
-  });
 
 });
