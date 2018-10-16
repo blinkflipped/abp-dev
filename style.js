@@ -290,10 +290,9 @@ abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
   onCursoCambiarBloqueado(subunitID, idcurso);
 
-  var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity'),
-      newIsLocked = !isLocked;
+  var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity');
 
-  if (newIsLocked) {
+  if (isLocked) {
     $items.removeClass('abp-unlock');
   } else {
     $items.addClass('abp-unlock');
