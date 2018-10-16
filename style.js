@@ -287,12 +287,13 @@ abpApp.gohome = function() {
 // Toggle Lock/Unlock unit
 
 abpApp.toggleLockSubunit = function(subunitID, isLocked) {
-  console.log(subunitID, isLocked)
+
   onCursoCambiarBloqueado(subunitID, idcurso);
 
-  var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity');
+  var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity'),
+      newIsLocked = !isLocked;
 
-  if (!isLocked) {
+  if (newIsLocked) {
     $items.removeClass('abp-unlock');
   } else {
     $items.addClass('abp-unlock');
