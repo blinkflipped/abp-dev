@@ -686,10 +686,10 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
             subunitPagesHTML = (subunitPages !== 0 && subunitPages !== '' && typeof subunitPages !== 'undefined') ? '<div class="abp-activity-pages"><span>'+subunitPages+'</span> '+abpApp.text.pages+'</div>' : '',
             subunitGrade = (typeof window.actividades !== 'undefined' && typeof window.actividades[subunitID] !== 'undefined') ? window.actividades[subunitID].nota : '',
             subunitGradeHTML = (subunitGrade !== '') ? '<div class="abp-activity-grade"><span>'+subunitGrade+'</span></div>' : '',
-            subunitLockButton = (!abpApp.config.isStudent) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : '<span class="abp-button-icon abp-button-'+subunitLockClass+'"><i class="abp-icon" aria-hidden="true"></i></span>';
+            subunitLockButton = (!abpApp.config.isStudent && subunit.canLockActivity) ? '<button class="abp-button-icon abp-button-lock abp-'+subunitLockClass+' abp-js--lockActivity"> <i class="abp-icon" aria-hidden="true"></i> </button>' : '<span class="abp-button-icon abp-button-'+subunitLockClass+'"><i class="abp-icon" aria-hidden="true"></i></span>';
 
         var subunitAux1 = (subunit.canSendHomework) ? '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-1"><button class="abp-button-icon abp-button-sendactivity abp-js--sendActivity"><i class="abp-icon" aria-hidden="true"></i></button></div>' : '',
-            subunitAux2 = (subunit.canLockActivity) ? '<div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div>' : '',
+            subunitAux2 = '<div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div>',
             subunitAux3 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2">'+subunitAux2+'<div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+subunitGradeHTML+'</div></div>';
 
         var subunitOnClick = subunit.onclickTitle,
