@@ -204,7 +204,8 @@ abpApp.text = {
   teacherarea : 'Área del profesor',
   noresources : 'No hay recursos disponibles',
   pages : 'pág',
-  lockcontent : 'Contenido bloqueado por el profesor'
+  lockcontent : 'Contenido bloqueado por el profesor',
+  nointernet : 'Necesitas conexión para realizar esta acción'
 }
 
 
@@ -288,16 +289,23 @@ abpApp.gohome = function() {
 
 abpApp.toggleLockSubunit = function(subunitID, isLocked) {
 
-  onCursoCambiarBloqueado(subunitID, idcurso);
+  blink.checkConnection(
+    function() {
+      onCursoCambiarBloqueado(subunitID, idcurso);
 
-  var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity'),
-      newIsLocked = !isLocked;
+      var $items = $('.abp-resources-list-item-inner[data-subunit-id="'+subunitID+'"] .abp-js--lockActivity'),
+          newIsLocked = !isLocked;
 
-  if (newIsLocked) {
-    $items.removeClass('abp-unlock');
-  } else {
-    $items.addClass('abp-unlock');
-  }
+      if (newIsLocked) {
+        $items.removeClass('abp-unlock');
+      } else {
+        $items.addClass('abp-unlock');
+      }
+    },
+    function() {
+      _showAlert(abpApp.text.nointernet);
+    }
+  );
 
 }
 
