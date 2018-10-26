@@ -530,7 +530,9 @@ abpApp.loadHomepage = function(data,updateHash) {
         var subunitIsAux = subunit.tag === abpApp.config.auxTab;
         if (subunitIsAux) {
           var subunitTitle = subunit.title,
-              subunitOnClick = subunit.onclickTitle,
+              subunitID = subunit.id,
+              //subunitOnClick = subunit.onclickTitle,
+              subunitOnClick = 'blink.goToActivity('+idcurso+','+subunitID+')',
               subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
