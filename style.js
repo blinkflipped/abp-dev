@@ -544,7 +544,7 @@ abpApp.loadHomepage = function(data,updateHash) {
               subunitUrl = subunit.url,
               //subunitOnClick = subunit.onclickTitle,
               //subunitOnClick = 'blink.goToActivity('+idcurso+','+subunitID+')',
-              subunitOnClick = 'abpApp.openActivity("'+subunitUrl+'",'+subunitID+')',
+              subunitOnClick = "abpApp.openActivity('"+subunitUrl+"',"+subunitID+")",
               subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
