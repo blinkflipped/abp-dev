@@ -103,7 +103,12 @@
       style.onCourseDataLoaded(data);
     });
   });
-
+  
+  // Remove Info
+  blink.events.on('indexLoaded', function(){
+    console.log("Index loaded")
+    abpApp.removeAuxFromBookIndex();
+  });
 
 })( blink );
 
@@ -483,12 +488,6 @@ abpApp.loadHomepage = function(data,updateHash) {
       bookDescription = data.description;
 
   $('.navbar .libro-left .title').text(bookTitle);
-
-  // Remove Info
-  blink.events.on('indexLoaded', function(){
-    console.log("Index loaded");
-    abpApp.removeAuxFromBookIndex();
-  });
 
   if (abpApp.config.firstTime) {
 
