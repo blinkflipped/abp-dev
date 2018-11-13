@@ -319,11 +319,15 @@ abpApp.removeAuxFromBookIndex = function() {
   var auxUnit = abpApp.getAuxUnit(abpApp.bookData),
       auxUnitID = abpApp.bookData.units[auxUnit].id;
 
-  var $auxLi = $('#book-index').find('li[data-id="'+auxUnitID+'"]');
+  var $auxLi = $('#book-index').find('li[data-id="'+auxUnitID+'"]'),
+      $auxIndex = $('#book-index').find('.unit-content[data-id="'+auxUnitID+'"]');
 
   if ($auxLi.length) {
-    $('#book-index').find('.col-main').css({'left' : 0});
     $auxLi.remove();
+    $auxIndex.remove();
+    /*setTimeout(function() {
+      //$('#book-index').find('.col-main').css({'left' : 0});
+    }, 500);*/
   }
 
 }
@@ -553,7 +557,7 @@ abpApp.loadHomepage = function(data,updateHash) {
               subunitUrl = subunit.url,
               subunitType = subunit.type,
               subunitIsImg = (subunitType === 'img'),
-              subunitOnClick = "abpApp.openActivity("+subunitIsImg+", "+subunitUrl+"',"+subunitID+")",
+              subunitOnClick = "abpApp.openActivity("+subunitIsImg+", '"+subunitUrl+"',"+subunitID+")",
               subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
           if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
             var tabListItem = document.createElement('li');
@@ -726,7 +730,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
         var subunitType = subunit.type,
             subunitIsImg = (subunitType === 'img'),
-            subunitOnClick = "abpApp.openActivity("+subunitIsImg+", "+subunitUrl+"',"+subunitID+")",
+            subunitOnClick = "abpApp.openActivity("+subunitIsImg+", '"+subunitUrl+"',"+subunitID+")",
             subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner abp-js--subunitLocked"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
             subunitTitleUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? '<h3 class="abp-title-5">'+subunitTitle+'</h3>' : '<h3 class="abp-title-5 abp-js--gotoActivity" onclick="'+subunitOnClick+'">'+subunitTitle+'</h3>',
             subunitInnerHTML = '<article class="abp-resources-list-item-article '+subunitLockClass+'"> <a href="javascript:void(0)" '+subunitUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitImageCode+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top">'+subunitAux1+subunitTitleUrlHTML+'</div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div>'+subunitAux3+'</div></a></article>';
@@ -741,7 +745,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
       } else if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent) {
         var subunitType = subunit.type,
             subunitIsImg = (subunitType === 'img'),
-            subunitOnClick = "abpApp.openActivity("+subunitIsImg+", "+subunitUrl+"',"+subunitID+")",
+            subunitOnClick = "abpApp.openActivity("+subunitIsImg+", '"+subunitUrl+"',"+subunitID+")",
             subunitTeachersTypeHTML = (subunitType !== '') ? '<span class="abp-resources-list-icon abp-resources-list-icon_'+subunitType+'" aria-hidden="true"></span>' : '',
             subunitTeachersUrlHTML = 'class="abp-resources-list-item-inner" onclick="'+subunitOnClick+'" data-subunit-id="'+subunitID+'"',
             subunitTeachersInnerHTML = '<article class="abp-resources-list-item-article"> <a href="javascript:void(0)" '+subunitTeachersUrlHTML+'><div class="abp-resources-list-item-image"><div class="abp-resources-list-item-image-inner">'+subunitTeachersTypeHTML+'</div></div><div class="abp-resources-list-item-text"><div class="abp-resources-list-item-text-main"><div class="abp-resources-list-item-text-main-top"><h3 class="abp-title-5">'+subunitTitle+'</h3></div><div class="abp-resources-list-item-text-main-bottom"><p>'+subunitDescription+'</p></div></div></div></a> </article>';
