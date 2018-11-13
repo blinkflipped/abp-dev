@@ -117,7 +117,7 @@
 
 //----------------------------------//
 //                                  //
-//  Vendors                           //
+//  Vendors                         //
 //                                  //
 //----------------------------------//
 
@@ -161,7 +161,7 @@
 //                                  //
 //----------------------------------//
 
-var abpApp = window.abpAppApp || {};
+var abpApp = window.abpApp || {};
 abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
@@ -820,7 +820,6 @@ abpApp.loadUnitTab = function(tab) {
 
 $(document).ready(function() {
 
-
   $('body').on('click', '.abp-js-load-unit', function(e) {
     e.preventDefault();
     var currentUnit = $(this).data('unit'),
@@ -877,5 +876,9 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+  // Remove Info
+  blink.events.on('indexLoaded', function(){
+    abpApp.removeAuxFromBookIndex();
+  });
 
 });
