@@ -724,7 +724,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
             subunitAux2 = '<div class="abp-resources-list-item-text-aux-left">'+subunitLockButton+'</div>',
             subunitAux3 = '<div class="abp-resources-list-item-text-aux abp-resources-list-item-text-aux-2">'+subunitAux2+'<div class="abp-resources-list-item-text-aux-right">'+subunitPagesHTML+subunitGradeHTML+'</div></div>';
 
-        var var subunitType = subunit.type,
+        var subunitType = subunit.type,
             subunitIsImg = (subunitType === 'img'),
             subunitOnClick = "abpApp.openActivity("+subunitIsImg+", "+subunitUrl+"',"+subunitID+")",
             subunitUrlHTML = (abpApp.config.isStudent && (isSubunitLock)) ? 'class="abp-resources-list-item-inner abp-js--subunitLocked"' : 'class="abp-resources-list-item-inner" data-subunit-id="'+subunitID+'"',
