@@ -319,15 +319,16 @@ abpApp.removeAuxFromBookIndex = function() {
   var auxUnit = abpApp.getAuxUnit(abpApp.bookData),
       auxUnitID = abpApp.bookData.units[auxUnit].id;
 
-  var $auxLi = $('#book-index').find('li[data-id="'+auxUnitID+'"]'),
-      $auxIndex = $('#book-index').find('.unit-content[data-id="'+auxUnitID+'"]');
+  var $auxLi = $('#book-index').find('li[data-id="'+auxUnitID+'"]');
 
   if ($auxLi.length) {
     $auxLi.remove();
-    $auxIndex.remove();
-    /*setTimeout(function() {
+    setTimeout(function() {
+      var $auxIndex = $('#book-index').find('.unit-content[data-id="'+auxUnitID+'"]');
+      $auxIndex.remove();
+
       //$('#book-index').find('.col-main').css({'left' : 0});
-    }, 500);*/
+    }, 500);
   }
 
 }
