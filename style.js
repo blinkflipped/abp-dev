@@ -484,6 +484,12 @@ abpApp.loadHomepage = function(data,updateHash) {
 
   $('.navbar .libro-left .title').text(bookTitle);
 
+  // Remove Info
+  blink.events.on('indexLoaded', function(){
+    console.log("Index loaded");
+    abpApp.removeAuxFromBookIndex();
+  });
+
   if (abpApp.config.firstTime) {
 
     abpApp.config.isStudent = blink.user.esAlumno();
@@ -876,9 +882,5 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
-  // Remove Info
-  blink.events.on('indexLoaded', function(){
-    abpApp.removeAuxFromBookIndex();
-  });
 
 });
