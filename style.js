@@ -658,8 +658,6 @@ abpApp.loadHomepage = function(data,updateHash) {
 
 abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
-  abpApp.stopMultimediaContent();
-
   var currentIndex = 1;
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
@@ -815,6 +813,8 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
 
 abpApp.loadUnitTab = function(tab) {
+
+  abpApp.stopMultimediaContent();
 
   var $this = $('.abp-tabs li').eq(tab).children('a');
   var target = $this.attr('href'),
