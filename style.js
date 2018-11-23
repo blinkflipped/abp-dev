@@ -480,7 +480,12 @@ abpApp.updateHashWithListener = function(hash) {
 //----------------------------------//
 
 
-abpApp.loadSliders = function() {
+abpApp.loadSliders = function(data) {
+
+  // Get BookData
+  abpApp.bookData = data
+
+  // Put Background to slider 
   var backgroundImageSrc = abpApp.config.bookcover.image,
       backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'url('+backgroundImageSrc+')' : 'none';
   $('#slider').css('background-image', backgroundImage);
