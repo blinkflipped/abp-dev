@@ -176,7 +176,7 @@ abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
 abpApp.config.buttonGoHome = '.abp-js-gohome';
-abpApp.config.auxTab = 'pestaña';
+abpApp.config.auxTab = 'tab';
 abpApp.config.coverName = 'Portada';
 abpApp.config.bookcover = '';
 abpApp.config.auxUnitName = 'Info';
@@ -351,6 +351,18 @@ abpApp.openActivity = function(url, subunitID) {
 
 }
 
+
+abpApp.stopMultimediaContent = function() {
+  var multimediaContent = $('.video-js');
+  if (multimediaContent.length) {
+    multimediaContent.each(function(i,e) {
+      var multimediaContentID = $(e).attr('id');
+      videojs.players[multimediaContentID].pause();
+      $(e).find(".vjs-close").click();
+    });
+  }
+}
+
 //----------------------------------//
 //                                  //
 //  Hash navigation                 //
@@ -447,25 +459,16 @@ abpApp.onChangeHash = function() {
   $(abpApp.config.buttonGoHome).removeClass('disabled');
 
   abpApp.hashDistributor(currentHash, data, updateHash);
+  abpApp.stopMultimediaContent();
 
-}
-
-abpApp.onChangeHashListener = function() {
-  window.addEventListener("hashchange", abpApp.onChangeHash, false);
-}
-abpApp.removeOnChangeHashListener = function() {
-  window.removeEventListener("hashchange", abpApp.onChangeHash, false);
 }
 
 
 abpApp.updateHashWithListener = function(hash) {
 
-  //abpApp.onChangeHashListener();
   window.location.hash = hash;
 
   abpApp.onChangeHash();
-  //abpApp.removeOnChangeHashListener();
-
 }
 
 
