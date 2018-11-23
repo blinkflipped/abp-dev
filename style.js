@@ -658,6 +658,8 @@ abpApp.loadHomepage = function(data,updateHash) {
 
 abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
+  abpApp.stopMultimediaContent();
+
   var currentIndex = 1;
   var currentPage = abpApp.config.tree[currentIndex].id,
       bodyClass = abpApp.config.tree[currentIndex].class,
