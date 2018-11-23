@@ -67,6 +67,7 @@
         abpApp.loadHomepage(data, updateHash);
       } else {
         $('html').removeClass('abp-isBookCover');
+        abpApp.loadSliders();
       }
 
     },
@@ -479,7 +480,11 @@ abpApp.updateHashWithListener = function(hash) {
 //----------------------------------//
 
 
-
+abpApp.loadSliders = function() {
+  var backgroundImageSrc = abpApp.config.bookcover.image,
+      backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'url('+backgroundImageSrc+')' : 'none';
+  $('#slider').css('background-image', backgroundImage);
+}
 
 abpApp.loadHomepage = function(data,updateHash) {
 
