@@ -1395,3 +1395,6 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover, #bo
 
 .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper::-webkit-scrollbar-track {
   background-color: #ededed; }
+
+a:hover, a:active, a:focus {
+  color: #A2041B; }
