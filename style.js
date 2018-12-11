@@ -172,7 +172,7 @@ abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
 abpApp.config.firstTime = true;
-abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, variableWidth: true, accessibility: false}; //
+abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, variableWidth: true, accessibility: false};
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
@@ -595,9 +595,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
 
-    //setTimeout(function () {
-      $unitsWrapper.slick(abpApp.config.carouselOpt);
-    //}, 100);
+    $unitsWrapper.slick(abpApp.config.carouselOpt);
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
