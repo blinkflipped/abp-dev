@@ -597,7 +597,7 @@ abpApp.loadHomepage = function(data,updateHash) {
 
     setTimeout(function () {
       $unitsWrapper.slick(abpApp.config.carouselOpt);
-    }, 1000);
+    }, 500);
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
@@ -628,6 +628,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     $('body').imagesLoaded({background: 'div, a, span, button'}, function(){
       $('html').addClass('htmlReady');
       $('body').addClass(userBodyClass);
+      $(window).resize();
       $('html, body').animate({ scrollTop: 0 }, 1);
       if (currentHash !== '' && currentHash !== hash) {
         abpApp.loadByHash(currentHash,data);
