@@ -352,6 +352,8 @@
 
 .abp-units-slider {
 	position: relative;
+	max-width: 100%;
+	width: $layout_max;
 	.slick-arrow {
 		border: 0;
 		background: none;

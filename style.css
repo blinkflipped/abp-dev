@@ -463,7 +463,9 @@ body.view-mode {
     opacity: 1;
     transform: translateX(0px) scale(1); } }
 .abp-units-slider {
-  position: relative; }
+  position: relative;
+  max-width: 100%;
+  width: 1020px; }
   .abp-units-slider .slick-arrow {
     border: 0;
     background: none;

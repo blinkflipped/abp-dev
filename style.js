@@ -596,8 +596,6 @@ abpApp.loadHomepage = function(data,updateHash) {
     $unitsWrapper[0].appendChild(unitList);
 
     $unitsWrapper.slick(abpApp.config.carouselOpt);
-    // Resize window to adjust carousel because we cannot use variableWidth on Options
-    $(window).resize();
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
