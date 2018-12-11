@@ -172,7 +172,7 @@ abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
 abpApp.config.firstTime = true;
-abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, variableWidth: true}; //slidesToShow: 4.25, slidesToScroll: 4,
+abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, variableWidth: true};
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
@@ -599,8 +599,8 @@ abpApp.loadHomepage = function(data,updateHash) {
 
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
-    $unitsWrapperContent.addClass('slider--toleft');
-    $unitsWrapper.on('afterChange', function(event, slick, currentSlide) {
+    //$unitsWrapperContent.addClass('slider--toleft');
+    /*$unitsWrapper.on('afterChange', function(event, slick, currentSlide) {
       if (currentSlide > 0) {
         $unitsWrapperContent.removeClass('slider--toleft');
       } else {
@@ -613,7 +613,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         $unitsWrapperContent.removeClass('slider--toright');
       }
 
-    });
+    });*/
 
 
     // Create Auxiliary tabs
