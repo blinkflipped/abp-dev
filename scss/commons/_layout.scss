@@ -1,4 +1,5 @@
 .abp-container {
+  width: 100%;
   max-width: $layout_max;
   margin: 0 auto;
   padding: 0 $space_1;
@@ -72,4 +73,4 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
 }
 
 #book-index #indice .unit-content a:hover,
-#book-index #indice li.current a {color: $color_1} 
+#book-index #indice li.current a {color: $color_1}
