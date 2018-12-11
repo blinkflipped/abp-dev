@@ -1261,7 +1261,7 @@ body:not(.edit) .bck-flipbox-face.back {
 .abp-section_home .abp-section-content {
   background: rgba(255, 255, 255, 0.14); }
 
-.abp-section_home .abp-section-content.slider--toleft::before {
+.abp-section_home .abp-section-content.abp-slider--toleft::before {
   display: none; }
 
 .abp-section_home .abp-section-content::before, .abp-section_home .abp-section-content::after {
