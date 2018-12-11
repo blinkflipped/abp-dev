@@ -172,7 +172,7 @@ abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
 abpApp.config.firstTime = true;
-abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, accessibility: false}; //variableWidth: true, 
+abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, accessibility: false}; //variableWidth: true,
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
@@ -595,12 +595,9 @@ abpApp.loadHomepage = function(data,updateHash) {
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
 
-    $unitsWrapper.on('init', function(slick) {
-      //$unitsWrapper.slick('slickGoTo', 0, true);
-    });
-
     $unitsWrapper.slick(abpApp.config.carouselOpt);
-
+    // Resize window to adjust carousel because we cannot use variableWidth on Options
+    $(window).resize();
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
