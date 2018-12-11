@@ -172,7 +172,7 @@ abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
 abpApp.config.firstTime = true;
-abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, variableWidth: true, accessibility: false};
+abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, accessibility: false}; //variableWidth: true, 
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;
@@ -657,7 +657,7 @@ abpApp.loadHomepage = function(data,updateHash) {
       }
     }
     $('html, body').animate({ scrollTop: 0 }, 1);
-
+    $(window).resize(); // FIX to pagination on click
   }
 
   // Object Fit support
