@@ -595,7 +595,9 @@ abpApp.loadHomepage = function(data,updateHash) {
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
 
-    $unitsWrapper.slick(abpApp.config.carouselOpt);
+    setTimeout(function () {
+      $unitsWrapper.slick(abpApp.config.carouselOpt);
+    }, 1);
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
