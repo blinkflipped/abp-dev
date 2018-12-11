@@ -866,7 +866,7 @@ $(document).ready(function() {
         isInSlider = $slider.length;
 
     if (isInSlider) {
-      var currentSlide = $(this).closest('.slick-slide').attr('data-slick-index');
+      var currentSlide = $(this).closest('.slick-slide').data('slick-index');
       $slider.slick('slickGoTo', currentSlide);
     }
 
