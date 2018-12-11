@@ -595,6 +595,10 @@ abpApp.loadHomepage = function(data,updateHash) {
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
 
+    $unitsWrapper.on('init', function(slick) {
+      $unitsWrapper.slick('slickGoTo', 0, true);
+    });
+
     $unitsWrapper.slick(abpApp.config.carouselOpt);
 
 
