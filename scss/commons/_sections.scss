@@ -91,12 +91,12 @@ $page_unit_tab_height : 86px;
       &::after {
         right: 0;
       }
-      &.slider--toleft {
+      &.abp-slider--toleft {
         &::before {
           width: calc(50vw - #{$layout_max/2 - 20px});
         }
       }
-      &.slider--toright {
+      &.abp-slider--toright {
         &::after {
           width: calc(50vw - #{$layout_max/2 - 20px});
         }

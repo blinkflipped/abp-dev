@@ -983,9 +983,9 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
       transform: scale(-1); }
     .abp-section_home .abp-section-content::after {
       right: 0; }
-    .abp-section_home .abp-section-content.slider--toleft::before {
+    .abp-section_home .abp-section-content.abp-slider--toleft::before {
       width: calc(50vw - 490px); }
-    .abp-section_home .abp-section-content.slider--toright::after {
+    .abp-section_home .abp-section-content.abp-slider--toright::after {
       width: calc(50vw - 490px); }
     .abp-section_home .abp-section-content .abp-unit {
       margin-bottom: 50px; }
