@@ -861,6 +861,15 @@ $(document).ready(function() {
     var currentUnit = $(this).data('unit'),
         suffix = abpApp.config.tree[1].suffix[0],
         newHash = abpApp.config.tree[1].hash + currentUnit + suffix;
+
+    var $slider = $(this).closest('.abp-js--slider'),
+        isInSlider = $slider.length;
+
+    if (isInSlider) {
+      var currentSlide = $(this).closest('.slick-slide').attr('data-slick-index');
+      $slider.slick('slickGoTo', currentSlide);
+    }
+
     abpApp.updateHashWithListener(newHash);
   });
 
