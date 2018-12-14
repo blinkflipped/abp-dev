@@ -575,7 +575,7 @@ abpApp.loadHomepage = function(data,updateHash) {
                 subunitUrl = subunit.url,
                 subunitType = subunit.type,
                 subunitIsMedia = (subunitType === 'img' || subunitType === 'musica' || subunitType === 'video'),
-                subunitOnClick = (subunitIsMedia) ? subunit.onclickTitle :"abpApp.openActivity('" + subunitUrl + "'," + subunitID + ", ' "+subunitType+"')",
+                subunitOnClick = (subunitIsMedia) ? subunit.onclickTitle :"abpApp.openActivity('" + subunitUrl + "'," + subunitID + ", '"+subunitType+"')",
                 subunitIsOnlyVisibleTeacher = subunit.onlyVisibleTeachers;
             if (subunitIsOnlyVisibleTeacher && !abpApp.config.isStudent || !subunitIsOnlyVisibleTeacher) {
               var tabListItem = document.createElement('li');
