@@ -56,7 +56,7 @@
     * Realiza operaciones al cargar los datos del curso.
     * @param  {Object} data Información del curso.
     */
-    onCourseDataLoaded: function(data) {
+    /*onCourseDataLoaded: function(data) {
       abpApp.config.bookcover = abpApp.getCover(data);
       var isBookCover = idclase.toString() === abpApp.config.bookcover.id;
 
@@ -70,14 +70,14 @@
         abpApp.loadSliders(data);
       }
 
-    },
+    },*/
 
-    loadUserData: function() {
+    /*loadUserData: function() {
       var urlSeguimiento = '/include/javascript/seguimientoCurso.js.php?idcurso=' + idcurso;
       loadScript(urlSeguimiento, true, (function(data) {
         window.actividades = actividades;
       }).bind(this));
-    },
+    },*/
 
     /**
      * Realiza operaciones al cargar los datos de la actividad.
