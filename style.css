@@ -1520,8 +1520,10 @@ a:hover, a:active, a:focus {
     content: '';
     display: block;
     position: absolute;
-    margin-right: -30px;
+    margin-right: -20px;
     right: 0px;
+    bottom: 0;
+    margin-bottom: 30px;
     z-index: 10;
     padding: 15px;
     background: url(img/dialogoverde.png) 0 0 no-repeat;
