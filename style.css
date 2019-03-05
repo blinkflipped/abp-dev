@@ -1,5 +1,8 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,300i,600,600i');
+
+
 .slick-slider {
   position: relative;
   display: block;
@@ -1402,3 +1405,114 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover, #bo
 
 a:hover, a:active, a:focus {
   color: #A2041B; }
+
+
+
+           .bck-title3 {
+              font-family: 'Montserrat', sans-serif;
+              background: #fff;
+              padding: 10px;
+              color: #000;
+              font-size: 32px;
+              }
+
+
+              .bck-title4 {
+              font-family: 'Montserrat', sans-serif;
+              background: #fff;
+              padding: 10px;
+              color: #e12e27;
+              font-size: 27px;
+              }
+
+
+              .bck-title5 {
+               font-family: 'Montserrat', sans-serif;
+              background: #fff;
+              padding: 10px;
+              color: #0061a9;
+              font-size: 27px;
+              }
+
+              p{
+                font-size: 15px
+              }
+
+
+              #actividad .content ul.bck-ul li {
+                list-style: none;
+              }
+
+              .texto_curso ul li, .workspace ul li ul li, .cke_contents ul li {
+                  padding-left: 35px;
+              }
+
+              #actividad .content .texto_curso ul li:before,
+              #actividad .content .workspace ul li ul li:before,
+              #actividad .content .texto_curso .bck-ul li:before,
+              #actividad .content .workspace ul li .bck-ul li:before {
+                  content: " ";
+                  position: absolute;
+                  margin-left: -30px;
+                  height: 10px;
+                  width: 10px;
+                  color: #a966aa;
+                  background: none;
+                  margin-top: 0px;
+                  border-radius: 50%;
+              }
+
+           .caja-central{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+           }
+
+          .dialogo-verde{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
+          .dialogo-celeste{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
+          .dialogo-rojo{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
+          .dialogo-amarillo{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
+          .dialogo-verde-izq{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+
+          }
+          .dialogo-celeste-izq{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
+          .dialogo-rojo-izq{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
+          .dialogo-amarillo-izq{
+            padding: 10px;
+            border-radius:20px;
+            background: #93bc16;
+          }
+
