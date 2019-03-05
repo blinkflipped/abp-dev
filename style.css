@@ -1501,7 +1501,7 @@ a:hover, a:active, a:focus {
             margin-top: 5%;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogoazul.png) 0 0 no-repeat;
             }
 
           .dialogo-rojo{
@@ -1611,7 +1611,7 @@ a:hover, a:active, a:focus {
             margin-top: 5%;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoazul.png) 0 0 no-repeat;  
+            background: url(img/dialogoamarillo.png) 0 0 no-repeat;
             }
 
   .bck-content {
