@@ -21,12 +21,12 @@
         
            { name: 'Caja simple', type: 'widget', widget: 'blink_box', attributes: { 'class': 'caja-central' } },
            { name: 'Diálogo verde', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-verde' } },
-			  	 { name: 'Diálogo celeste', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste' } },
-			     { name: 'Diálogo rojo', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-rojo' } },
+	   { name: 'Diálogo celeste', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste' } },
+	   { name: 'Diálogo rojo', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-rojo' } },
            { name: 'Diálogo amarillo', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-amarillo' } },
-			  	 { name: 'Diálogo verde izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-verde-izq' } },
-			  	 { name: 'Diálogo celeste izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste-izq' } },
-			     { name: 'Diálogo rojo izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-rojo-izq' } },
+	   { name: 'Diálogo verde izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-verde-izq' } },
+	   { name: 'Diálogo celeste izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste-izq' } },
+	   { name: 'Diálogo rojo izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-rojo-izq' } },
            { name: 'Diálogo amarillo izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-amarillo-izq' } }
       ]
     },
