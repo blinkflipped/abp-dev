@@ -11,10 +11,23 @@
     ckEditorStyles: {
       name: 'abp-dev',
       styles: [
-           { name: 'Título 1', element: 'h2', attributes: { 'class': 'bck-title1'} },
-           { name: 'Título 2', element: 'h3', attributes: { 'class': 'bck-title2'} },
-           { name: 'Título 3', element: 'h3', attributes: { 'class': 'bck-title3'} },
-           { name: 'Título 4', element: 'h3', attributes: { 'class': 'bck-title4'} }
+           { name: 'Título principal', element: 'h2', attributes: { 'class': 'bck-title1'} },
+           { name: 'Título principal 2', element: 'h3', attributes: { 'class': 'bck-title2'} },
+           { name: 'Título 1', element: 'h3', attributes: { 'class': 'bck-title3'} },
+           { name: 'Título 2', element: 'h3', attributes: { 'class': 'bck-title4'} },
+           { name: 'Título 3', element: 'h3', attributes: { 'class': 'bck-title5'} },
+        
+           { name: 'Lista Desordenada', element: 'ul', attributes: { 'class': 'bck-ul'} },
+        
+           { name: 'Caja simple', type: 'widget', widget: 'blink_box', attributes: { 'class': 'caja-central' } },
+           { name: 'Diálogo verde', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-verde' } },
+			  	 { name: 'Diálogo celeste', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste' } },
+			     { name: 'Diálogo rojo', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-rojo' } },
+           { name: 'Diálogo amarillo', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-amarillo' } },
+			  	 { name: 'Diálogo verde izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-verde-izq' } },
+			  	 { name: 'Diálogo celeste izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste-izq' } },
+			     { name: 'Diálogo rojo izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-rojo-izq' } },
+           { name: 'Diálogo amarillo izq', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-amarillo-izq' } }
       ]
     },
     init: function() {
