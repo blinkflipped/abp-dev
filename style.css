@@ -1522,7 +1522,7 @@ a:hover, a:active, a:focus {
             margin-bottom: 30px;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogorojo.png) 0 0 no-repeat;  
             }
 
           .dialogo-amarillo{
@@ -1541,7 +1541,7 @@ a:hover, a:active, a:focus {
             margin-bottom: 30px;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogoamarillo.png) 0 0 no-repeat;  
             }
 
           .dialogo-verde-izq{
@@ -1579,7 +1579,7 @@ a:hover, a:active, a:focus {
             margin-bottom: 30px;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogoazul.png) 0 0 no-repeat;  
             }
 
           .dialogo-rojo-izq{
@@ -1598,7 +1598,7 @@ a:hover, a:active, a:focus {
             margin-bottom: 30px;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogorojo.png) 0 0 no-repeat;  
             }
 
           .dialogo-amarillo-izq{
@@ -1617,5 +1617,5 @@ a:hover, a:active, a:focus {
             margin-bottom: 30px;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogoazul.png) 0 0 no-repeat;  
             }
