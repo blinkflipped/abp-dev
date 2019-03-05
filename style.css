@@ -1516,3 +1516,14 @@ a:hover, a:active, a:focus {
             background: #93bc16;
           }
 
+.bck-box.dialogo-verde.center:before {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0px;
+    z-index: 10;
+    width: 30;
+    height: 30;
+    padding: 30px;
+    background-image: url (/img/dialogoverde.png);
+}
