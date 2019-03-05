@@ -1110,7 +1110,7 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
 /*código Raquel*/
 /*GENERAL DE TODAS LAS SLIDES*/
 #actividad .slide_content_type_1 .pregunta .texto_curso {
-  font-size: 1rem; }
+  font-size: 15px; }
 
 #slider {
   background-size: cover;
