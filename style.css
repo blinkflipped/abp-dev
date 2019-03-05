@@ -1527,12 +1527,15 @@ a:hover, a:active, a:focus {
             content: '';
             display: block;
             position: absolute;
-            margin-right: -20px;
-            right: 0px;
+            margin-left: -20px;
+            left: 0px;
             margin-top: 5%;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            background: url(img/dialogoverde.png) 0 0 no-repeat;
+            -webkit-transform: scaleX(-1);
+            -moz-transform: scaleX(-1);
+            transform: scaleX(-1);
             }
 
           .dialogo-celeste-izq{
@@ -1542,15 +1545,19 @@ a:hover, a:active, a:focus {
           }
 
          .bck-box.dialogo-celeste-izq.center:before {
+            background: url(img/dialogoazul.png) 0 0 no-repeat;  
             content: '';
             display: block;
             position: absolute;
-            margin-right: -20px;
-            right: 0px;
+            margin-left: -20px;
+            left: 0px;
             margin-top: 5%;
             z-index: 10;
             padding: 15px;
-            background: url(img/dialogoazul.png) 0 0 no-repeat;  
+            background: url(img/dialogoverde.png) 0 0 no-repeat;
+            -webkit-transform: scaleX(-1);
+            -moz-transform: scaleX(-1);
+            transform: scaleX(-1);
             }
 
           .dialogo-rojo-izq{
@@ -1564,12 +1571,17 @@ a:hover, a:active, a:focus {
             content: '';
             display: block;
             position: absolute;
-            margin-right: -20px;
-            right: 0px;
+            margin-left: -20px;
+            left: 0px;
             margin-top: 5%;
             z-index: 10;
-            padding: 15px;;
-            background: url(img/dialogorojo.png) 0 0 no-repeat;  
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;
+            -webkit-transform: scaleX(-1);
+            -moz-transform: scaleX(-1);
+            transform: scaleX(-1);
+            background: url(img/dialogorojo.png) 0 0 no-repeat;
+            
             }
 
           .dialogo-amarillo-izq{
@@ -1582,11 +1594,15 @@ a:hover, a:active, a:focus {
             content: '';
             display: block;
             position: absolute;
-            margin-right: -20px;
-            right: 0px;
+            margin-left: -20px;
+            left: 0px;
             margin-top: 5%;
             z-index: 10;
             padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;
+            -webkit-transform: scaleX(-1);
+            -moz-transform: scaleX(-1);
+            transform: scaleX(-1);
             background: url(img/dialogoamarillo.png) 0 0 no-repeat;
             }
 
