@@ -1579,6 +1579,7 @@ a:hover, a:active, a:focus {
             -moz-transform: scaleX(-1);
             transform: scaleX(-1);
             background: url(img/dialogorojo.png) 0 0 no-repeat;
+          
             }
 
           .dialogo-amarillo-izq{
