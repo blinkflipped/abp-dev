@@ -1474,57 +1474,148 @@ a:hover, a:active, a:focus {
             background: #93bc16;
           }
 
+          .bck-box.dialogo-verde.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
+
           .dialogo-celeste{
             padding: 10px;
             border-radius:20px;
-            background: #93bc16;
+            background: #009cdd;
           }
+
+         .bck-box.dialogo-celeste.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
 
           .dialogo-rojo{
             padding: 10px;
             border-radius:20px;
-            background: #93bc16;
+            background: #df040b;
           }
+
+          .bck-box.dialogo-rojo.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
 
           .dialogo-amarillo{
             padding: 10px;
             border-radius:20px;
-            background: #93bc16;
+            background: #ffee00;
           }
+
+          .bck-box.dialogo-amarillo.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
 
           .dialogo-verde-izq{
             padding: 10px;
             border-radius:20px;
             background: #93bc16;
-
           }
+
+          .bck-box.dialogo-verde-izq.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
+
           .dialogo-celeste-izq{
             padding: 10px;
             border-radius:20px;
-            background: #93bc16;
+            background: #009cdd;
           }
+
+         .bck-box.dialogo-celeste-izq.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
 
           .dialogo-rojo-izq{
             padding: 10px;
             border-radius:20px;
-            background: #93bc16;
+            background: #df040b;
           }
+
+        .bck-box.dialogo-rojo-izq.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
 
           .dialogo-amarillo-izq{
             padding: 10px;
             border-radius:20px;
-            background: #93bc16;
+            background: #ffee00;
           }
 
-.bck-box.dialogo-verde.center:before {
-    content: '';
-    display: block;
-    position: absolute;
-    margin-right: -20px;
-    right: 0px;
-    bottom: 0;
-    margin-bottom: 30px;
-    z-index: 10;
-    padding: 15px;
-    background: url(img/dialogoverde.png) 0 0 no-repeat;
-}
+          .bck-box.dialogo-amarillo-izq.center:before {
+            content: '';
+            display: block;
+            position: absolute;
+            margin-right: -20px;
+            right: 0px;
+            bottom: 0;
+            margin-bottom: 30px;
+            z-index: 10;
+            padding: 15px;
+            background: url(img/dialogoverde.png) 0 0 no-repeat;  
+            }
