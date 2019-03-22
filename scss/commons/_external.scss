@@ -1,9 +1,214 @@
+.bck-title3 {
+  font-family: $font_family_2;
+  background: #fff;
+  padding: 10px;
+  color: #000;
+  font-size: 32px;
+  width: 570px;
+}
+
+
+.bck-title4 {
+  font-family: $font_family_2;
+  padding: 10px;
+  color: #e12e27;
+  font-size: 27px;
+}
+
+
+.bck-title5 {
+  font-family: $font_family_2;
+  background: #fff;
+  padding: 10px;
+  color: #0061a9;
+  font-size: 27px;
+}
+
+p{
+  font-size: 15px
+}
+
+.caja-central{
+  background: #fff;
+  width: 1100px;
+  position: absolute;
+  top: 114px;
+  margin: auto;
+}
+
+.dialogo-verde{
+  padding: 10px;
+  border-radius:20px;
+  background: #93bc16;
+}
+
+.dialogo-verde.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-right: -20px;
+  right: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  background: url(img/dialogoverde.png) 0 0 no-repeat;
+}
+
+.dialogo-celeste{
+  padding: 10px;
+  border-radius:20px;
+  background: #009cdd;
+}
+
+.dialogo-celeste.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-right: -20px;
+  right: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  background: url(img/dialogoazul.png) 0 0 no-repeat;
+}
+
+.dialogo-rojo{
+  padding: 10px;
+  border-radius:20px;
+  background: #bf0811;
+  color: #fff;
+}
+
+.dialogo-rojo.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-right: -20px;
+  right: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  background: url(img/dialogorojo.png) 0 0 no-repeat;
+}
+
+.dialogo-amarillo{
+  padding: 10px;
+  border-radius:20px;
+  background: #ffee00;
+}
+
+.dialogo-amarillo.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-right: -20px;
+  right: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  background: url(img/dialogoamarillo.png) 0 0 no-repeat;
+}
+
+.dialogo-verde-izq{
+  padding: 10px;
+  border-radius:20px;
+  background: #93bc16;
+}
+
+.dialogo-verde-izq.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-left: -20px;
+  left: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  background: url(img/dialogoverde.png) 0 0 no-repeat;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.dialogo-celeste-izq{
+  padding: 10px;
+  border-radius:20px;
+  background: #009cdd;
+}
+
+.dialogo-celeste-izq.center:before {
+  background: url(img/dialogoazul.png) 0 0 no-repeat;
+  content: '';
+  display: block;
+  position: absolute;
+  margin-left: -20px;
+  left: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.dialogo-rojo-izq{
+  padding: 10px;
+  border-radius:20px;
+  background: #bf0811;
+  color: #fff;
+}
+
+.dialogo-rojo-izq.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-left: -20px;
+  left: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  transform: scaleX(-1);
+  background: url(img/dialogorojo.png) 0 0 no-repeat;
+
+}
+
+.dialogo-amarillo-izq{
+  padding: 10px;
+  border-radius:20px;
+  background: #ffee00;
+}
+
+.dialogo-amarillo-izq.center:before {
+  content: '';
+  display: block;
+  position: absolute;
+  margin-left: -20px;
+  left: 0px;
+  margin-top: 5%;
+  z-index: 10;
+  padding: 15px;
+  -webkit-transform: scaleX(-1);
+  -moz-transform: scaleX(-1);
+  transform: scaleX(-1);
+  background: url(img/dialogoamarillo.png) 0 0 no-repeat;
+}
+
+.bck-content {
+  padding: 10px;
+}
+
+
+
+
+
 /*código Raquel*/
 
 /*GENERAL DE TODAS LAS SLIDES*/
 
 #actividad .slide_content_type_1 .pregunta .texto_curso {
-    font-size: 1rem;
+    font-size: 15px;
 }
 
 #slider {
