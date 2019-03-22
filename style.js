@@ -16,9 +16,9 @@
            { name: 'Título 1', element: 'h3', attributes: { 'class': 'bck-title3'} },
            { name: 'Título 2', element: 'h3', attributes: { 'class': 'bck-title4'} },
            { name: 'Título 3', element: 'h3', attributes: { 'class': 'bck-title5'} },
-        
+
            { name: 'Lista Desordenada', element: 'ul', attributes: { 'class': 'bck-ul'} },
-        
+
            { name: 'Caja simple', type: 'widget', widget: 'blink_box', attributes: { 'class': 'caja-central' } },
            { name: 'Diálogo verde', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-verde' } },
 	   { name: 'Diálogo celeste', type: 'widget', widget: 'blink_box', attributes: { 'class': 'dialogo-celeste' } },
@@ -200,11 +200,6 @@ abpApp.config.coverName = 'Portada';
 abpApp.config.bookcover = '';
 abpApp.config.auxUnitName = 'Info';
 
-
-abpApp.util.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
-abpApp.util.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
-abpApp.util.documentHeight = $(document).height();
-
 abpApp.config.unitsIDs = [];
 abpApp.config.bodyClasses = ['abp-body-home', 'abp-body-unit'];
 
@@ -235,6 +230,10 @@ abpApp.text = {
   lockcontent : 'Contenido bloqueado por el profesor',
   nointernet : 'Necesitas conexión para realizar esta acción'
 }
+
+abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+abpApp.config.documentHeight = $(document).height();
 
 
 //----------------------------------//
@@ -690,12 +689,12 @@ abpApp.loadHomepage = function(data,updateHash) {
   // Resize and orientationChange
   $(window).on('resize orientationchange', function() {
 
-    abpApp.util.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
-    abpApp.util.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
-    abpApp.util.documentHeight = $(document).height();
+    abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+    abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+    abpApp.config.documentHeight = $(document).height();
 
     var $unitsWrapper = $('.abp-units-slider');
-    if (abpApp.util.windowWidth > 375) {
+    if (abpApp.config.windowWidth > 375) {
       if (!$unitsWrapper.hasClass('slick-initialized')) {
         $unitsWrapper.slick(abpApp.config.carouselOpt);
       }
