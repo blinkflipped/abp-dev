@@ -5,6 +5,9 @@ $page_unit_min_elements : $blink_header_height + 30px + $page_unit_padding_botto
 $page_unit_min_height : 500px;
 $page_unit_tab_height : 86px;
 
+$page_unit_header_width_tablet : 260px;
+
+
 .abp-section {
   position: relative;
   z-index: 10;
@@ -170,13 +173,15 @@ $page_unit_tab_height : 86px;
             position: relative;
             z-index: 10;
             padding-bottom: 140px;
+            padding-top: 102px; //External code
             color: $color_1;
           }
           &-number {
             position: absolute;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             z-index: 20;
+
           }
           &-background {
             position: absolute;
@@ -234,6 +239,26 @@ $page_unit_tab_height : 86px;
   }
 
 }
+@media (max-width: $mq_max_medium_tablet) {
+  .abp-section {
+    &_unit {
+      &-inner {
+        .abp-section-header {
+          width: $page_unit_header_width_tablet;
+          &-top {
+            padding: $space_1;
+          }
+          &-bottom {
+            padding: $space_1;
+          }
+        }
+        .abp-section-content {
+          width: calc(100% - #{$page_unit_header_width_tablet});
+        }
+      }
+    }
+  }
+}
 
 @media (max-width: $mq_max_small_tablet) {
   .abp-section {
@@ -261,6 +286,68 @@ $page_unit_tab_height : 86px;
 
       &-content {
         height: 400px;
+      }
+    }
+    &_unit {
+      &-inner {
+        flex-wrap: wrap;
+        .abp-section-header {
+          width: 100%;
+          height: auto;
+          min-height: 0;
+          &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: -20px;
+            right: 34px;
+            z-index: 10;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid $negative_color;
+          }
+          &-top {
+            min-height: 0;
+            &::before {
+              content: none;
+            }
+          }
+          &-bottom {
+            background: $negative_color;
+            &::before {
+              content: none;
+            }
+            &-number {
+              right: $space_1;
+              left: auto;
+              bottom: auto;
+              top: 50%;
+              transform: translate(0, -50%) scale(.6);
+              transform-origin: 100% 50%;
+            }
+            &-background {
+              display: none;
+            }
+            &-description {
+              padding: $space_1 60px $space_1 0;
+
+            }
+          }
+        }
+
+        .abp-section-content {
+          width: 100%;
+          height: auto;
+          .abp-resources-list-wrapper {
+            height: auto;
+            overflow: visible;
+            padding-left: $space_1/2;
+            padding-right: $space_1/2;
+          }
+
+        }
       }
     }
   }

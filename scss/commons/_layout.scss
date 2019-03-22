@@ -9,6 +9,10 @@
   &_3 {
     max-width: $layout_max_3;
   }
+  @media (max-width: $mq_max_large_tablet) {
+    padding-left: $space_1/2;
+    padding-right: $space_1/2;
+  }
 }
 
 

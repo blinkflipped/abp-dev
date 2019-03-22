@@ -207,7 +207,7 @@ abpApp.config.carouselOpt = {
      }
    },
    {
-     breakpoint: 629,
+     breakpoint: 669,
      settings: {
        slidesToShow: 2.25,
        slidesToScroll: 2
