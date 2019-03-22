@@ -916,7 +916,7 @@ body.view-mode {
       max-width: 100%; } }
 @media (max-width: 519px) {
   .abp-resources-list-item-text {
-    max-width: calc(100% - 54px);
+    max-width: calc(100% - 50px);
     margin-left: -26px;
     padding-left: 34px; }
     .abp-resources-list-item-text .abp-title-5,
