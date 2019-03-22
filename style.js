@@ -190,7 +190,31 @@ abpApp.config = {};
 abpApp.config.isDEV = (ENTORNO === 'DEV');
 
 abpApp.config.firstTime = true;
-abpApp.config.carouselOpt = {arrows: true, dots: false, infinite: false, slidesToShow: 4.25, slidesToScroll: 4, variableWidth: true, accessibility: false};
+abpApp.config.carouselOpt = {
+  arrows: true,
+  dots: false,
+  infinite: false,
+  slidesToShow: 4.25,
+  slidesToScroll: 4,
+  variableWidth: true,
+  accessibility: false,
+  responsive: [
+   {
+     breakpoint: 979,
+     settings: {
+       slidesToShow: 3.25,
+       slidesToScroll: 3
+     }
+   },
+   {
+     breakpoint: 629,
+     settings: {
+       slidesToShow: 2.25,
+       slidesToScroll: 2
+     }
+   }
+ ]
+};
 abpApp.config.isStudent = false;
 abpApp.config.statusLock1 = 8;
 abpApp.config.statusLock2 = 2;

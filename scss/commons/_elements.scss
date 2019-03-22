@@ -371,8 +371,8 @@
 
 .abp-units-slider {
 	position: relative;
-	max-width: 100%;
-	width: $layout_max;
+	width: 100%;
+	max-width: $layout_max;
 	.slick-arrow {
 		border: 0;
 		background: none;
@@ -851,6 +851,16 @@
 	.abp-units-slider {
 		.slick-arrow {
 				display: none;
+		}
+	}
+}
+
+@media (max-width: $mq_max_smallest_phone) {
+
+	.abp-unit {
+		.abp-units-slider & {
+			margin-left: auto;
+			margin-right: auto;
 		}
 	}
 }

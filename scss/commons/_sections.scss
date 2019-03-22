@@ -224,7 +224,6 @@ $page_unit_tab_height : 86px;
       }
 
       &-content {
-        height: 400px;
         overflow: hidden;
         &::before,
         &::after {
@@ -258,6 +257,20 @@ $page_unit_tab_height : 86px;
             }
           }
         }
+      }
+
+      &-content {
+        height: 400px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mq_max_smallest_phone) {
+  .abp-section {
+    &_home & {
+      &-content {
+        height: auto;
       }
     }
   }

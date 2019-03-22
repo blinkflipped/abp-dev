@@ -480,8 +480,8 @@ body.view-mode {
     transform: translateX(0px) scale(1); } }
 .abp-units-slider {
   position: relative;
-  max-width: 100%;
-  width: 1020px; }
+  width: 100%;
+  max-width: 1020px; }
   .abp-units-slider .slick-arrow {
     border: 0;
     background: none;
@@ -881,6 +881,10 @@ body.view-mode {
 @media (max-width: 1099px) {
   .abp-units-slider .slick-arrow {
     display: none; } }
+@media (max-width: 374px) {
+  .abp-units-slider .abp-unit {
+    margin-left: auto;
+    margin-right: auto; } }
 .abp-container {
   width: 100%;
   max-width: 1020px;
@@ -905,9 +909,9 @@ body.view-mode {
     padding-top: 44px; }
     @media (max-width: 767px) {
       .abp-page_home {
-        padding-top: 108px; }
+        padding-top: 88px; }
         body.app:not(.offline-pc) .abp-page_home {
-          padding-top: 64px; } }
+          padding-top: 44px; } }
   .abp-page .abp-gohome {
     position: relative;
     z-index: 10; }
@@ -1139,7 +1143,6 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
   .abp-section_home .abp-section-header-inner {
     padding-right: 52%; }
   .abp-section_home .abp-section-content {
-    height: 400px;
     overflow: hidden; }
     .abp-section_home .abp-section-content::before, .abp-section_home .abp-section-content::after {
       content: none; } }
@@ -1157,7 +1160,12 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
       bottom: auto;
       right: auto; }
       .abp-section_home .abp-section-header .abp-navigation_secondary ul li {
-        width: 100%; } }
+        width: 100%; }
+  .abp-section_home .abp-section-content {
+    height: 400px; } }
+@media (max-width: 374px) {
+  .abp-section_home .abp-section-content {
+    height: auto; } }
 .bck-title3 {
   font-family: "Montserrat", sans-serif;
   background: #fff;
