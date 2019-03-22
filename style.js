@@ -231,11 +231,6 @@ abpApp.text = {
   nointernet : 'Necesitas conexión para realizar esta acción'
 }
 
-abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
-abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
-abpApp.config.documentHeight = $(document).height();
-
-
 //----------------------------------//
 //                                  //
 //  Utils                           //
@@ -899,6 +894,10 @@ abpApp.loadUnitTab = function(tab) {
 
 
 $(document).ready(function() {
+
+  abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+  abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+  abpApp.config.documentHeight = $(document).height();
 
   $('body').on('click', '.abp-js-load-unit', function(e) {
     e.preventDefault();
