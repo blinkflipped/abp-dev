@@ -212,6 +212,12 @@ body.view-mode {
   padding: 0; }
   .abp-title-1:last-child {
     margin-bottom: 0; }
+  @media (max-width: 1099px) {
+    .abp-title-1 {
+      font-size: 48px; } }
+  @media (max-width: 979px) {
+    .abp-title-1 {
+      font-size: 36px; } }
 .abp-title-2 {
   font-size: 55px;
   line-height: 0.9454545455em;
@@ -253,6 +259,15 @@ body.view-mode {
   font-weight: 300;
   margin: 0;
   padding: 0; }
+  .abp-intro p {
+    font-size: 31px;
+    line-height: 1.1935483871em; }
+  @media (max-width: 1099px) {
+    .abp-intro, .abp-intro p {
+      font-size: 28px; } }
+  @media (max-width: 979px) {
+    .abp-intro, .abp-intro p {
+      font-size: 24px; } }
 
 .abp-navigation_secondary ul {
   list-style: none;
@@ -549,12 +564,16 @@ body.view-mode {
       left: 0;
       right: 0;
       bottom: 43px; }
-    .slick-slide:first-child .abp-units-slider-item::before {
-      width: calc(100% - 24px);
-      left: 24px; }
-    .slick-slide:last-child .abp-units-slider-item::before {
-      width: 24px;
-      left: 0; }
+    .slick-slide:first-child .abp-units-slider-item {
+      margin-left: 20px; }
+      .slick-slide:first-child .abp-units-slider-item::before {
+        width: calc(100% - 24px);
+        left: 24px; }
+    .slick-slide:last-child .abp-units-slider-item {
+      margin-right: 20px; }
+      .slick-slide:last-child .abp-units-slider-item::before {
+        width: 24px;
+        left: 0; }
 
 .abp-tabs {
   margin: 0;
@@ -858,6 +877,9 @@ body.view-mode {
         .abp-resources-list_2 .abp-resources-list-item-text::before {
           border-radius: 0; }
 
+@media (max-width: 1099px) {
+  .abp-units-slider .slick-arrow {
+    display: none; } }
 .abp-container {
   width: 100%;
   max-width: 1020px;
@@ -880,6 +902,11 @@ body.view-mode {
   z-index: 1000; }
   .abp-page_home {
     padding-top: 44px; }
+    @media (max-width: 767px) {
+      .abp-page_home {
+        padding-top: 108px; }
+        body.app:not(.offline-pc) .abp-page_home {
+          padding-top: 64px; } }
   .abp-page .abp-gohome {
     position: relative;
     z-index: 10; }
@@ -967,6 +994,9 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
     display: flex;
     justify-content: center;
     align-items: center; }
+    .abp-section_home .abp-section-content > .abp-container {
+      padding-left: 0;
+      padding-right: 0; }
     .abp-section_home .abp-section-content::before, .abp-section_home .abp-section-content::after {
       content: '';
       background: transparent;
@@ -1104,6 +1134,29 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
             background-color: #ededed;
             border-radius: 20px; }
 
+@media (max-width: 1099px) {
+  .abp-section_home .abp-section-header-inner {
+    padding-right: 52%; }
+  .abp-section_home .abp-section-content {
+    height: 400px;
+    overflow: hidden; }
+    .abp-section_home .abp-section-content::before, .abp-section_home .abp-section-content::after {
+      content: none; } }
+@media (max-width: 767px) {
+  .abp-section_home .abp-section-header {
+    min-height: 0;
+    height: auto; }
+    .abp-section_home .abp-section-header-inner {
+      padding-right: 0;
+      min-height: 0;
+      height: auto;
+      margin-bottom: 20px; }
+    .abp-section_home .abp-section-header .abp-navigation_secondary {
+      position: relative;
+      bottom: auto;
+      right: auto; }
+      .abp-section_home .abp-section-header .abp-navigation_secondary ul li {
+        width: 100%; } }
 /*código Raquel*/
 /*GENERAL DE TODAS LAS SLIDES*/
 #actividad .slide_content_type_1 .pregunta .texto_curso {

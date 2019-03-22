@@ -183,6 +183,10 @@ abpApp.config.bookcover = '';
 abpApp.config.auxUnitName = 'Info';
 
 
+abpApp.util.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+abpApp.util.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+abpApp.util.documentHeight = $(document).height();
+
 abpApp.config.unitsIDs = [];
 abpApp.config.bodyClasses = ['abp-body-home', 'abp-body-unit'];
 
@@ -664,6 +668,25 @@ abpApp.loadHomepage = function(data,updateHash) {
 
   // Object Fit support
   abpApp.objectFitSupport();
+
+  // Resize and orientationChange
+  $(window).on('resize orientationchange', function() {
+
+    abpApp.util.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+    abpApp.util.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+    abpApp.util.documentHeight = $(document).height();
+
+    var $unitsWrapper = $('.abp-units-slider');
+    if (abpApp.util.windowWidth > 375) {
+      if (!$unitsWrapper.hasClass('slick-initialized')) {
+        $unitsWrapper.slick(abpApp.config.carouselOpt);
+      }
+    } else {
+      if ($unitsWrapper.hasClass('slick-initialized')) {
+        $unitsWrapper.slick('unslick');
+      }
+    }
+  });
 
 }
 
