@@ -863,4 +863,10 @@
 			margin-right: auto;
 		}
 	}
+	.abp-units-slider-item {
+		margin-right: 0;
+		&::before {
+			content: none;
+		}
+	}
 }

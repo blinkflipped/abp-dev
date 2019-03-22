@@ -884,7 +884,12 @@ body.view-mode {
 @media (max-width: 374px) {
   .abp-units-slider .abp-unit {
     margin-left: auto;
-    margin-right: auto; } }
+    margin-right: auto; }
+
+  .abp-units-slider-item {
+    margin-right: 0; }
+    .abp-units-slider-item::before {
+      content: none; } }
 .abp-container {
   width: 100%;
   max-width: 1020px;
