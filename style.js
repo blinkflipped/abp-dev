@@ -785,23 +785,24 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     console.log(unitExists, currentUnit, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
 
     if (nextUnitExists) {
-      $('.abp-navigation-units-next').removeClass('abp-disabled').attr('data-gotounit', nextUnitIndex);
+      $('.abp-navigation-units-next').removeClass('abp-disabled').data('gotounit', nextUnitIndex);
     } else {
       $('.abp-navigation-units-next').addClass('abp-disabled').removeAttr('data-gotounit');
     }
 
     if (prevUnitExists) {
-      $('.abp-navigation-units-prev').removeClass('abp-disabled').attr('data-gotounit', prevUnitIndex);
+      $('.abp-navigation-units-prev').removeClass('abp-disabled').data('gotounit', prevUnitIndex);
     } else {
       $('.abp-navigation-units-prev').addClass('abp-disabled').removeAttr('data-gotounit');
     }
 
     $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
       e.preventDefault();
-      var goToUnit = $(this).attr('data-gotounit'),
+      var goToUnit = $(this).data('gotounit'),
           suffix = abpApp.config.tree[1].suffix[0],
           newHash = abpApp.config.tree[1].hash + currentUnit + suffix;
 
+      console.log(newHash);
       abpApp.updateHashWithListener(newHash);
 
     });
