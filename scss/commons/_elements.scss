@@ -505,6 +505,44 @@
 	}
 }
 
+// Navigation
+
+.abp-navigation {
+	position: absolute;
+	top: 50%;
+	transform: translate(0,-50%);
+	background: fade-out($color_1, .3);
+	width: 80px;
+	height: 145px;
+	.icon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		&::before {
+			@include icon();
+		}
+	}
+	&-prev {
+		left: 0;
+		border-radius: 0 100px 100px 0;
+		.icon {
+			&::before {
+				content: $abp-icon-chevron-left;
+			}
+		}
+	}
+	&-next {
+		right: 0;
+		border-radius: 100px 0 0 100px;
+		&::before {
+			content: $abp-icon-chevron-right;
+		}
+	}
+	&-disabled {
+		display: none!important;
+	}
+}
 
 // Tabs
 

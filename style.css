@@ -591,6 +591,43 @@ body.view-mode {
         width: 24px;
         left: 0; }
 
+.abp-navigation {
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  background: rgba(34, 60, 63, 0.7);
+  width: 80px;
+  height: 145px; }
+  .abp-navigation .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .abp-navigation .icon::before {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: "abpicons" !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale; }
+  .abp-navigation-prev {
+    left: 0;
+    border-radius: 0 100px 100px 0; }
+    .abp-navigation-prev .icon::before {
+      content: ""; }
+  .abp-navigation-next {
+    right: 0;
+    border-radius: 100px 0 0 100px; }
+    .abp-navigation-next::before {
+      content: ""; }
+  .abp-navigation-disabled {
+    display: none !important; }
+
 .abp-tabs {
   margin: 0;
   padding: 0;
@@ -1510,6 +1547,9 @@ p {
 #swipeview-slider > div {
   background-color: transparent; }
 
+.slider-control, .slider-control:focus {
+  background-color: #223c3f; }
+
 /*ancho*/
 #actividad .carousel-inner .item-container {
   max-width: 1024px; }
@@ -1689,7 +1729,7 @@ body:not(.edit) .bck-flipbox-face.back {
 
 .abp-section_unit-inner .abp-section-header-top {
   background: #F04C5C;
-  background: -moz-linear-gradient(0% 50% 0deg, #A2041B 0%, #F04C5C99 0.84%);
+  background: -moz-linear-gradient(0% 50% 0deg, #A2041B 0%, #F04C5C 99.84%);
   background: -webkit-linear-gradient(0deg, #A2041B 0%, #F04C5C 99.84%);
   background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0, #A2041B), color-stop(0.9984, #F04C5C));
   background: -o-linear-gradient(0deg, #A2041B 0%, #F04C5C 99.84%);
@@ -1701,7 +1741,7 @@ body:not(.edit) .bck-flipbox-face.back {
 
 .abp-resources-list-item-text::before {
   background: #F04C5C;
-  background: -moz-linear-gradient(0% 50% 0deg, #A2041B 0%, #F04C5C99 0.84%);
+  background: -moz-linear-gradient(0% 50% 0deg, #A2041B 0%, #F04C5C 99.84%);
   background: -webkit-linear-gradient(0deg, #A2041B 0%, #F04C5C 99.84%);
   background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0, #A2041B), color-stop(0.9984, #F04C5C));
   background: -o-linear-gradient(0deg, #A2041B 0%, #F04C5C 99.84%);
