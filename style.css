@@ -591,7 +591,7 @@ body.view-mode {
         width: 24px;
         left: 0; }
 
-.abp-navigation {
+.abp-navigation-units {
   font-family: "Source Sans Pro", sans-serif;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -614,15 +614,15 @@ body.view-mode {
   height: 145px;
   z-index: 100;
   outline: none; }
-  .abp-navigation:hover {
+  .abp-navigation-units:hover {
     background-color: #223c3f; }
-  .abp-navigation .icon {
+  .abp-navigation-units .icon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 40px; }
-    .abp-navigation .icon::before {
+    .abp-navigation-units .icon::before {
       /* use !important to prevent issues with browser extensions that change fonts */
       font-family: "abpicons" !important;
       speak: none;
@@ -634,21 +634,21 @@ body.view-mode {
       /* Better Font Rendering =========== */
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale; }
-  .abp-navigation-prev {
+  .abp-navigation-units-prev {
     left: 0;
     border-radius: 0 100px 100px 0; }
-    .abp-navigation-prev .icon {
+    .abp-navigation-units-prev .icon {
       margin-left: -5px; }
-      .abp-navigation-prev .icon::before {
+      .abp-navigation-units-prev .icon::before {
         content: ""; }
-  .abp-navigation-next {
+  .abp-navigation-units-next {
     right: 0;
     border-radius: 100px 0 0 100px; }
-    .abp-navigation-next .icon {
+    .abp-navigation-units-next .icon {
       margin-right: -5px; }
-      .abp-navigation-next .icon::before {
+      .abp-navigation-units-next .icon::before {
         content: ""; }
-  .abp-navigation.abp-disabled {
+  .abp-navigation-units.abp-disabled {
     display: none !important; }
 
 .abp-tabs {
