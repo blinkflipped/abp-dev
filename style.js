@@ -580,7 +580,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         comp_tabs_wrapper_teacher = comp_tabs_wrapper_student+ '<div class="abp-tabs-content" id="abp-teacherarea"><div class="abp-resources-list-wrapper"><ul class="abp-resources-list abp-resources-list_2"></ul></div></div>',
         comp_tabs_wrapper = (abpApp.config.isStudent) ? comp_tabs_wrapper_student : comp_tabs_wrapper_teacher;
 
-    var sectionUnitButtons = '<button class="abp-navigation abp-navigation-prev abp-disabled"><span class="icon"></span></button><button class="abp-navigation abp-navigation-next abp-disabled"><span class="icon"></span></button>';
+    var sectionUnitButtons = '<button class="abp-navigation-units abp-navigation-units-prev abp-disabled"> <span class="icon"></span> </button> <button class="abp-navigation-units abp-navigation-units-next abp-disabled"> <span class="icon"></span> </button>';
 
     var sectionUnitHeader = '<header class="abp-section-header"><div class="abp-section-header-top"> <h1 class="abp-title-2" id="abp-unit-title"></h1></div><div class="abp-section-header-bottom"> <div class="abp-section-header-bottom-description"> <h2 class="abp-title-3" id="abp-unit-description"></h2> </div> <div class="abp-section-header-bottom-number abp-unit-number abp-unit-number_large"><div class="abp-unit-number-inner"><span id="abp-unit-number"></span></div> </div> <div class="abp-section-header-bottom-background" id="abp-unit-image"></div></div></header>',
         sectionUnitContent = '<div class="abp-section-content"><div class="abp-tabs-wrapper"><ul class="abp-tabs">'+comp_tabs+'</ul><div class="abp-tabs-content-wrapper">'+comp_tabs_wrapper+'</div> </div> </div>',
@@ -786,16 +786,26 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     console.log(unitExists, unitIndex, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
 
     if (nextUnitExists) {
-      $('.abp-navigation-next').removeClass('abp-disabled');
+      $('.abp-navigation-units-next').removeClass('abp-disabled').attr('data-gotounit', nextUnitIndex);
     } else {
-      $('.abp-navigation-next').addClass('abp-disabled');
+      $('.abp-navigation-units-next').addClass('abp-disabled').removeAttr('data-gotounit');
     }
 
     if (prevUnitExists) {
-      $('.abp-navigation-prev').removeClass('abp-disabled');
+      $('.abp-navigation-units-prev').removeClass('abp-disabled').attr('data-gotounit', prevUnitIndex);
     } else {
-      $('.abp-navigation-prev').addClass('abp-disabled');
+      $('.abp-navigation-units-prev').addClass('abp-disabled').removeAttr('data-gotounit');
     }
+
+    $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next' function(e) {
+      e.preventDefault();
+      var goToUnit = $(this).attr('data-gotounit'),
+          suffix = abpApp.config.tree[1].suffix[0],
+          newHash = abpApp.config.tree[1].hash + currentUnit + suffix;
+
+      abpApp.updateHashWithListener(newHash);
+      
+    });
 
     // Resources
     var subunitsStudents = 0,
