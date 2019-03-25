@@ -778,12 +778,11 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
     // Buttons
     var unitExists = abpApp.config.unitsIDs.indexOf(currentUnit) >= 0,
-        unitIndex = (unitExists) ? abpApp.config.unitsIDs.indexOf(currentUnit) : false,
-        prevUnitIndex = (unitExists) ? unitIndex - 1 : -1,
+        prevUnitIndex = (unitExists) ? currentUnit - 1 : -1,
         prevUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(prevUnitIndex)) >= 0 : -1,
-        nextUnitIndex = (unitExists) ? unitIndex + 1 : -1,
+        nextUnitIndex = (unitExists) ? currentUnit + 1 : -1,
         nextUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(nextUnitIndex)) >= 0 : -1;
-    console.log(unitExists, unitIndex, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
+    console.log(unitExists, currentUnit, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
 
     if (nextUnitExists) {
       $('.abp-navigation-units-next').removeClass('abp-disabled').attr('data-gotounit', nextUnitIndex);
