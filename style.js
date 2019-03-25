@@ -797,17 +797,6 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
       $('.abp-navigation-units-prev').addClass('abp-disabled').removeAttr('data-gotounit');
     }
 
-    $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
-      e.preventDefault();
-      var goToUnit = $(this).data('gotounit'),
-          suffix = abpApp.config.tree[1].suffix[0],
-          newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
-
-      console.log(newHash);
-      abpApp.updateHashWithListener(newHash);
-
-    });
-
     // Resources
     var subunitsStudents = 0,
         subunitsTeachers = 0;
@@ -907,6 +896,19 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     });
 
   }
+
+
+  $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
+    e.preventDefault();
+    var goToUnit = $(this).data('gotounit'),
+        suffix = abpApp.config.tree[1].suffix[0],
+        newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
+
+    console.log(newHash);
+    abpApp.unitAlreayLoaded = false;
+    abpApp.updateHashWithListener(newHash);
+
+  });
 
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
