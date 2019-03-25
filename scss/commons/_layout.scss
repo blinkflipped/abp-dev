@@ -26,6 +26,12 @@
   color: $negative_color;
   position: relative;
   z-index: 1000;
+  @media (max-width: $mq_max_small_tablet) {
+    padding-top: $blink_header_height*2;
+    body.app:not(.offline-pc) & {
+      padding-top: $blink_header_height;
+    }
+  }
   &_home {
     padding-top: $blink_header_height_base;
     @media (max-width: $mq_max_small_tablet) {

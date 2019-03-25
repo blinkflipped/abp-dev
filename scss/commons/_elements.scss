@@ -512,13 +512,17 @@
 	position: absolute;
 	top: 50%;
 	transform: translate(0,-50%);
-	background: fade-out($color_1, .3);
+	background: fade-out($color_1_b, .8);
+	color: $negative_color;
 	width: 80px;
 	height: 145px;
 	z-index: 100;
 	outline: none;
+	border: 0;
+	box-shadow: 1px 1px 2px fade-out($color_1, .8);
 	&:hover {
-		background-color: $color_1;
+		background-color: $negative_color;
+		color: $color_1;
 	}
 	.icon {
 		position: absolute;
@@ -552,6 +556,14 @@
 	}
 	&.abp-disabled {
 		display: none!important;
+	}
+
+	@media (max-width: $mq_max_small_phone) {
+		height: 75px;
+		width: 40px;
+		.icon {
+			font-size: 22px;
+		}
 	}
 }
 

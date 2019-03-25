@@ -609,13 +609,17 @@ body.view-mode {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  background: rgba(34, 60, 63, 0.7);
+  background: rgba(94, 145, 151, 0.2);
+  color: #ffffff;
   width: 80px;
   height: 145px;
   z-index: 100;
-  outline: none; }
+  outline: none;
+  border: 0;
+  box-shadow: 1px 1px 2px rgba(34, 60, 63, 0.2); }
   .abp-navigation-units:hover {
-    background-color: #223c3f; }
+    background-color: #ffffff;
+    color: #223c3f; }
   .abp-navigation-units .icon {
     position: absolute;
     top: 50%;
@@ -650,6 +654,12 @@ body.view-mode {
         content: ""; }
   .abp-navigation-units.abp-disabled {
     display: none !important; }
+  @media (max-width: 519px) {
+    .abp-navigation-units {
+      height: 75px;
+      width: 40px; }
+      .abp-navigation-units .icon {
+        font-size: 22px; } }
 
 .abp-tabs {
   margin: 0;
@@ -1053,6 +1063,11 @@ body.view-mode {
   color: #ffffff;
   position: relative;
   z-index: 1000; }
+  @media (max-width: 767px) {
+    .abp-page {
+      padding-top: 128px; }
+      body.app:not(.offline-pc) .abp-page {
+        padding-top: 64px; } }
   .abp-page_home {
     padding-top: 44px; }
     @media (max-width: 767px) {
@@ -1183,7 +1198,7 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
       justify-content: space-between;
       align-content: flex-start; }
       .abp-section_unit-inner .abp-section-header {
-        height: calc(100vh - 144px);
+        height: calc(100vh - 148px);
         min-height: 500px;
         width: 290px;
         position: relative;
@@ -1268,11 +1283,11 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
         position: relative;
         z-index: 5;
         width: calc(100% - 290px);
-        height: calc(100vh - 144px);
+        height: calc(100vh - 148px);
         min-height: 500px;
         overflow: hidden; }
         .abp-section_unit-inner .abp-section-content .abp-resources-list-wrapper {
-          height: calc(100vh - 230px);
+          height: calc(100vh - 234px);
           min-height: 414px;
           overflow: hidden;
           overflow-y: auto;
