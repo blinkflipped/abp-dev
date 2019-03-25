@@ -778,9 +778,9 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
     // Buttons
     var unitExists = abpApp.config.unitsIDs.indexOf(currentUnit) >= 0,
-        prevUnitIndex = (unitExists) ? currentUnit - 1 : -1,
+        prevUnitIndex = (unitExists) ? Number(currentUnit) - 1 : -1,
         prevUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(prevUnitIndex)) >= 0 : -1,
-        nextUnitIndex = (unitExists) ? currentUnit + 1 : -1,
+        nextUnitIndex = (unitExists) ? Number(currentUnit) + 1 : -1,
         nextUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(nextUnitIndex)) >= 0 : -1;
     console.log(unitExists, currentUnit, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
 
