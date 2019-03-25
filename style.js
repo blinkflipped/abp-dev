@@ -782,7 +782,7 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
         prevUnitIndex = (unitExists) ? unitIndex - 1 : -1,
         prevUnit = (prevUnitIndex >= 0) ? abpApp.config.unitsIDs[prevUnitIndex] : false,
         nextUnitIndex = (unitExists) ? unitIndex + 1 : -1,
-        nextUnit = (prevUnitIndex >= 0) ? abpApp.config.unitsIDs[nextUnitIndex] : false;
+        nextUnit = (nextUnitIndex >= 0) ? abpApp.config.unitsIDs[nextUnitIndex] : false;
     console.log(unitExists, currentUnit, prevUnitIndex, prevUnit, nextUnitIndex, nextUnit);
 
     if (nextUnit) {
