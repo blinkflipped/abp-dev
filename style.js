@@ -567,12 +567,6 @@ abpApp.loadHomepage = function(data,updateHash) {
     var backgroundImageSrc = abpApp.config.bookcover.image,
         backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImageSrc+');' : '';
 
-    $.each(data.units, function(i, unit){
-      var unitNumber = unit.number - 1,
-          unitNumberStr = unitNumber.toString();
-      abpApp.config.unitsIDs.push(unitNumberStr);
-    });
-
     var comp_navigationSecondary = '<nav class="abp-navigation abp-navigation_secondary"><ul></ul></nav>',
         comp_slider = '<div class="abp-units-slider abp-js--slider"></div>';
     var sectionHomeHeaderHTML = '<header class="abp-section-header"><div class="abp-container"><div class="abp-section-header-inner"><h1 class="abp-title-1">'+bookTitle+'</h1><div class="abp-intro"><p>'+bookDescription+'</p></div></div></div>'+comp_navigationSecondary+'</header>',
@@ -602,9 +596,14 @@ abpApp.loadHomepage = function(data,updateHash) {
         tabList = document.createDocumentFragment();
     $.each(data.units, function(i, unit){
       if (i !== abpApp.getAuxUnit(data)) {
+
+        var unitNumberBase = unit.number - 1,
+            unitNumberStr = unitNumberBase.toString();
+
+        abpApp.config.unitsIDs.push(unitNumberStr);
+
         var unitTitle = unit.title,
             unitDescription = unit.description,
-            unitNumberBase = unit.number - 1,
             unitNumber = ('0' + unitNumberBase).slice(-2),
             unitImage = unit.image;
         var unitListItem = document.createElement('div');
@@ -780,10 +779,10 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
     // Buttons
     var unitExists = abpApp.config.unitsIDs.indexOf(currentUnit) >= 0,
         unitIndex = (unitExists) ? abpApp.config.unitsIDs.indexOf(currentUnit) : false,
-        prevUnitIndex = (unitExists) ? unitIndex - 1 : false,
-        prevUnitExists = (prevUnitIndex) ? abpApp.config.unitsIDs.indexOf(prevUnitIndex) >= 0 : -1,
-        nextUnitIndex = (unitExists) ? unitIndex + 1 : false,
-        nextUnitExists = (nextUnitIndex) ? abpApp.config.unitsIDs.indexOf(nextUnitIndex) >= 0 : -1;
+        prevUnitIndex = (unitExists) ? unitIndex - 1 : -1,
+        prevUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(prevUnitIndex)) >= 0 : -1,
+        nextUnitIndex = (unitExists) ? unitIndex + 1 : -1,
+        nextUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(nextUnitIndex)) >= 0 : -1;
     console.log(unitExists, unitIndex, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
 
     if (nextUnitExists) {

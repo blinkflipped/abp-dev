@@ -592,17 +592,36 @@ body.view-mode {
         left: 0; }
 
 .abp-navigation {
+  font-family: "Source Sans Pro", sans-serif;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  display: inline-block;
+  border-radius: 0;
+  position: relative;
+  background: transparent;
+  text-decoration: none;
+  transition-property: color, background-color, border-color, box-shadow, opacity, height;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
   background: rgba(34, 60, 63, 0.7);
   width: 80px;
-  height: 145px; }
+  height: 145px;
+  z-index: 100;
+  outline: none; }
+  .abp-navigation:hover {
+    background-color: #223c3f; }
   .abp-navigation .icon {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); }
+    transform: translate(-50%, -50%);
+    font-size: 40px; }
     .abp-navigation .icon::before {
       /* use !important to prevent issues with browser extensions that change fonts */
       font-family: "abpicons" !important;
@@ -618,14 +637,18 @@ body.view-mode {
   .abp-navigation-prev {
     left: 0;
     border-radius: 0 100px 100px 0; }
-    .abp-navigation-prev .icon::before {
-      content: ""; }
+    .abp-navigation-prev .icon {
+      margin-left: -5px; }
+      .abp-navigation-prev .icon::before {
+        content: ""; }
   .abp-navigation-next {
     right: 0;
     border-radius: 100px 0 0 100px; }
-    .abp-navigation-next::before {
-      content: ""; }
-  .abp-navigation-disabled {
+    .abp-navigation-next .icon {
+      margin-right: -5px; }
+      .abp-navigation-next .icon::before {
+        content: ""; }
+  .abp-navigation.abp-disabled {
     display: none !important; }
 
 .abp-tabs {
