@@ -897,19 +897,6 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
   }
 
-
-  $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
-    e.preventDefault();
-    var goToUnit = $(this).data('gotounit'),
-        suffix = abpApp.config.tree[1].suffix[0],
-        newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
-
-    console.log(newHash);
-    abpApp.unitAlreayLoaded = false;
-    abpApp.updateHashWithListener(newHash);
-
-  });
-
   $('.abp-page_unit').imagesLoaded({background: 'div, a, span, button'}, function(){
     // Object Fit support
     abpApp.objectFitSupport();
@@ -965,6 +952,18 @@ $(document).ready(function() {
   abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
   abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
   abpApp.config.documentHeight = $(document).height();
+
+  $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
+    e.preventDefault();
+    var goToUnit = $(this).data('gotounit'),
+        suffix = abpApp.config.tree[1].suffix[0],
+        newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
+
+    console.log(newHash);
+    abpApp.unitAlreayLoaded = false;
+    abpApp.updateHashWithListener(newHash);
+
+  });
 
   $('body').on('click', '.abp-js-load-unit', function(e) {
     e.preventDefault();
