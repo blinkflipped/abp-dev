@@ -955,7 +955,7 @@ $(document).ready(function() {
 
   $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
     e.preventDefault();
-    var goToUnit = $(this).data('gotounit'),
+    var goToUnit = $(this).attr('data-gotounit'),
         suffix = abpApp.config.tree[1].suffix[0],
         newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
 
