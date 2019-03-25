@@ -778,20 +778,21 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
 
     // Buttons
     var unitExists = abpApp.config.unitsIDs.indexOf(currentUnit) >= 0,
-        prevUnitIndex = (unitExists) ? Number(currentUnit) - 1 : -1,
-        prevUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(prevUnitIndex)) >= 0 : -1,
-        nextUnitIndex = (unitExists) ? Number(currentUnit) + 1 : -1,
-        nextUnitExists = (unitExists) ? abpApp.config.unitsIDs.indexOf(String(nextUnitIndex)) >= 0 : -1;
-    console.log(unitExists, currentUnit, prevUnitIndex, prevUnitExists, nextUnitIndex, nextUnitExists);
+        unitIndex = abpApp.config.unitsIDs.indexOf(currentUnit),
+        prevUnitIndex = (unitExists) ? unitIndex - 1 : -1,
+        prevUnit = (prevUnitIndex >= 0) ? abpApp.config.unitsIDs[prevUnitIndex] : false,
+        nextUnitIndex = (unitExists) ? unitIndex + 1 : -1,
+        nextUnit = (prevUnitIndex >= 0) ? abpApp.config.unitsIDs[nextUnitIndex] : false;
+    console.log(unitExists, currentUnit, prevUnitIndex, prevUnit, nextUnitIndex, nextUnit);
 
-    if (nextUnitExists) {
-      $('.abp-navigation-units-next').removeClass('abp-disabled').data('gotounit', nextUnitIndex);
+    if (nextUnit) {
+      $('.abp-navigation-units-next').removeClass('abp-disabled').data('gotounit', nextUnit);
     } else {
       $('.abp-navigation-units-next').addClass('abp-disabled').removeAttr('data-gotounit');
     }
 
-    if (prevUnitExists) {
-      $('.abp-navigation-units-prev').removeClass('abp-disabled').data('gotounit', prevUnitIndex);
+    if (prevUnit) {
+      $('.abp-navigation-units-prev').removeClass('abp-disabled').data('gotounit', prevUnit);
     } else {
       $('.abp-navigation-units-prev').addClass('abp-disabled').removeAttr('data-gotounit');
     }
