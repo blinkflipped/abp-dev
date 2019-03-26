@@ -524,6 +524,47 @@ abpApp.updateHashWithListener = function(hash) {
 }
 
 
+// Get current Unit and area
+
+abpApp.gotoCurrentUnitAndArea = function() {
+
+  var currentUnit, currentArea;
+  var found = false;
+
+  $.each(abpApp.bookData.units, function(i, unit){
+
+    var unitID = unit.id,
+        unitNumber = unit.number,
+        subunits = unit.subunits;
+
+    currentUnit = unitNumber - 1;
+
+    $.each(subunits, function(i, subunit){
+      var subunitID = subunit.id,
+          subunitVisibleTeacher = subunit.onlyVisibleTeachers;
+
+      currentArea = (subunitVisibleTeacher) ? 1 : 0;
+      if (Number(subunitID) === idclase) {
+        found = true;
+        return false;
+      }
+    });
+    if (found) return false;
+  });
+
+  var currentIndex = 1;
+  var hash = abpApp.config.tree[currentIndex].hash,
+      indexSuffix = currentArea,
+      suffix = abpApp.config.tree[currentIndex].suffix[indexSuffix],
+      hashWithID = hash+currentUnit+suffix;
+
+  var newUrl = abpApp.config.bookcover.url + '#' + hashWithID;
+
+  window.location = newUrl;
+
+}
+
+
 //----------------------------------//
 //                                  //
 //  Templates                       //
@@ -540,6 +581,17 @@ abpApp.loadSliders = function(data) {
   var backgroundImageSrc = abpApp.config.bookcover.image,
       backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'url('+backgroundImageSrc+')' : 'none';
   $('#slider').css('background-image', backgroundImage);
+
+  // Go back on slider
+
+  var gobackButton = '<div class="abp-container abp-container_3"> <a href="javascript:void(0)" class="abp-js-gounit link link_back"><span>'+abpApp.text.goback+'</span></a></div>';
+  $('.navbar.libro').insertAfter(gobackButton)
+
+  $('body').one('click', '.abp-js-gounit', function(e) {
+    e.preventDefault();
+    abpApp.gotoCurrentUnitAndArea();
+  });
+
 }
 
 abpApp.loadHomepage = function(data,updateHash) {
@@ -959,10 +1011,8 @@ $(document).ready(function() {
         suffix = abpApp.config.tree[1].suffix[0],
         newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
 
-    console.log(newHash);
     abpApp.unitAlreayLoaded = false;
     abpApp.updateHashWithListener(newHash);
-
   });
 
   $('body').on('click', '.abp-js-load-unit', function(e) {
