@@ -172,7 +172,8 @@ body.view-mode {
   padding-bottom: 10px; }
 
 .abp-slider-goback {
-  background: #223c3f; }
+  background: #223c3f;
+  padding: 10px 0; }
 
 .abp-button-icon {
   font-family: "Source Sans Pro", sans-serif;
