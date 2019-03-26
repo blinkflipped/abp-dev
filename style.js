@@ -835,18 +835,18 @@ abpApp.loadUnit = function(data,currentUnit,activeAreaTeacher,updateHash) {
         prevUnit = (prevUnitIndex >= 0) ? abpApp.config.unitsIDs[prevUnitIndex] : false,
         nextUnitIndex = (unitExists) ? unitIndex + 1 : -1,
         nextUnit = (nextUnitIndex >= 0) ? abpApp.config.unitsIDs[nextUnitIndex] : false;
-    console.log(unitExists, currentUnit, prevUnitIndex, prevUnit, nextUnitIndex, nextUnit);
+    var activeArea = (activeAreaTeacher) ? 1 : 0;
 
     if (nextUnit) {
-      $('.abp-navigation-units-next').removeClass('abp-disabled').attr('data-gotounit', nextUnit);
+      $('.abp-navigation-units-next').removeClass('abp-disabled').attr('data-gotounit', nextUnit).attr('data-activearea', activeArea);
     } else {
-      $('.abp-navigation-units-next').addClass('abp-disabled').removeAttr('data-gotounit');
+      $('.abp-navigation-units-next').addClass('abp-disabled').removeAttr('data-gotounit').removeAttr('data-activearea');
     }
 
     if (prevUnit) {
-      $('.abp-navigation-units-prev').removeClass('abp-disabled').attr('data-gotounit', prevUnit);
+      $('.abp-navigation-units-prev').removeClass('abp-disabled').attr('data-gotounit', prevUnit).attr('data-activearea', activeArea)
     } else {
-      $('.abp-navigation-units-prev').addClass('abp-disabled').removeAttr('data-gotounit');
+      $('.abp-navigation-units-prev').addClass('abp-disabled').removeAttr('data-gotounit').removeAttr('data-activearea');
     }
 
     // Resources
@@ -988,7 +988,11 @@ abpApp.loadUnitTab = function(tab) {
       suffix = abpApp.config.tree[currentIndex].suffix[tabIndex],
       hashWithID = hash+currentUnit+suffix;
 
+  // update navigation
+  $('.abp-navigation-units-next, .abp-navigation-units-prev').attr('data-activearea', tabIndex);
+
   window.location.hash = hashWithID;
+
 }
 
 
@@ -1008,7 +1012,8 @@ $(document).ready(function() {
   $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
     e.preventDefault();
     var goToUnit = $(this).attr('data-gotounit'),
-        suffix = abpApp.config.tree[1].suffix[0],
+        goToArea = $(this).attr('data-activearea'),
+        suffix = abpApp.config.tree[1].suffix[goToArea],
         newHash = abpApp.config.tree[1].hash + goToUnit + suffix;
 
     abpApp.unitAlreayLoaded = false;
