@@ -585,7 +585,7 @@ abpApp.loadSliders = function(data) {
   // Go back on slider
 
   var gobackButton = '<div class="abp-slider-goback"><div class="abp-container abp-container_2"> <a href="javascript:void(0)" class="abp-js-gounit link link_back"><span>'+abpApp.text.goback+'</span></a></div></div>';
-  $('#actividad .content').append(gobackButton);
+  $('#actividad .content').prepend(gobackButton);
 
   $('body').one('click', '.abp-js-gounit', function(e) {
     e.preventDefault();
