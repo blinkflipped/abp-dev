@@ -57,6 +57,9 @@
 .abp-slider-goback {
 	background: $color_1;
 	padding: 10px 0;
+	margin-bottom: -20px;
+	position: relative;
+	z-index: 100;
 }
 
 .abp-button-icon {
