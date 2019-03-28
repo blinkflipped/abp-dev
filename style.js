@@ -702,9 +702,9 @@ abpApp.loadHomepage = function(data,updateHash) {
     }
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
-    //if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
+    if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
       $unitsWrapper.slick(abpApp.config.carouselOpt);
-    //}
+    }
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
@@ -1078,7 +1078,7 @@ $(document).ready(function() {
     abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
     abpApp.config.documentHeight = $(document).height();
 
-  /*  var $unitsWrapper = $('.abp-units-slider');
+    var $unitsWrapper = $('.abp-units-slider');
     if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
       if (!$unitsWrapper.hasClass('slick-initialized')) {
         $unitsWrapper.slick(abpApp.config.carouselOpt);
@@ -1087,7 +1087,7 @@ $(document).ready(function() {
       if ($unitsWrapper.hasClass('slick-initialized')) {
         $unitsWrapper.slick('unslick');
       }
-    }*/
+    }
   });
 
 });
