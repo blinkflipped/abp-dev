@@ -1094,7 +1094,7 @@ $(document).ready(function() {
 
     var $unitsWrapper = $('.abp-units-slider');
 
-    $unitsWrapper.empty().addClass('abp-loading');
+    $unitsWrapper.addClass('abp-loading');
     if ($unitsWrapper.hasClass('slick-initialized')) {
       $unitsWrapper.slick('unslick');
       $unitsWrapper.removeClass('slick-initialized').empty();
@@ -1108,7 +1108,7 @@ $(document).ready(function() {
       }
 
       $unitsWrapper.removeClass('abp-loading');
-    }, 1000);
+    }, 200);
   });
 
 });
