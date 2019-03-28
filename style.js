@@ -999,12 +999,11 @@ abpApp.loadUnitTab = function(tab) {
 //                                  //
 //----------------------------------//
 
+abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+abpApp.config.documentHeight = $(document).height();
 
 $(document).ready(function() {
-
-  abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
-  abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
-  abpApp.config.documentHeight = $(document).height();
 
   $('body').on('click', '.abp-navigation-units-prev, .abp-navigation-units-next', function(e) {
     e.preventDefault();
