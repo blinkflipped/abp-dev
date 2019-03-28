@@ -211,7 +211,7 @@ p{
     font-size: 15px;
 }
 
-#slider {
+#actividad {
     //background: url(/useruploads/r/a/100006716/portadaprincipal001jpg.jpg);
     background-size: cover;
     background-position: center center;
@@ -219,16 +219,22 @@ p{
     position: relative;
     background-color: #223c3f;
     display: block;
+    &::before {
+        content: '';
+        background: rgba(34, 60, 63, 0.6);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
-#slider::before {
-    content: '';
-    background: rgba(34, 60, 63, 0.6);
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
+#slider {
+  background: none;
+  &::before {
+    content: none;
+  }
 }
 
 #swipeview-slider>div {

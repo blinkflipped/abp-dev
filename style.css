@@ -1593,22 +1593,26 @@ p {
 #actividad .slide_content_type_1 .pregunta .texto_curso {
   font-size: 15px; }
 
-#slider {
+#actividad {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   position: relative;
   background-color: #223c3f;
   display: block; }
+  #actividad::before {
+    content: '';
+    background: rgba(34, 60, 63, 0.6);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%; }
 
-#slider::before {
-  content: '';
-  background: rgba(34, 60, 63, 0.6);
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%; }
+#slider {
+  background: none; }
+  #slider::before {
+    content: none; }
 
 #swipeview-slider > div {
   background-color: transparent; }
