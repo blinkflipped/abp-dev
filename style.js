@@ -1026,13 +1026,13 @@ $(document).ready(function() {
         suffix = abpApp.config.tree[1].suffix[0],
         newHash = abpApp.config.tree[1].hash + currentUnit + suffix;
 
-    var $slider = $(this).closest('.abp-js--slider'),
+    /*var $slider = $(this).closest('.abp-js--slider'),
         isInSlider = $slider.length;
 
     if (isInSlider) {
       var currentSlide = $(this).closest('.slick-slide').data('slick-index');
       $slider.slick('slickGoTo', currentSlide, true);
-    }
+    }*/
 
     abpApp.updateHashWithListener(newHash);
   });
@@ -1094,14 +1094,13 @@ $(document).ready(function() {
 
     var $unitsWrapper = $('.abp-units-slider');
     $unitsWrapper.addClass('abp-loading');
-    if ($unitsWrapper.hasClass('slick-initialized')) {
-      $unitsWrapper.slick('unslick');
-    }
     $unitsWrapper.removeClass('slick-initialized slick-slider').empty();
+
     var unitList = abpApp.addUnits(abpApp.bookData);
     $unitsWrapper[0].appendChild(unitList);
     setTimeout(function() {
       if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
+        //$unitsWrapper.slick('unslick');
         $unitsWrapper.slick(abpApp.config.carouselOpt);
       }
       $unitsWrapper.removeClass('abp-loading');
