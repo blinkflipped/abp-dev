@@ -219,6 +219,10 @@ abpApp.config.carouselOpt = {
        slidesToShow: 1.25,
        slidesToScroll: 1
      }
+   },
+   {
+     breakpoint : 375,
+     settings: "unslick"
    }
  ]
 };
@@ -1089,23 +1093,20 @@ $(document).ready(function() {
     abpApp.config.documentHeight = $(document).height();
 
     var $unitsWrapper = $('.abp-units-slider');
-    if ($unitsWrapper.hasClass('slick-initialized')) {
-      $unitsWrapper.removeClass('slick-initialized').slick('unslick');
-    }
-
-    $unitsWrapper.empty().addClass('abp-loading');
+    //
     if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
       if (!$unitsWrapper.hasClass('slick-initialized')) {
         $unitsWrapper.slick(abpApp.config.carouselOpt).removeClass('abp-loading');
       }
     } else {
+      $unitsWrapper.empty().addClass('abp-loading');
+      if ($unitsWrapper.hasClass('slick-initialized')) {
+        $unitsWrapper.removeClass('slick-initialized').empty().slick('unslick');
+      }
+      var unitList = abpApp.addUnits(abpApp.bookData);
+      $unitsWrapper[0].appendChild(unitList);
 
-      setTimeout(function() {
-        var unitList = abpApp.addUnits(abpApp.bookData);
-        $unitsWrapper[0].appendChild(unitList);
-
-        $unitsWrapper.removeClass('abp-loading');
-      }, 200);
+      $unitsWrapper.removeClass('abp-loading');
     }
   });
 
