@@ -1095,15 +1095,14 @@ $(document).ready(function() {
         $unitsWrapper.slick(abpApp.config.carouselOpt);
       }
     } else {
-      if ($unitsWrapper.hasClass('slick-initialized')) {
 
-        var unitList = abpApp.addUnits(abpApp.bookData);
-        if ($unitsWrapper.hasClass('slick-initialized')) {
-          $unitsWrapper.slick('unslick');
-        }
-        $unitsWrapper.empty();
-        $unitsWrapper[0].appendChild(unitList);
+      if ($unitsWrapper.hasClass('slick-initialized')) {
+        $unitsWrapper.slick('unslick');
       }
+      $unitsWrapper.empty();
+      var unitList = abpApp.addUnits(abpApp.bookData);
+      $unitsWrapper[0].appendChild(unitList);
+
     }
   });
 
