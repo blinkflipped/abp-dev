@@ -1085,7 +1085,7 @@ $(document).ready(function() {
       }
     } else {
       if ($unitsWrapper.hasClass('slick-initialized')) {
-        $unitsWrapper.slick('unslick');
+        //$unitsWrapper.slick('unslick');
       }
     }
   });
