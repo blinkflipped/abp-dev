@@ -730,7 +730,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     $('body').imagesLoaded({background: 'div, a, span, button'}, function(){
       $('html').addClass('htmlReady');
       $('body').addClass(userBodyClass);
-      $(window).resize(); // FIX to pagination on click
+
       $('html, body').animate({ scrollTop: 0 }, 1);
       if (currentHash !== '' && currentHash !== hash) {
         abpApp.loadByHash(currentHash,data);
@@ -742,6 +742,7 @@ abpApp.loadHomepage = function(data,updateHash) {
         }
       }
 
+      //$(window).resize(); // FIX to pagination on click
       abpApp.config.firstTime = false;
 
     });
@@ -759,30 +760,11 @@ abpApp.loadHomepage = function(data,updateHash) {
       }
     }
     $('html, body').animate({ scrollTop: 0 }, 1);
-    $(window).resize(); // FIX to pagination on click
+    //$(window).resize(); // FIX to pagination on click
   }
 
   // Object Fit support
   abpApp.objectFitSupport();
-
-  // Resize and orientationChange
-  $(window).on('resize orientationchange', function() {
-
-    abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
-    abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
-    abpApp.config.documentHeight = $(document).height();
-
-    var $unitsWrapper = $('.abp-units-slider');
-    if (abpApp.config.windowWidth > 375) {
-      if (!$unitsWrapper.hasClass('slick-initialized')) {
-        $unitsWrapper.slick(abpApp.config.carouselOpt);
-      }
-    } else {
-      if ($unitsWrapper.hasClass('slick-initialized')) {
-        $unitsWrapper.slick('unslick');
-      }
-    }
-  });
 
 }
 
@@ -1085,5 +1067,23 @@ $(document).ready(function() {
     e.preventDefault();
   });
 
+  // Resize and orientationChange
+  $(window).on('resize orientationchange', function() {
+
+    abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
+    abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
+    abpApp.config.documentHeight = $(document).height();
+
+    var $unitsWrapper = $('.abp-units-slider');
+    if (abpApp.config.windowWidth > 375) {
+      if (!$unitsWrapper.hasClass('slick-initialized')) {
+        $unitsWrapper.slick(abpApp.config.carouselOpt);
+      }
+    } else {
+      if ($unitsWrapper.hasClass('slick-initialized')) {
+        $unitsWrapper.slick('unslick');
+      }
+    }
+  });
 
 });
