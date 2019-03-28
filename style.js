@@ -219,10 +219,6 @@ abpApp.config.carouselOpt = {
        slidesToShow: 1.25,
        slidesToScroll: 1
      }
-   },
-   {
-     breakpoint: 375,
-     setting: 'unslick'
    }
  ]
 };
@@ -569,6 +565,27 @@ abpApp.gotoCurrentUnitAndArea = function() {
 }
 
 
+abpApp.addUnits = function(data) {
+
+  var unitList = document.createDocumentFragment();
+  $.each(data.units, function(i, unit){
+    if (i !== abpApp.getAuxUnit(data)) {
+
+      var unitNumberBase = unit.number - 1,
+          unitNumberStr = unitNumberBase.toString();
+      var unitTitle = unit.title,
+          unitDescription = unit.description,
+          unitNumber = ('0' + unitNumberBase).slice(-2),
+          unitImage = unit.image;
+      var unitListItem = document.createElement('div');
+      unitListItem.className = 'abp-units-slider-item';
+      unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-unit abp-unit-inner" data-unit="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
+      unitList.appendChild(unitListItem);
+    }
+  });
+  return unitList;
+}
+
 //----------------------------------//
 //                                  //
 //  Templates                       //
@@ -648,8 +665,9 @@ abpApp.loadHomepage = function(data,updateHash) {
 
     // Add real content
 
-    var unitList = document.createDocumentFragment(),
-        tabList = document.createDocumentFragment();
+    var unitList = abpApp.addUnits(data);
+
+    var tabList = document.createDocumentFragment();
     $.each(data.units, function(i, unit){
       if (i !== abpApp.getAuxUnit(data)) {
 
@@ -657,15 +675,6 @@ abpApp.loadHomepage = function(data,updateHash) {
             unitNumberStr = unitNumberBase.toString();
 
         abpApp.config.unitsIDs.push(unitNumberStr);
-
-        var unitTitle = unit.title,
-            unitDescription = unit.description,
-            unitNumber = ('0' + unitNumberBase).slice(-2),
-            unitImage = unit.image;
-        var unitListItem = document.createElement('div');
-        unitListItem.className = 'abp-units-slider-item';
-        unitListItem.innerHTML = '<article class="abp-unit"><a href="javascript:void(0)" class="abp-js-load-unit abp-unit-inner" data-unit="'+unitNumberBase+'"><div class="abp-unit-number abp-unit-number"><div class="abp-unit-number-inner"><span>'+unitNumber+'</span></div></div><header class="abp-unit-header"> <h2 class="abp-title-4">'+unitTitle+'</h2> </header> <div class="abp-unit-content"> <div class="abp-unit-content-description">'+unitDescription+'</div> <div class="abp-unit-content-background"> <img src="'+unitImage+'"></div></div></a></article>';
-        unitList.appendChild(unitListItem);
       }
       var subunits = unit.subunits;
       $.each(subunits, function(i, subunit){
@@ -693,6 +702,7 @@ abpApp.loadHomepage = function(data,updateHash) {
       });
 
     });
+
 
     // Create Units slider
     var $unitsWrapper = $('.abp-units-slider');
@@ -982,6 +992,7 @@ abpApp.loadUnitTab = function(tab) {
 }
 
 
+
 //----------------------------------//
 //                                  //
 //  Document Ready                  //
@@ -1085,7 +1096,13 @@ $(document).ready(function() {
       }
     } else {
       if ($unitsWrapper.hasClass('slick-initialized')) {
-        //$unitsWrapper.slick('unslick');
+
+        var unitList = abpApp.addUnits(abpApp.bookData);
+        if ($unitsWrapper.hasClass('slick-initialized')) {
+          $unitsWrapper.slick('unslick');
+        }
+        $unitsWrapper.empty();
+        $unitsWrapper[0].appendChild(unitList);
       }
     }
   });
