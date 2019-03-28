@@ -230,7 +230,7 @@ abpApp.config.auxTab = 'tab';
 abpApp.config.coverName = 'Portada';
 abpApp.config.bookcover = '';
 abpApp.config.auxUnitName = 'Info';
-
+abpApp.config.mobileWidth = 375;
 abpApp.config.unitsIDs = [];
 abpApp.config.bodyClasses = ['abp-body-home', 'abp-body-unit'];
 
@@ -698,8 +698,9 @@ abpApp.loadHomepage = function(data,updateHash) {
     }
     $unitsWrapper.empty();
     $unitsWrapper[0].appendChild(unitList);
-
-    $unitsWrapper.slick(abpApp.config.carouselOpt);
+    if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
+      $unitsWrapper.slick(abpApp.config.carouselOpt);
+    }
 
     var $unitsWrapperContent = $unitsWrapper.closest('.abp-section-content');
     //$unitsWrapperContent.addClass('abp-slider--toleft');
@@ -730,7 +731,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     $('body').imagesLoaded({background: 'div, a, span, button'}, function(){
       $('html').addClass('htmlReady');
       $('body').addClass(userBodyClass);
-
+      $(window).resize(); // FIX to pagination on click
       $('html, body').animate({ scrollTop: 0 }, 1);
       if (currentHash !== '' && currentHash !== hash) {
         abpApp.loadByHash(currentHash,data);
@@ -742,7 +743,6 @@ abpApp.loadHomepage = function(data,updateHash) {
         }
       }
 
-      //$(window).resize(); // FIX to pagination on click
       abpApp.config.firstTime = false;
 
     });
@@ -760,7 +760,7 @@ abpApp.loadHomepage = function(data,updateHash) {
       }
     }
     $('html, body').animate({ scrollTop: 0 }, 1);
-    //$(window).resize(); // FIX to pagination on click
+    $(window).resize(); // FIX to pagination on click
   }
 
   // Object Fit support
@@ -1075,7 +1075,7 @@ $(document).ready(function() {
     abpApp.config.documentHeight = $(document).height();
 
     var $unitsWrapper = $('.abp-units-slider');
-    if (abpApp.config.windowWidth > 375) {
+    if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
       if (!$unitsWrapper.hasClass('slick-initialized')) {
         $unitsWrapper.slick(abpApp.config.carouselOpt);
       }
