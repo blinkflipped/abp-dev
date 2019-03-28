@@ -1088,18 +1088,18 @@ $(document).ready(function() {
     abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
     abpApp.config.documentHeight = $(document).height();
 
-
-
     var $unitsWrapper = $('.abp-units-slider');
+    if ($unitsWrapper.hasClass('slick-initialized')) {
+      $unitsWrapper.removeClass('slick-initialized').slick('unslick');
+    }
+
+    $unitsWrapper.empty().addClass('abp-loading');
     if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
       if (!$unitsWrapper.hasClass('slick-initialized')) {
-        $unitsWrapper.slick(abpApp.config.carouselOpt);
+        $unitsWrapper.slick(abpApp.config.carouselOpt).removeClass('abp-loading');
       }
     } else {
-      if ($unitsWrapper.hasClass('slick-initialized')) {
-        $unitsWrapper.removeClass('slick-initialized').slick('unslick');
-      }
-      $unitsWrapper.empty().addClass('abp-loading');
+
       setTimeout(function() {
         var unitList = abpApp.addUnits(abpApp.bookData);
         $unitsWrapper[0].appendChild(unitList);
