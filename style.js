@@ -1088,12 +1088,10 @@ $(document).ready(function() {
     abpApp.config.windowWidth = window.innerWidth ? window.innerWidth : $(window).width();
     abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
     abpApp.config.documentHeight = $(document).height();
-
-
     var $unitsWrapper = $('.abp-units-slider');
 
     if ($unitsWrapper.hasClass('slick-initialized')) {
-      $unitsWrapper.slick('unslick');
+      $unitsWrapper.removeClass('slick-initialized').slick('unslick');
     }
     $unitsWrapper.empty();
     var unitList = abpApp.addUnits(abpApp.bookData);
