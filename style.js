@@ -605,7 +605,7 @@ abpApp.loadSliders = function(data) {
   // Put Background to slider
   var backgroundImageSrc = abpApp.config.bookcover.image,
       backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'url('+backgroundImageSrc+')' : 'none';
-  $('#slider').css('background-image', backgroundImage);
+  $('#actividad').css('background-image', backgroundImage);
 
   // Go back on slider
 

@@ -90,3 +90,16 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
 
 #book-index #indice .unit-content a:hover,
 #book-index #indice li.current a {color: $color_1}
+
+
+// sliders
+
+#actividad {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: $color_1;
+  .content {
+    background: none;
+  }
+}

@@ -172,11 +172,14 @@ body.view-mode {
   padding-bottom: 10px; }
 
 .abp-slider-goback {
-  background: #223c3f;
+  background: none;
   padding: 10px 0;
   margin-bottom: -20px;
   position: relative;
   z-index: 100; }
+  @media (max-width: 979px) {
+    .abp-slider-goback {
+      background: #223c3f; } }
 
 .abp-button-icon {
   font-family: "Source Sans Pro", sans-serif;
@@ -1128,6 +1131,14 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover,
 #book-index #indice li.current a {
   color: #223c3f; }
 
+#actividad {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #223c3f; }
+  #actividad .content {
+    background: none; }
+
 .abp-section {
   position: relative;
   z-index: 10;
@@ -1826,7 +1837,8 @@ body:not(.edit) .bck-flipbox-face.back {
 .abp-section_unit-inner .abp-section-header-bottom::before {
   opacity: 1;
   top: 106px;
-  height: 69%; }
+  height: 69%;
+  height: calc(100% - 160px); }
 
 .abp-title-3 {
   font-size: 24px; }

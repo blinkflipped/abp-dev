@@ -519,6 +519,7 @@ body:not(.edit) .bck-flipbox-face.back {
     opacity: 1;
     top: 106px;
     height: 69%;
+    height: calc(100% - 160px);
 }
 
 .abp-title-3 {
