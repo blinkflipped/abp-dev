@@ -501,6 +501,8 @@ body.view-mode {
   position: relative;
   width: 100%;
   max-width: 1020px; }
+  .abp-units-slider.abp-loading > * {
+    visibility: hidden; }
   .abp-units-slider.abp-loading::before {
     content: '';
     display: block;
