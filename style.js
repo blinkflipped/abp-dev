@@ -222,7 +222,10 @@ abpApp.config.carouselOpt = {
    },
    {
      breakpoint : 375,
-     settings: "unslick"
+     settings: {
+       vertical: true,
+       verticalSwiping: false
+     }
    }
  ]
 };
@@ -1092,7 +1095,7 @@ $(document).ready(function() {
     abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
     abpApp.config.documentHeight = $(document).height();
 
-    var $unitsWrapper = $('.abp-units-slider');
+  /*  var $unitsWrapper = $('.abp-units-slider');
 
     $unitsWrapper.empty().addClass('abp-loading');
     if ($unitsWrapper.hasClass('slick-initialized')) {
@@ -1107,7 +1110,7 @@ $(document).ready(function() {
       } else {
         $unitsWrapper.removeClass('abp-loading');
       }
-    }, 200);
+    }, 200);*/
   });
 
 });
