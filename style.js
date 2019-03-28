@@ -1029,10 +1029,10 @@ $(document).ready(function() {
     var $slider = $(this).closest('.abp-js--slider'),
         isInSlider = $slider.length;
 
-    /*if (isInSlider) {
+    if (isInSlider) {
       var currentSlide = $(this).closest('.slick-slide').data('slick-index');
       $slider.slick('slickGoTo', currentSlide, true);
-    }*/
+    }
 
     abpApp.updateHashWithListener(newHash);
   });
@@ -1094,7 +1094,9 @@ $(document).ready(function() {
 
     var $unitsWrapper = $('.abp-units-slider');
     $unitsWrapper.addClass('abp-loading');
-
+    if ($unitsWrapper.hasClass('slick-initialized')) {
+      $unitsWrapper.slick('unslick');
+    }
     $unitsWrapper.removeClass('slick-initialized slick-slider').empty();
     var unitList = abpApp.addUnits(abpApp.bookData);
     $unitsWrapper[0].appendChild(unitList);
