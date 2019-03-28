@@ -1096,7 +1096,8 @@ $(document).ready(function() {
 
     $unitsWrapper.empty().addClass('abp-loading');
     if ($unitsWrapper.hasClass('slick-initialized')) {
-      $unitsWrapper.slick('unslick').removeClass('slick-initialized').empty();
+      $unitsWrapper.slick('unslick');
+      $unitsWrapper.removeClass('slick-initialized').empty();
     }
     setTimeout(function() {
       var unitList = abpApp.addUnits(abpApp.bookData);
