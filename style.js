@@ -1029,10 +1029,10 @@ $(document).ready(function() {
     var $slider = $(this).closest('.abp-js--slider'),
         isInSlider = $slider.length;
 
-    if (isInSlider) {
+    /*if (isInSlider) {
       var currentSlide = $(this).closest('.slick-slide').data('slick-index');
       $slider.slick('slickGoTo', currentSlide, true);
-    }
+    }*/
 
     abpApp.updateHashWithListener(newHash);
   });
