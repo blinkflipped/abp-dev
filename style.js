@@ -1089,20 +1089,20 @@ $(document).ready(function() {
     abpApp.config.windowHeight = window.innerHeight ? window.innerHeight : $(window).height();
     abpApp.config.documentHeight = $(document).height();
 
+
     var $unitsWrapper = $('.abp-units-slider');
+
+    if ($unitsWrapper.hasClass('slick-initialized')) {
+      $unitsWrapper.slick('unslick');
+    }
+    $unitsWrapper.empty();
+    var unitList = abpApp.addUnits(abpApp.bookData);
+    $unitsWrapper[0].appendChild(unitList);
+
     if (abpApp.config.windowWidth > abpApp.config.mobileWidth) {
       if (!$unitsWrapper.hasClass('slick-initialized')) {
         $unitsWrapper.slick(abpApp.config.carouselOpt);
       }
-    } else {
-
-      if ($unitsWrapper.hasClass('slick-initialized')) {
-        $unitsWrapper.slick('unslick');
-      }
-      $unitsWrapper.empty();
-      var unitList = abpApp.addUnits(abpApp.bookData);
-      $unitsWrapper[0].appendChild(unitList);
-
     }
   });
 
