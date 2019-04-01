@@ -608,7 +608,7 @@ abpApp.loadSliders = function(data) {
   abpApp.bookData = data
 
   // Put Background to slider
-  var backgroundImageSrc = abpApp.getGeneralBackground(),
+  var backgroundImageSrc = abpApp.getGeneralBackground(data),
       backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'url('+backgroundImageSrc+')' : 'none';
   $('#actividad').css('background-image', backgroundImage);
 
@@ -646,7 +646,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
 
-    var backgroundImageSrc = abpApp.getGeneralBackground(),
+    var backgroundImageSrc = abpApp.getGeneralBackground(data),
         backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImageSrc+');' : '';
 
     var comp_navigationSecondary = '<nav class="abp-navigation abp-navigation_secondary"><ul></ul></nav>',
