@@ -313,14 +313,7 @@ abpApp.removeUnusedClass = function(currentClass) {
 
 // Get General background
 abpApp.getCover = function(data) {
-  var cover =  data.units[0].subunits[0];
-  $.each(data.units, function(i, unit) {
-    $.each(unit.subunits, function(ind, subunit) {
-      if (subunit.title === abpApp.config.coverName) {
-        cover = data.units[i].subunits[ind];
-      }
-    });
-  });
+  var cover =  data.image;
   return cover;
 }
 
