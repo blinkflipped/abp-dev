@@ -310,10 +310,22 @@ abpApp.removeUnusedClass = function(currentClass) {
 
 }
 
-
 // Get General background
+abpApp.getGeneralBackground = function(data) {
+  var background =  data.image;
+  return background;
+}
+
+// Get Cover
 abpApp.getCover = function(data) {
-  var cover =  data.image;
+  var cover =  data.units[0].subunits[0];
+  $.each(data.units, function(i, unit) {
+    $.each(unit.subunits, function(ind, subunit) {
+      if (subunit.title === abpApp.config.coverName) {
+        cover = data.units[i].subunits[ind];
+      }
+    });
+  });
   return cover;
 }
 
@@ -596,7 +608,7 @@ abpApp.loadSliders = function(data) {
   abpApp.bookData = data
 
   // Put Background to slider
-  var backgroundImageSrc = abpApp.config.bookcover.image,
+  var backgroundImageSrc = abpApp.getGeneralBackground(),
       backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'url('+backgroundImageSrc+')' : 'none';
   $('#actividad').css('background-image', backgroundImage);
 
@@ -634,7 +646,7 @@ abpApp.loadHomepage = function(data,updateHash) {
     abpApp.config.isStudent = blink.user.esAlumno();
     abpApp.bookData = data;
 
-    var backgroundImageSrc = abpApp.config.bookcover.image,
+    var backgroundImageSrc = abpApp.getGeneralBackground(),
         backgroundImage = (backgroundImageSrc !== '' && typeof backgroundImageSrc !== 'undefined') ? 'background-image: url('+backgroundImageSrc+');' : '';
 
     var comp_navigationSecondary = '<nav class="abp-navigation abp-navigation_secondary"><ul></ul></nav>',
