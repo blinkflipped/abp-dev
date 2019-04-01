@@ -125,7 +125,6 @@
 
   // Remove Info
   blink.events.on('indexLoaded', function(){
-    console.log("Index loaded");
     abpApp.removeAuxFromBookIndex();
   });
 
