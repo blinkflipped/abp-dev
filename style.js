@@ -108,6 +108,18 @@
     onCourseLoaded: function(data) {
       console.log(data);
     }*/
+
+	/*isIndexActivity: function(params, code) {
+		this.getCourseStyleUI();
+		var navigationCode;
+		if(this.esPortada){
+			navigationCode = 2;
+		}else{
+			navigationCode = code;
+		}
+		cambiarVisualizacion(true, params, navigationCode);
+	},*/	  
+	  
   };
 
 
