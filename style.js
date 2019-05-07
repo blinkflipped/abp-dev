@@ -84,7 +84,7 @@
         var updateHash = false;
         abpApp.loadHomepage(data, updateHash);
       } else {
-        $('html').removeClass('abp-isBookCover');
+        $('html').removeClass('abp-isBookCover').addClass('htmlReady');
         abpApp.loadSliders(data);
       }
 
@@ -118,8 +118,8 @@
 			navigationCode = code;
 		}
 		cambiarVisualizacion(true, params, navigationCode);
-	},*/	  
-	  
+	},*/
+
   };
 
 
@@ -132,9 +132,6 @@
     blink.getCourse(idcurso).done(function (data) {
       var style = new AbpDevStyle;
       style.onCourseDataLoaded(data);
-
-      $('html').addClass('htmlReady');
-      
     });
   });
 
