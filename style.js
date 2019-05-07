@@ -120,6 +120,9 @@
     blink.getCourse(idcurso).done(function (data) {
       var style = new AbpDevStyle;
       style.onCourseDataLoaded(data);
+
+      $('html').addClass('htmlReady');
+      
     });
   });
 
