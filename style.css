@@ -1616,10 +1616,7 @@ p {
   #slider::before {
     content: none; }
 
-#swipeview-slider > div {
-  background-color: transparent; }
-
-.slider-control, .slider-control:focus {
+#swipeview-slider > div, .slider-control, .slider-control:focus {
   background-color: #223c3f; }
 
 /*ancho*/
