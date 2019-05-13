@@ -1889,3 +1889,7 @@ body:not(.isTablet) #book-index #indice .units ul li:not(.disabled) a:hover, #bo
 
 a:hover, a:active, a:focus {
   color: #A2041B; }
+
+/* OCULTAR SPINNER */
+.content .spinner {
+	display: none; }
